@@ -42,23 +42,23 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
                 listAllData.add(it)
                 listAllData.forEach { customData ->
                     when {
-                        customData.casingType.equals("Hardcase") -> {
+                        customData.casingType.equals("Hardcase") && !customData.isTopSeller!! -> {
                             listHardcase.add(customData)
                             mView.onSuccesGetHardcaseData(listHardcase)
                         }
-                        customData.casingType.equals("Softcase") -> {
+                        customData.casingType.equals("Softcase") && !customData.isTopSeller!! -> {
                             listSoftcase.add(customData)
                             mView.onSuccesGetSoftcaseData(listSoftcase)
                         }
-                        customData.casingType.equals("Premium") -> {
+                        customData.casingType.equals("Premium") && !customData.isTopSeller!! -> {
                             listPremium.add(customData)
                             mView.onSuccesGetPremiumData(listPremium)
                         }
-                        customData.casingType.equals("Premium Soft") -> {
+                        customData.casingType.equals("Premium Soft") && !customData.isTopSeller!!  -> {
                             listPremiumSoft.add(customData)
                             mView.onSuccesGetPremiumSoftData(listPremiumSoft)
                         }
-                        customData.casingType.equals("Air Bag") -> {
+                        customData.casingType.equals("Air Bag") && !customData.isTopSeller!!  -> {
                             listAirBag.add(customData)
                             mView.onSuccesGetAirBagData(listAirBag)
                         }

@@ -9,9 +9,11 @@ import androidx.fragment.app.Fragment
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.ui.fragment.home.slideradapter.SliderItemAdapter
 import com.junemon.junemoncase.util.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_homefragment.view.*
+import me.relex.circleindicator.CircleIndicator
 
 /**
  *
@@ -19,7 +21,8 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 class HomeFragment : Fragment(), HomeView {
-
+    private var indicator: CircleIndicator? = null
+    private var mPager: ClickableViewPager? = null
     private lateinit var presenter: HomePresenter
     private var actualView: View? = null
 
@@ -49,6 +52,8 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun onSuccesGetBestSellerData(data: List<AllCasingModel>?) {
+        actualView?.vpBestSeller?.adapter = data?.let { SliderItemAdapter(it) }
+        indicator?.setViewPager(actualView?.vpBestSeller)
     }
 
 
