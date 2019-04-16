@@ -63,6 +63,8 @@ dependencies {
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$livedata_version"
 //    //koin
 //    implementation 'org.koin:koin-android-viewmodel:1.0.2'
+    //slider indicator
+    implementation 'me.relex:circleindicator:1.2.2@aar'
     //image downloader
     implementation 'com.github.bumptech.glide:glide:4.8.0'
     //lottie

@@ -7,94 +7,115 @@
 
     <androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        app:title="Junemon Case"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="Junemon Case" />
 
-        <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_almost_white"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/gray_almost_white"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <LinearLayout
+                android:id="@+id/slider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/lnPerangkatKomputer"
+                <com.junemon.junemoncase.util.ClickableViewPager
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp" />
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center_horizontal"
+                    app:ci_drawable="@drawable/dot_enable"
+                    app:ci_drawable_unselected="@drawable/dot_disable" />
+            </LinearLayout>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/lnPerangkatKomputer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/slider"
+                android:layout_marginTop="@dimen/spacing_medium">
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_medium">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_marginLeft="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/spacing_medium"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/lato"
+                            android:paddingBottom="8dp"
+                            android:text="@string/hardcase"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/letter_medium"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvSeeAllPerangkatKomputer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:fontFamily="@font/lato"
+                            android:paddingBottom="8dp"
+                            android:text="@string/lihat_semua"
+                            android:textColor="@color/dc_gray"
+                            android:textSize="@dimen/letter_medium" />
+
+                    </LinearLayout>
+
+                    <com.facebook.shimmer.ShimmerFrameLayout
+                        android:id="@+id/shimmer_home"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:orientation="horizontal">
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:orientation="vertical">
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/spacing_medium"
-                                android:layout_weight="1"
-                                android:fontFamily="@font/lato"
-                                android:paddingBottom="8dp"
-                                android:text="@string/best_seller"
-                                android:textColor="@color/black"
-                                android:textSize="@dimen/letter_medium"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:id="@+id/tvSeeAllPerangkatKomputer"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/spacing_medium"
-                                android:fontFamily="@font/lato"
-                                android:paddingBottom="8dp"
-                                android:text="@string/lihat_semua"
-                                android:textColor="@color/dc_gray"
-                                android:textSize="@dimen/letter_medium" />
+                            <include layout="@layout/recycler_shimmer_bg" />
 
                         </LinearLayout>
 
-                        <com.facebook.shimmer.ShimmerFrameLayout
-                            android:id="@+id/shimmer_home"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
+                    </com.facebook.shimmer.ShimmerFrameLayout>
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:orientation="vertical">
-
-                                <include layout="@layout/recycler_shimmer_bg" />
-
-                            </LinearLayout>
-
-                        </com.facebook.shimmer.ShimmerFrameLayout>
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/rvBestSeller"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/spacing_medium" />
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvBestSeller"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/spacing_medium" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-            </RelativeLayout>
+        </RelativeLayout>
 
-        </androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

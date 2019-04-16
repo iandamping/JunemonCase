@@ -10,5 +10,9 @@ Github = https://github.com/iandamping
  */
 interface HomeView : BaseFragmentView {
     fun onFailGetData(msg: String?)
-    fun onSuccesGetData(data: AllCasingModel)
+    fun onSuccesGetHardcaseData(data: List<AllCasingModel>?)
+    fun onSuccesGetSoftcaseData(data: List<AllCasingModel>?)
+    fun onSuccesGetPremiumData(data: List<AllCasingModel>?)
+    fun onSuccesGetPremiumSoftData(data: List<AllCasingModel>?)
+    fun onSuccesGetAirBagData(data: List<AllCasingModel>?)
 }

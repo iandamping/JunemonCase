@@ -21,7 +21,6 @@ Github = https://github.com/iandamping
 class HomeFragment : Fragment(), HomeView {
     private lateinit var presenter: HomePresenter
     private var actualView: View? = null
-    private var listAllData: MutableList<AllCasingModel> = mutableListOf()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,19 +47,29 @@ class HomeFragment : Fragment(), HomeView {
         presenter.onGetData()
     }
 
-    override fun onSuccesGetData(data: AllCasingModel) {
-        listAllData.add(data)
+    override fun onSuccesGetHardcaseData(data: List<AllCasingModel>?) {
         if (actualView != null) {
             actualView?.shimmer_home?.stopShimmer()
             actualView?.shimmer_home?.gone()
-            actualView?.rvBestSeller?.setUpHorizontal(listAllData, R.layout.item_homefragment, {
-                ivHomeCasing.loadUrl(it.photoUrl)
-                tvHomeTypeCasing.text = it.casingType
-                when (it.isTopSeller) {
-                    true -> tvHomeIsBestSeller.visible()
-                }
-            })
+            data?.let {
+                actualView?.rvBestSeller?.setUpHorizontal(it, R.layout.item_homefragment, {
+                    ivHomeCasing.loadUrl(it.photoUrl)
+                    tvHomeTypeCasing.text = it.casingType
+                })
+            }
         }
+    }
+
+    override fun onSuccesGetSoftcaseData(data: List<AllCasingModel>?) {
+    }
+
+    override fun onSuccesGetPremiumData(data: List<AllCasingModel>?) {
+    }
+
+    override fun onSuccesGetPremiumSoftData(data: List<AllCasingModel>?) {
+    }
+
+    override fun onSuccesGetAirBagData(data: List<AllCasingModel>?) {
     }
 
     override fun initView(view: View) {
