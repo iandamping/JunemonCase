@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "275074042639",
+    "firebase_url": "https://junemon-case.firebaseio.com",
+    "project_id": "junemon-case",
+    "storage_bucket": "junemon-case.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:275074042639:android:5af4dd53b2d3f8ec",
+        "android_client_info": {
+          "package_name": "com.junemon.junemoncase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "275074042639-kvv0c48245vui0uv2n8vdvtr38g7ov5q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.junemon.junemoncase",
+            "certificate_hash": "67850421df2bdc0c176cc96986aec721ec0d8c94"
+          }
+        },
+        {
+          "client_id": "275074042639-on6555ec6u7hmiuhqd5sv5j98usnk9l6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOOmsZTHtQHGZ42JDrEDDdJtQIfCKZKfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "275074042639-on6555ec6u7hmiuhqd5sv5j98usnk9l6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
