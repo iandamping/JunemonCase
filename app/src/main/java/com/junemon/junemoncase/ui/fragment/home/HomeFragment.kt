@@ -2,6 +2,7 @@ package com.junemon.junemoncase.ui.fragment.home
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +14,6 @@ import com.junemon.junemoncase.ui.fragment.home.slideradapter.SliderItemAdapter
 import com.junemon.junemoncase.util.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_homefragment.view.*
-import me.relex.circleindicator.CircleIndicator
 
 /**
  *
@@ -21,8 +21,10 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 class HomeFragment : Fragment(), HomeView {
-    private var indicator: CircleIndicator? = null
-    private var mPager: ClickableViewPager? = null
+    private var mHandler: Handler? = null
+    private var pageSize: Int? = 0
+    private var currentPage = 0
+    private val delayMillis = 4000L
     private lateinit var presenter: HomePresenter
     private var actualView: View? = null
 
@@ -30,6 +32,9 @@ class HomeFragment : Fragment(), HomeView {
         super.onAttach(context)
         presenter = HomePresenter(mAllImageDatabaseReference, this, this)
         presenter.onAttach(context)
+        mHandler = Handler()
+
+
     }
 
     override fun onFailGetData(msg: String?) {
@@ -52,10 +57,25 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun onSuccesGetBestSellerData(data: List<AllCasingModel>?) {
+        pageSize = data?.size
         actualView?.vpBestSeller?.adapter = data?.let { SliderItemAdapter(it) }
-        indicator?.setViewPager(actualView?.vpBestSeller)
+        actualView?.indicator?.setViewPager(actualView?.vpBestSeller)
+        if (mHandler != null) {
+            mHandler?.removeCallbacks(slideRunnable)
+        }
+        mHandler?.postDelayed(slideRunnable, delayMillis)
     }
 
+    private var slideRunnable: Runnable = object : Runnable {
+        override fun run() {
+
+            if (currentPage == pageSize) {
+                currentPage = 0
+            }
+            actualView?.vpBestSeller?.setCurrentItem(currentPage++, true)
+            mHandler!!.postDelayed(this, delayMillis)
+        }
+    }
 
     override fun onSuccesGetHardcaseData(data: List<AllCasingModel>?) {
         if (actualView != null) {
@@ -85,6 +105,16 @@ class HomeFragment : Fragment(), HomeView {
 
     override fun initView(view: View) {
         this.actualView = view
+    }
+
+    override fun onStart() {
+        super.onStart()
+        mHandler?.postDelayed(slideRunnable, 4000)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mHandler?.removeCallbacks(slideRunnable)
     }
 
     override fun onPause() {

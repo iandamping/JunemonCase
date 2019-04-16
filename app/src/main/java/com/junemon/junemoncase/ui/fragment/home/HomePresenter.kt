@@ -54,15 +54,15 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
                             listPremium.add(customData)
                             mView.onSuccesGetPremiumData(listPremium)
                         }
-                        customData.casingType.equals("Premium Soft") && !customData.isTopSeller!!  -> {
+                        customData.casingType.equals("Premium Soft") && !customData.isTopSeller!! -> {
                             listPremiumSoft.add(customData)
                             mView.onSuccesGetPremiumSoftData(listPremiumSoft)
                         }
-                        customData.casingType.equals("Air Bag") && !customData.isTopSeller!!  -> {
+                        customData.casingType.equals("Air Bag") && !customData.isTopSeller!! -> {
                             listAirBag.add(customData)
                             mView.onSuccesGetAirBagData(listAirBag)
                         }
-                        customData.isTopSeller!! ->{
+                        customData.isTopSeller!! -> {
                             listBestSeller.add(customData)
                             mView.onSuccesGetBestSellerData(listBestSeller)
                         }
