@@ -15,4 +15,5 @@ interface HomeView : BaseFragmentView {
     fun onSuccesGetPremiumData(data: List<AllCasingModel>?)
     fun onSuccesGetPremiumSoftData(data: List<AllCasingModel>?)
     fun onSuccesGetAirBagData(data: List<AllCasingModel>?)
+    fun onSuccesGetBestSellerData(data: List<AllCasingModel>?)
 }

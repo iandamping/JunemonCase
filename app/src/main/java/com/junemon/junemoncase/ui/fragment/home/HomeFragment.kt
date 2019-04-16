@@ -19,6 +19,7 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 class HomeFragment : Fragment(), HomeView {
+
     private lateinit var presenter: HomePresenter
     private var actualView: View? = null
 
@@ -47,6 +48,10 @@ class HomeFragment : Fragment(), HomeView {
         presenter.onGetData()
     }
 
+    override fun onSuccesGetBestSellerData(data: List<AllCasingModel>?) {
+    }
+
+
     override fun onSuccesGetHardcaseData(data: List<AllCasingModel>?) {
         if (actualView != null) {
             actualView?.shimmer_home?.stopShimmer()
@@ -71,6 +76,7 @@ class HomeFragment : Fragment(), HomeView {
 
     override fun onSuccesGetAirBagData(data: List<AllCasingModel>?) {
     }
+
 
     override fun initView(view: View) {
         this.actualView = view

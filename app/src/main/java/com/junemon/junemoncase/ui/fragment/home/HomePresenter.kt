@@ -24,6 +24,7 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
     private var listPremium: MutableList<AllCasingModel> = mutableListOf()
     private var listPremiumSoft: MutableList<AllCasingModel> = mutableListOf()
     private var listAirBag: MutableList<AllCasingModel> = mutableListOf()
+    private var listBestSeller: MutableList<AllCasingModel> = mutableListOf()
     override fun onAttach(context: Context?) {
         this.ctx = context
         target.getAllDataFromFirebase(dataReference)
@@ -60,6 +61,10 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
                         customData.casingType.equals("Air Bag") -> {
                             listAirBag.add(customData)
                             mView.onSuccesGetAirBagData(listAirBag)
+                        }
+                        customData.isTopSeller!! ->{
+                            listBestSeller.add(customData)
+                            mView.onSuccesGetBestSellerData(listBestSeller)
                         }
                     }
                 }
