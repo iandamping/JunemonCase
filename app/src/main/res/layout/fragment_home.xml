@@ -48,7 +48,7 @@
 
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/lnPerangkatKomputer"
+                android:id="@+id/cvHardcase"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/slider"
@@ -78,7 +78,7 @@
                             android:textStyle="bold" />
 
                         <TextView
-                            android:id="@+id/tvSeeAllPerangkatKomputer"
+                            android:id="@+id/tvSeeAllHardcase"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing_medium"
@@ -103,15 +103,68 @@
 
                             <include layout="@layout/recycler_shimmer_bg" />
 
+                            <include layout="@layout/recycler_shimmer_bg" />
+
                         </LinearLayout>
 
                     </com.facebook.shimmer.ShimmerFrameLayout>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvBestSeller"
+                        android:id="@+id/rvHardcase"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/spacing_medium" />
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                    android:id="@+id/cvAirbag"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/cvHardcase"
+                    android:layout_marginTop="@dimen/spacing_medium">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="8dp"
+                            android:orientation="horizontal">
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/spacing_medium"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/lato"
+                                android:paddingBottom="8dp"
+                                android:text="@string/airbag"
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/letter_medium"
+                                android:textStyle="bold" />
+
+                        <TextView
+                                android:id="@+id/tvSeeAllAirbag"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/spacing_medium"
+                                android:fontFamily="@font/lato"
+                                android:paddingBottom="8dp"
+                                android:text="@string/lihat_semua"
+                                android:textColor="@color/dc_gray"
+                                android:textSize="@dimen/letter_medium" />
+
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvAirbag"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/spacing_medium" />
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

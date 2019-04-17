@@ -81,8 +81,8 @@ class HomeFragment : Fragment(), HomeView {
         if (actualView != null) {
             actualView?.shimmer_home?.stopShimmer()
             actualView?.shimmer_home?.gone()
-            data?.let {
-                actualView?.rvBestSeller?.setUpHorizontal(it, R.layout.item_homefragment, {
+            data?.let {caseData ->
+                actualView?.rvHardcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 })
@@ -100,6 +100,14 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun onSuccesGetAirBagData(data: List<AllCasingModel>?) {
+        if (actualView!=null){
+            data?.let { caseData ->
+                actualView?.rvAirbag?.setUpHorizontal(caseData, R.layout.item_homefragment,{
+                    ivHomeCasing.loadUrl(it.photoUrl)
+                    tvHomeTypeCasing.text = it.casingType
+                })
+            }
+        }
     }
 
 
