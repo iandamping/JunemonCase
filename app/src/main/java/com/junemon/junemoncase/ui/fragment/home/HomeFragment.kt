@@ -63,7 +63,7 @@ class HomeFragment : Fragment(), HomeView {
 
     override fun onSuccesGetBestSellerData(data: List<AllCasingModel>?) {
         pageSize = data?.size
-        actualView?.vpBestSeller?.adapter = data?.let { SliderItemAdapter(it) }
+        actualView?.vpBestSeller?.adapter = data?.let { SliderItemAdapter(it,context) }
         actualView?.indicator?.setViewPager(actualView?.vpBestSeller)
         if (mHandler != null) {
             mHandler?.removeCallbacks(slideRunnable)
