@@ -16,6 +16,7 @@
     <string name="pilih_gambar_dulu">PILIH GAMBAR DULU</string>
     <string name="snackbar_buka">BUKA</string>
     <string name="error_happen">Error Happen</string>
+    <string name="order_sekarang">Order Sekarang</string>
     <string-array name="custom_case">
         <item>Hardcase</item>
         <item>Softcase</item>

@@ -48,6 +48,10 @@
                   android:theme="@style/NoActionBar"
                   android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.detail.DetailActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

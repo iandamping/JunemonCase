@@ -15,5 +15,6 @@ object Constant {
     const val RequestSelectGalleryImage = 102
     const val PrefHelperInit = "preferenceHelping"
     const val seeAllKey = "seeAllKeys"
+    const val seeDetailKey = "seeDetailKeys"
     const val switchBackToMain = "switch switch"
 }

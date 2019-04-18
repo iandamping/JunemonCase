@@ -4,13 +4,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.ui.activity.detail.DetailActivity
+import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.seeAllKey
-import com.junemon.junemoncase.util.fullScreenAnimation
-import com.junemon.junemoncase.util.gone
-import com.junemon.junemoncase.util.loadUrl
-import com.junemon.junemoncase.util.setUpWithGrid
 import kotlinx.android.synthetic.main.activity_see_all.*
 import kotlinx.android.synthetic.main.item_see_all.view.*
 
@@ -56,6 +55,10 @@ class SeeAllActivity : AppCompatActivity(), SeeAllView {
             rvSeeAll.setUpWithGrid(caseData, R.layout.item_see_all, 2, {
                 ivCasingSeeAll.loadUrl(it.photoUrl)
                 tvCasingSeeAllType.text = it.casingType
+            }, {
+                startActivity<DetailActivity> {
+                    putExtra(Constant.seeDetailKey, JunemonApps.gson.toJson(this@setUpWithGrid))
+                }
             })
         }
     }

@@ -11,11 +11,13 @@ import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.ui.activity.detail.DetailActivity
 import com.junemon.junemoncase.ui.activity.seeall.SeeAllActivity
 import com.junemon.junemoncase.ui.fragment.home.slideradapter.SliderItemAdapter
 import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.delayMillis
 import com.junemon.junemoncase.util.Constant.seeAllKey
+import com.junemon.junemoncase.util.Constant.seeDetailKey
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_homefragment.view.*
 
@@ -88,6 +90,10 @@ class HomeFragment : Fragment(), HomeView {
                 actualView?.rvHardcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
+                }, {
+                    context?.startActivity<DetailActivity> {
+                        putExtra(seeDetailKey, gson.toJson(this@setUpHorizontal))
+                    }
                 })
             }
             actualView?.tvSeeAllHardcase?.setOnClickListener {
@@ -104,6 +110,10 @@ class HomeFragment : Fragment(), HomeView {
                 actualView?.rvSoftcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
+                }, {
+                    context?.startActivity<DetailActivity> {
+                        putExtra(seeDetailKey, gson.toJson(this@setUpHorizontal))
+                    }
                 })
             }
             actualView?.tvSeeAllSoftcase?.setOnClickListener {
@@ -126,6 +136,10 @@ class HomeFragment : Fragment(), HomeView {
                 actualView?.rvAirbag?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
+                }, {
+                    context?.startActivity<DetailActivity> {
+                        putExtra(seeDetailKey, gson.toJson(this@setUpHorizontal))
+                    }
                 })
             }
             actualView?.tvSeeAllAirbag?.setOnClickListener {
