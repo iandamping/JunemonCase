@@ -28,7 +28,7 @@ fun <T> RecyclerView.setUpWithGrid(
         items: List<T>, layoutResId: Int, gridSize: Int, bindHolder: View.(T) -> Unit, itemClick: T.() -> Unit = {},
         manager: RecyclerView.LayoutManager = GridLayoutManager(this.context, gridSize)
 ): KotlinAdapter<T> {
-    
+
     return KotlinAdapter(items, layoutResId, { bindHolder(it) }, {
         itemClick()
     }).apply {
