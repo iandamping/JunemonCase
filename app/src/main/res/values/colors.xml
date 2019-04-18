@@ -6,6 +6,7 @@
 
     <!--<color name="colorPrimary">#008577</color>-->
     <color name="colorAccent">#D81B60</color>
+    <color name="splash_background">#FDBF9C</color>
     <color name="colorComment">#235EA7</color>
     <color name="colorTitle">#1554A1</color>
     <color name="colorBackgroundET">#F1F6F7</color>
