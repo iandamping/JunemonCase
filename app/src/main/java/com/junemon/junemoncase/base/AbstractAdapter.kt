@@ -12,7 +12,7 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 abstract class AbstractAdapter<T> constructor(protected var data: List<T>, private val layout: Int) :
-    RecyclerView.Adapter<AbstractAdapter.AbstractHolder>() {
+        RecyclerView.Adapter<AbstractAdapter.AbstractHolder>() {
 
     override fun getItemCount() = data.size
 

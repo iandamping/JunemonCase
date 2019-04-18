@@ -36,7 +36,6 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
     private var allCategory: MutableList<String>? = mutableListOf()
     private var arraySpinnerAdapter: ArrayAdapter<String>? = null
     private var isPermissionGranted = false
-    private var intents: Intent = Intent()
     private var selectedUriForFirebase: Uri? = null
     private lateinit var presenter: UploadPresenter
     private lateinit var data: AllCasingModel
@@ -79,7 +78,7 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
     private fun openImageFromGallery(status: Boolean?) {
         if (status != null) {
             if (status) {
-                intents = Intent(Intent.ACTION_PICK)
+                val intents = Intent(Intent.ACTION_PICK)
                 intents.type = "image/*"
                 startActivityForResult(intents, RequestSelectGalleryImage)
             } else {
@@ -88,7 +87,7 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
         }
     }
 
-    fun getAllPermisions() {
+    private fun getAllPermisions() {
         Dexter.withActivity(this).withPermissions(
                 android.Manifest.permission.READ_EXTERNAL_STORAGE,
                 android.Manifest.permission.WRITE_EXTERNAL_STORAGE,

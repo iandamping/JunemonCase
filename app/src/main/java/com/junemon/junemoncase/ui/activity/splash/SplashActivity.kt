@@ -5,6 +5,7 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.ui.activity.MainActivity
+import com.junemon.junemoncase.util.Constant.delayMillis
 import com.junemon.junemoncase.util.fullScreenAnimation
 import com.junemon.junemoncase.util.startActivity
 
@@ -15,13 +16,12 @@ Github = https://github.com/iandamping
  */
 class SplashActivity : AppCompatActivity() {
     private var mDelayHandler: Handler? = null
-    private val delay = 3000L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
         setContentView(R.layout.activity_splash)
         mDelayHandler = Handler()
-        mDelayHandler!!.postDelayed(mRunnable, delay)
+        mDelayHandler!!.postDelayed(mRunnable, delayMillis)
     }
 
     private val mRunnable: Runnable = Runnable {

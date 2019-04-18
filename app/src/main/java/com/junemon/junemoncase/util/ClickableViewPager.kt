@@ -4,7 +4,6 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.GestureDetector
 import android.view.MotionEvent
-import android.view.View
 import androidx.viewpager.widget.ViewPager
 
 class ClickableViewPager : ViewPager {

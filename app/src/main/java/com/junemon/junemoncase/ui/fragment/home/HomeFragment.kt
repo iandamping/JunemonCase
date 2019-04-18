@@ -7,11 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.ui.activity.seeall.SeeAllActivity
 import com.junemon.junemoncase.ui.fragment.home.slideradapter.SliderItemAdapter
 import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.Constant.delayMillis
+import com.junemon.junemoncase.util.Constant.seeAllKey
 import kotlinx.android.synthetic.main.fragment_home.view.*
 import kotlinx.android.synthetic.main.item_homefragment.view.*
 
@@ -24,7 +28,6 @@ class HomeFragment : Fragment(), HomeView {
     private var mHandler: Handler? = null
     private var pageSize: Int? = 0
     private var currentPage = 0
-    private val delayMillis = 4000L
     private lateinit var presenter: HomePresenter
     private var actualView: View? = null
 
@@ -81,16 +84,34 @@ class HomeFragment : Fragment(), HomeView {
         if (actualView != null) {
             actualView?.shimmer_home?.stopShimmer()
             actualView?.shimmer_home?.gone()
-            data?.let {caseData ->
+            data?.let { caseData ->
                 actualView?.rvHardcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 })
             }
+            actualView?.tvSeeAllHardcase?.setOnClickListener {
+                context?.startActivity<SeeAllActivity> {
+                    putExtra(seeAllKey, gson.toJson(data))
+                }
+            }
         }
     }
 
     override fun onSuccesGetSoftcaseData(data: List<AllCasingModel>?) {
+        if (actualView != null) {
+            data?.let { caseData ->
+                actualView?.rvSoftcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
+                    ivHomeCasing.loadUrl(it.photoUrl)
+                    tvHomeTypeCasing.text = it.casingType
+                })
+            }
+            actualView?.tvSeeAllSoftcase?.setOnClickListener {
+                context?.startActivity<SeeAllActivity> {
+                    putExtra(seeAllKey, gson.toJson(data))
+                }
+            }
+        }
     }
 
     override fun onSuccesGetPremiumData(data: List<AllCasingModel>?) {
@@ -100,12 +121,17 @@ class HomeFragment : Fragment(), HomeView {
     }
 
     override fun onSuccesGetAirBagData(data: List<AllCasingModel>?) {
-        if (actualView!=null){
+        if (actualView != null) {
             data?.let { caseData ->
-                actualView?.rvAirbag?.setUpHorizontal(caseData, R.layout.item_homefragment,{
+                actualView?.rvAirbag?.setUpHorizontal(caseData, R.layout.item_homefragment, {
                     ivHomeCasing.loadUrl(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 })
+            }
+            actualView?.tvSeeAllAirbag?.setOnClickListener {
+                context?.startActivity<SeeAllActivity> {
+                    putExtra(seeAllKey, gson.toJson(data))
+                }
             }
         }
     }

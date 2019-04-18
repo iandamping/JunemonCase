@@ -11,8 +11,9 @@ object Constant {
     const val nodeUsers = "users"
     const val maxWidth = 612
     const val maxHeight = 816
+    const val delayMillis = 4000L
     const val RequestSelectGalleryImage = 102
     const val PrefHelperInit = "preferenceHelping"
-    const val getJenisCase = "casingType"
+    const val seeAllKey = "seeAllKeys"
     const val switchBackToMain = "switch switch"
 }

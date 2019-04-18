@@ -8,7 +8,6 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import android.net.Uri
 import android.provider.MediaStore
-import android.util.Log
 import com.junemon.junemoncase.util.Constant.maxHeight
 import com.junemon.junemoncase.util.Constant.maxWidth
 import java.io.ByteArrayOutputStream
@@ -72,7 +71,7 @@ class ImageHelper {
                 matrix.postRotate(270F)
             }
             scaledBitmap =
-                Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.width, scaledBitmap.height, matrix, true)
+                    Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.width, scaledBitmap.height, matrix, true)
             return scaledBitmap
         }
 
