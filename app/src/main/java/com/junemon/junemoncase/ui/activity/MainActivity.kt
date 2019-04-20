@@ -8,6 +8,7 @@ import com.junemon.junemoncase.R
 import com.junemon.junemoncase.ui.activity.upload.UploadActivity
 import com.junemon.junemoncase.ui.fragment.home.HomeFragment
 import com.junemon.junemoncase.ui.fragment.profile.ProfileFragment
+import com.junemon.junemoncase.util.Constant
 import com.junemon.junemoncase.util.startActivity
 import com.junemon.junemoncase.util.switchFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -18,6 +19,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initBottomNav()
+        moveToSpesificFragment(intent?.getStringExtra(Constant.switchBackToMain))
     }
 
     private fun moveToSpesificFragment(dataCallback: String?) {
