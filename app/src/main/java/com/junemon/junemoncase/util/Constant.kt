@@ -13,8 +13,10 @@ object Constant {
     const val maxHeight = 816
     const val delayMillis = 4000L
     const val RequestSelectGalleryImage = 102
+    const val RequestSignIn: Int = 2341
     const val PrefHelperInit = "preferenceHelping"
     const val seeAllKey = "seeAllKeys"
     const val seeDetailKey = "seeDetailKeys"
     const val switchBackToMain = "switch switch"
+    const val saveUserData = "saveUserData"
 }

@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.junemon.junemoncase.data.HomeViewModel
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.model.UserProfile
 
 /**
  *
@@ -34,4 +35,8 @@ fun Fragment.getAllDataFromFirebase(data: DatabaseReference) {
         }
 
     })
+}
+
+fun DatabaseReference.saveProfileData(child: String?, data: Any) {
+    child?.let { this.child(it).setValue(data is UserProfile) }
 }

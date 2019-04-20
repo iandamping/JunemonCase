@@ -18,6 +18,7 @@ import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.RequestSelectGalleryImage
+import com.junemon.junemoncase.util.Constant.switchBackToMain
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -47,6 +48,13 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
         getAllPermisions()
         presenter = UploadPresenter(this)
         presenter.onCreate(this)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        startActivity<MainActivity>() {
+            putExtra(switchBackToMain, "1")
+        }
     }
 
 

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.fragment.profile.ProfileFragment">
+
+
+
+    <ImageView
+        android:id="@+id/ivSettingProfile"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:layout_gravity="end"
+        android:layout_margin="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/ic_settings" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivPhotoProfile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_below="@id/ivSettingProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/empty_image" />
+
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivPhotoProfile"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/user_name"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvEmailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProfileName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/email"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+
+    <TextView
+        android:id="@+id/tvProfilePhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvEmailUser"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/nomer_hp"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfilePhoneNumber"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@color/fui_transparent"
+        android:fontFamily="@font/lato"
+        android:text="Login"
+        android:textStyle="bold" />
+
+</RelativeLayout>

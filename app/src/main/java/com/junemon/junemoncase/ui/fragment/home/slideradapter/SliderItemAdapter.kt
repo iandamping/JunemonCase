@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager.widget.PagerAdapter
-import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel

@@ -52,6 +52,8 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
     implementation 'com.facebook.android:facebook-login:4.39.0'
+    //circleprofile
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
     //shimmer
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     //anko
