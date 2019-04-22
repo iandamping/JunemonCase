@@ -3,19 +3,24 @@ package com.junemon.junemoncase.ui.activity.upload
 import android.app.Activity
 import android.app.Dialog
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
 import com.junemon.junemoncase.JunemonApps.Companion.storageDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.ui.activity.MainActivity
+import com.junemon.junemoncase.ui.activity.uploadphonetype.UploadPhoneTypeActivity
 import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.RequestSelectGalleryImage
 import com.junemon.junemoncase.util.Constant.switchBackToMain
@@ -55,6 +60,17 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
         startActivity<MainActivity>() {
             putExtra(switchBackToMain, "1")
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> {
+                startActivity<MainActivity> {
+                    putExtra(switchBackToMain, "1")
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 
@@ -142,6 +158,10 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
 
 
     override fun initView() {
+        initToolbar()
+        ivUploadMenu.setOnClickListener {
+            startActivity<UploadPhoneTypeActivity>()
+        }
         btnUnggahFoto.setOnClickListener {
             openImageFromGallery(isPermissionGranted)
         }
@@ -183,6 +203,15 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
                     openImageFromGallery(isPermissionGranted)
                 }
         snackbar.show()
+    }
+
+    private fun initToolbar() {
+        val upArrow = ContextCompat.getDrawable(this, R.drawable.ic_navigate_before_blue)
+        upArrow?.setColorFilter(resources.getColor(R.color.colorComment), PorterDuff.Mode.SRC_ATOP)
+        setSupportActionBar(toolbarUpload)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(upArrow)
+
     }
 
 }

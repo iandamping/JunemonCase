@@ -6,6 +6,7 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 object Constant {
+    const val nodePhoneType = "phone_type"
     const val nodePhotos = "photo"
     const val nodeOrders = "orders"
     const val nodeUsers = "users"

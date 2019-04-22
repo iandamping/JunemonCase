@@ -2,6 +2,7 @@
     <string name="app_name">JunemonCase</string>
     <string name="permission_not_granted">Permissions are not granted!</string>
     <string name="unggah_foto_barangmu">Unggah Foto Barangmu</string>
+    <string name="unggah_tipe_handphonenya">Unggah Tipe Handphonenya</string>
     <string name="maks_ukuran_gambar_2mb">Maks ukuran gambar : 2MB</string>
     <string name="jenis_casing">Jenis Casing</string>
     <string name="kategori_casing">Kategori Casing</string>
@@ -20,11 +21,18 @@
     <string name="user_name">User Name</string>
     <string name="nomer_hp">Nomer HP</string>
     <string name="email">Email</string>
+    <string name="masukan_tipe_handphone">Masukan tipe Handphone</string>
+    <string name="not_null">Tidak boleh kosong</string>
     <string-array name="custom_case">
         <item>Hardcase</item>
         <item>Softcase</item>
-        <item>Premium</item>
+        <item>Softglossy</item>
+        <item>Softblack</item>
+        <item>Softcrack</item>
+        <item>Hardcrack</item>
         <item>Premium Soft</item>
-        <item>Air Bag</item>
+        <item>Premium</item>
+        <item>Soft Diamond</item>
+        <item>Flip 2in1</item>
     </string-array>
 </resources>

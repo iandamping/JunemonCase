@@ -52,6 +52,9 @@
             android:theme="@style/NoActionBar"
             android:screenOrientation="portrait"/>
 
+        <activity android:name=".ui.activity.uploadphonetype.UploadPhoneTypeActivity"
+            android:theme="@style/NoActionBar"
+            android:screenOrientation="portrait"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

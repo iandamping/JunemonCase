@@ -5,9 +5,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.junemon.junemoncase.data.HomeViewModel
-import com.junemon.junemoncase.model.AllCasingModel
-import com.junemon.junemoncase.model.UserProfile
+import com.junemon.junemoncase.data.GenericViewModel
 
 /**
  *
@@ -15,8 +13,8 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 
-fun Fragment.getAllDataFromFirebase(data: DatabaseReference) {
-    val vm = this.viewModelHelperForFragment<HomeViewModel>()
+inline fun <reified T>Fragment.getAllDataFromFirebase(data: DatabaseReference) {
+    val vm = this.viewModelHelperForFragment<GenericViewModel<T>>()
     data.addChildEventListener(object : ChildEventListener {
         override fun onCancelled(p0: DatabaseError) {
         }
@@ -28,15 +26,11 @@ fun Fragment.getAllDataFromFirebase(data: DatabaseReference) {
         }
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            vm.setCasingData(p0.getValue(AllCasingModel::class.java)!!)
+            vm.setGenericData(p0.getValue(T::class.java)!!)
         }
 
         override fun onChildRemoved(p0: DataSnapshot) {
         }
 
     })
-}
-
-fun DatabaseReference.saveProfileData(child: String?, data: Any) {
-    child?.let { this.child(it).setValue(data is UserProfile) }
 }

@@ -6,7 +6,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.google.firebase.database.DatabaseReference
 import com.junemon.junemoncase.base.BaseFragmentPresenter
-import com.junemon.junemoncase.data.HomeViewModel
+import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.util.getAllDataFromFirebase
 import com.junemon.junemoncase.util.withViewModel
@@ -27,7 +27,7 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
     private var listBestSeller: MutableList<AllCasingModel> = mutableListOf()
     override fun onAttach(context: Context?) {
         this.ctx = context
-        target.getAllDataFromFirebase(dataReference)
+        target.getAllDataFromFirebase<AllCasingModel>(dataReference)
     }
 
     override fun onCreateView(view: View) {
@@ -36,8 +36,8 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
 
 
     fun onGetData() {
-        target.withViewModel<HomeViewModel> {
-            this.getCasingData()?.observe(target.viewLifecycleOwner, Observer {
+        target.withViewModel<GenericViewModel<AllCasingModel>> {
+            this.getGenericData()?.observe(target.viewLifecycleOwner, Observer {
                 listAllData.clear()
                 listAllData.add(it)
                 listAllData.forEach { customData ->
