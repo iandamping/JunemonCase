@@ -30,7 +30,7 @@ class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
     }
 
     override fun onSuccessUploadPhoneType() {
-        startActivity<MainActivity>()
+        startActivity<UploadPhoneTypeActivity>()
     }
 
     override fun onFailedUploadPhoneType() {
