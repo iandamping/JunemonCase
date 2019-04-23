@@ -455,19 +455,19 @@
         <item>LG V40</item>
         <item>LG X Screen</item>
         <item>LG X Power</item>
-        <item>LG X Power 2 / K10 Power</item>
+        <item>LG X Power 2 atau K10 Power</item>
         <item>LG X Cam</item>
         <item>LG K3</item>
         <item>LG K3 2017</item>
         <item>LG K4</item>
-        <item>LG K4 2017 / LV1</item>
+        <item>LG K4 2017 atau LV1</item>
         <item>LG K5</item>
         <item>LG K8</item>
-        <item>LG K8 2017 / LV3</item>
+        <item>LG K8 2017 atau LV3</item>
         <item>LG K10</item>
-        <item>LG K10 2017 / LV5</item>
+        <item>LG K10 2017 atau LV5</item>
         <item>LG K10 2018</item>
-        <item>LG K10 Power / X Power 2</item>
+        <item>LG K10 Power atau X Power 2</item>
         <item>Vivo X Play 3S</item>
         <item>Vivo X Play 5</item>
         <item>Vivo X Max</item>
@@ -484,31 +484,31 @@
         <item>Vivo X7 Plus</item>
         <item>Vivo X9</item>
         <item>Vivo Y11</item>
-        <item>Vivo Y13 / Y15T / T15W / Y15 / Y613</item>
+        <item>Vivo Y13 atau Y15T atau T15W atau Y15 atau Y613</item>
         <item>Vivo Y17</item>
-        <item>Vivo Y18 / Y18L</item>
-        <item>Vivo Y21 / Y22</item>
+        <item>Vivo Y18 atau Y18L</item>
+        <item>Vivo Y21 atau Y22</item>
         <item>Vivo Y23</item>
         <item>Vivo Y27</item>
         <item>Vivo Y28</item>
         <item>Vivo Y31</item>
         <item>Vivo Y33</item>
-        <item>Vivo Y35 / V1</item>
+        <item>Vivo Y35 atau V1</item>
         <item>Vivo Y37</item>
         <item>Vivo Y51</item>
         <item>Vivo Y53</item>
         <item>Vivo Y53 2017</item>
-        <item>Vivo Y55 / Y55S</item>
+        <item>Vivo Y55 atau Y55S</item>
         <item>Vivo Y65</item>
         <item>Vivo Y67</item>
         <item>Vivo Y69</item>
         <item>Vivo Y71</item>
         <item>Vivo Y81</item>
         <item>Vivo Y83 Finger</item>
-        <item>Vivo Y91 / Y93 / Y95</item>
+        <item>Vivo Y91 atau Y93 atau Y95</item>
         <item>Vivo V3</item>
         <item>Vivo V3 Max</item>
-        <item>Vivo V5 / V5S</item>
+        <item>Vivo V5 atau V5S</item>
         <item>Vivo V5 Lite</item>
         <item>Vivo V5 Plus</item>
         <item>Vivo V7</item>
@@ -518,22 +518,22 @@
         <item>Vivo V11 Pro</item>
         <item>Xiaomi Redmi 1S</item>
         <item>Xiaomi Redmi 2S</item>
-        <item>Xiaomi Redmi 3 / 3Pro / 3S</item>
+        <item>Xiaomi Redmi 3 atau 3Pro atau 3S</item>
         <item>Xiaomi Redmi 3X</item>
-        <item>Xiaomi Redmi 4 / Pro</item>
+        <item>Xiaomi Redmi 4 atau Pro</item>
         <item>Xiaomi Redmi 4A</item>
-        <item>Xiaomi Redmi 4S / 4 Prime</item>
+        <item>Xiaomi Redmi 4S atau 4 Prime</item>
         <item>Xiaomi Redmi 4X</item>
         <item>Xiaomi Redmi 5</item>
         <item>Xiaomi Redmi 5A</item>
-        <item>Xiaomi Redmi 5 Plus / Redmi Note 5</item>
+        <item>Xiaomi Redmi 5 Plus atau Redmi Note 5</item>
         <item>Xiaomi Redmi 6</item>
         <item>Xiaomi Redmi 6A</item>
         <item>Xiaomi Redmi 6 Pro</item>
         <item>Xiaomi Redmi Note</item>
         <item>Xiaomi Redmi Note 2</item>
-        <item>Xiaomi Redmi Note 3 / Note 3 Pro</item>
-        <item>Xiaomi Redmi Note 4 / 4X</item>
+        <item>Xiaomi Redmi Note 3 atau Note 3 Pro</item>
+        <item>Xiaomi Redmi Note 4 atau 4X</item>
         <item>Xiaomi Redmi Note 5A Non Finger</item>
         <item>Xiaomi Redmi Note 5A PRIME Finger</item>
         <item>Xiaomi Redmi Note 5 Pro</item>
@@ -545,13 +545,13 @@
         <item>Xiaomi Mi 3</item>
         <item>Xiaomi Mi 4</item>
         <item>Xiaomi Mi 4S</item>
-        <item>Xiaomi Mi 4I / Mi4C</item>
+        <item>Xiaomi Mi 4I atau Mi4C</item>
         <item>Xiaomi Mi 5</item>
         <item>Xiaomi Mi 5C</item>
         <item>Xiaomi Mi 5S</item>
         <item>Xiaomi Mi 5S pLUS</item>
-        <item>Xiaomi Mi 5X / Mi A1</item>
-        <item>Xiaomi Mi 6X / Mi A2</item>
+        <item>Xiaomi Mi 5X atau Mi A1</item>
+        <item>Xiaomi Mi 6X atau Mi A2</item>
         <item>Xiaomi Mi A2 Lite</item>
         <item>Xiaomi Mi 6</item>
         <item>Xiaomi Mi 6 Plus</item>
@@ -560,7 +560,7 @@
         <item>Xiaomi Mi 8 Lite</item>
         <item>Xiaomi Mi 8 Explorer</item>
         <item>Xiaomi Mi 8 Pro</item>
-        <item>Xiaomi Note Pro / Bamboo</item>
+        <item>Xiaomi Note Pro atau Bamboo</item>
         <item>Xiaomi Mi Max</item>
         <item>Xiaomi Mi Max 2</item>
         <item>Xiaomi Mi Max 3</item>
@@ -595,8 +595,8 @@
         <item>Zenfone 4 Selfie Pro 5.5 Inch</item>
         <item>Zenfone 4V</item>
         <item>Zenfone 5</item>
-        <item>Zenfone 5 Lite / 5Q</item>
-        <item>Zenfone 2018 / 5Z</item>
+        <item>Zenfone 5 Lite atau 5Q</item>
+        <item>Zenfone 2018 atau 5Z</item>
         <item>Zenfone 6</item>
         <item>Zenfone 7 Inch</item>
         <item>Zenfone C</item>
@@ -628,7 +628,7 @@
         <item>One Touch Flash Plus 2</item>
         <item>One Touch Flash</item>
         <item>Acer E3</item>
-        <item>Acer Z200 / Z205</item>
+        <item>Acer Z200 atau Z205</item>
         <item>Acer Z4</item>
         <item>Acer Z5</item>
         <item>Acer Z530</item>
@@ -648,12 +648,12 @@
         <item>HTC ONE X</item>
         <item>HTC Sensation XL-G21</item>
         <item>Huawei Honor 3C</item>
-        <item>Huawei Honor Holly / 3C Play</item>
+        <item>Huawei Honor Holly atau 3C Play</item>
         <item>Huawei Honor 3X</item>
-        <item>Huawei Honor 4A / Y6</item>
+        <item>Huawei Honor 4A atau Y6</item>
         <item>Huawei Honor 4X</item>
         <item>Huawei Honor 4C</item>
-        <item>Huawei Honor 5A / Y6II</item>
+        <item>Huawei Honor 5A atau Y6II</item>
         <item>Huawei Honor 5X</item>
         <item>Huawei Honor 6</item>
         <item>Huawei Honor 6 Plus</item>
@@ -666,7 +666,7 @@
         <item>Huawei Honor 7X</item>
         <item>Huawei Honor 8A</item>
         <item>Huawei Honor 8X</item>
-        <item>Huawei Honor 9I / 9 Lite</item>
+        <item>Huawei Honor 9I atau 9 Lite</item>
         <item>Huawei Honor 10 Lite</item>
         <item>Huawei Honor X2</item>
         <item>Huawei Mate 7</item>
@@ -684,20 +684,20 @@
         <item>Huawei P9 Lite</item>
         <item>Huawei P10</item>
         <item>Huawei P10 Plus</item>
-        <item>Huawei P10 Lite / Nova Lite</item>
+        <item>Huawei P10 Lite atau Nova Lite</item>
         <item>Huawei P20 Pro</item>
         <item>Huawei P30</item>
         <item>Huawei P30 Pro</item>
         <item>Huawei P30 Lite</item>
         <item>Huawei Ascend G620</item>
         <item>Huawei Ascend P6</item>
-        <item>Huawei Honor YS / Y560</item>
+        <item>Huawei Honor YS atau Y560</item>
         <item>Huawei Enjoy 5</item>
         <item>Huawei GR3</item>
-        <item>Huawei P8 Lite 2017 / GR3 2017</item>
+        <item>Huawei P8 Lite 2017 atau GR3 2017</item>
         <item>Huawei GR5</item>
-        <item>Huawei 6X / GR5 2017 / Mate 9 Lite</item>
-        <item>Huawei Y3 / Y336</item>
+        <item>Huawei 6X atau GR5 2017 atau Mate 9 Lite</item>
+        <item>Huawei Y3 atau Y336</item>
         <item>Huawei Y3 II</item>
         <item>Huawei Y5</item>
         <item>Huawei Y5 II</item>
@@ -709,11 +709,11 @@
         <item>Huawei Y7 Prime</item>
         <item>Huawei Y7 2019</item>
         <item>Huawei Y9 2018</item>
-        <item>Huawei V9 / 8 Pro</item>
+        <item>Huawei V9 atau 8 Pro</item>
         <item>Huawei Nova 2i</item>
         <item>Huawei Nova 2 Lite</item>
         <item>Huawei Nova 3i</item>
-        <item>Huawei Nova 3E / P20 Lite</item>
+        <item>Huawei Nova 3E atau P20 Lite</item>
         <item>Huawei Nova 4</item>
         <item>Huawei Mediaped T.1 7.0</item>
         <item>Huawei Mediaped T.2 7.0</item>
@@ -735,7 +735,7 @@
         <item>Oppo Clover</item>
         <item>Oppo Find 5</item>
         <item>Oppo Find 5 Mini</item>
-        <item>Oppo Find 7 / 7A</item>
+        <item>Oppo Find 7 atau 7A</item>
         <item>Oppo Find X</item>
         <item>Oppo Find Way</item>
         <item>Oppo Find Way S</item>
@@ -747,7 +747,7 @@
         <item>Oppo F5</item>
         <item>Oppo F7</item>
         <item>Oppo F7 Youth</item>
-        <item>Oppo F9 / Real Me 2 Pro</item>
+        <item>Oppo F9 atau Real Me 2 Pro</item>
         <item>Oppo Joy</item>
         <item>Oppo Joy 3</item>
         <item>Oppo Mirror</item>
@@ -765,17 +765,17 @@
         <item>Oppo Piano</item>
         <item>Oppo R1</item>
         <item>Oppo R1S</item>
-        <item>Oppo R1SX / R1C</item>
+        <item>Oppo R1SX atau R1C</item>
         <item>Oppo R3</item>
         <item>Oppo R5</item>
         <item>Oppo R7</item>
         <item>Oppo R7S</item>
         <item>Oppo R7 Plus</item>
-        <item>Oppo R10 / R11</item>
-        <item>Oppo R10 Plus / R11 Plus</item>
+        <item>Oppo R10 atau R11</item>
+        <item>Oppo R10 Plus atau R11 Plus</item>
         <item>Oppo R11S</item>
         <item>Oppo R11S Plus</item>
-        <item>Oppo R13 / R15</item>
+        <item>Oppo R13 atau R15</item>
         <item>Oppo R15 Dream</item>
         <item>Oppo R17</item>
         <item>Oppo U3</item>
@@ -784,12 +784,12 @@
         <item>Oppo A71</item>
         <item>Oppo A83</item>
         <item>Oppo A7</item>
-        <item>Oppo A3S / Realme C1</item>
+        <item>Oppo A3S atau Realme C1</item>
         <item>Oppo Realme C1</item>
         <item>Oppo Realme 2</item>
         <item>Meizu Note</item>
         <item>Meizu Note 2</item>
-        <item>Meizu Note 3 / M3 Note</item>
+        <item>Meizu Note 3 atau M3 Note</item>
         <item>Meizu M2 5 Inch</item>
         <item>Meizu M2 Note 5.5 Inch</item>
         <item>Meizu MX3</item>
@@ -856,13 +856,13 @@
         <item>Samsung Tab 3 10 Inch</item>
         <item>Samsung Tab 3 7 Inch P3200</item>
         <item>Samsung Tab 3 8 Inch</item>
-        <item>Samsung Tab 3 Lite / Tab V T116</item>
+        <item>Samsung Tab 3 Lite atau Tab V T116</item>
         <item>Samsung Tab 4 7 Inch T230</item>
         <item>Samsung Tab 4 8 Inch</item>
         <item>Samsung Tab 4 10 Inch T530</item>
         <item>Samsung Tab S 10.5 Inch T80</item>
         <item>Samsung Tab S 8.4 Inch T700</item>
-        <item>Samsung Tab S2 8 Inch T710 / T715</item>
+        <item>Samsung Tab S2 8 Inch T710 atau T715</item>
         <item>Samsung Tab S2 9.7 Inch T810</item>
         <item>Samsung Tab S3 9.7 Inch</item>
         <item>Samsung Tab A 9.7 Inch</item>
