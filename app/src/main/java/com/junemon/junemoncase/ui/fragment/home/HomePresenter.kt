@@ -37,7 +37,7 @@ class HomePresenter(private val dataReference: DatabaseReference, var mView: Hom
 
     fun onGetData() {
         target.withViewModel<GenericViewModel<AllCasingModel>> {
-            this.getGenericData()?.observe(target.viewLifecycleOwner, Observer {
+            this.getGenericData().observe(target.viewLifecycleOwner, Observer {
                 listAllData.clear()
                 listAllData.add(it)
                 listAllData.forEach { customData ->

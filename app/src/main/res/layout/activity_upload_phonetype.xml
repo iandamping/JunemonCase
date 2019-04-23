@@ -16,7 +16,7 @@
             android:text="@string/masukan_tipe_handphone"
             android:textStyle="bold" />
 
-        <EditText
+        <AutoCompleteTextView
             android:id="@+id/etPhoneType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

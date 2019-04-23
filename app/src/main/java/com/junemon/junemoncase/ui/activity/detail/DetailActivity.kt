@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
+import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.util.Constant.seeDetailKey
@@ -26,7 +27,7 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
         setContentView(R.layout.activity_detail_casing)
-        presenter = DetailActivityPresenter(this)
+        presenter = DetailActivityPresenter(phoneTypeDatabaseReference,this,this)
         presenter.onCreate(this)
         onNewIntent(intent)
     }

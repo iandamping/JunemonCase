@@ -9,11 +9,11 @@ Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
 class GenericViewModel<T> : ViewModel() {
-    private var customData: MutableLiveData<T>? = MutableLiveData()
+    private var customData: MutableLiveData<T> = MutableLiveData()
 
     fun setGenericData(data: T) {
-        this.customData?.value = data
+        this.customData.value = data
     }
 
-    fun getGenericData(): MutableLiveData<T>? = customData
+    fun getGenericData(): MutableLiveData<T> = customData
 }

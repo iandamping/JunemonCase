@@ -15,6 +15,12 @@ inline fun <reified T : ViewModel> FragmentActivity.viewModelHelperForActivity()
     return ViewModelProviders.of(this).get(T::class.java)
 }
 
+inline fun <reified T : ViewModel> FragmentActivity.withViewModel(body: T.() -> Unit): T {
+    val vm = viewModelHelperForActivity<T>()
+    vm.body()
+    return vm
+}
+
 
 inline fun <reified T : ViewModel> Fragment.viewModelHelperForFragment(): T {
     return ViewModelProviders.of(this).get(T::class.java)

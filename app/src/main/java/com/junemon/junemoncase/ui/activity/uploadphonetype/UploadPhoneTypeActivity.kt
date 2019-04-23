@@ -2,6 +2,7 @@ package com.junemon.junemoncase.ui.activity.uploadphonetype
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
@@ -17,6 +18,7 @@ Github = https://github.com/iandamping
  */
 class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
     private lateinit var presenter: UploadPhoneTypePresenter
+    private var autoTextAdapter: ArrayAdapter<String>? = null
     private var tmpListData: MutableList<String> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +38,9 @@ class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
     }
 
     override fun initView() {
+        autoTextAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+        etPhoneType.setAdapter(autoTextAdapter)
+        etPhoneType.threshold = 1
         btnUnggahTipeHp.setOnClickListener {
             val typePhone = etPhoneType.text.toString().trim()
             if (typePhone.isBlank()) {

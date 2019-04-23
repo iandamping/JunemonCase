@@ -23,6 +23,152 @@
     <string name="email">Email</string>
     <string name="masukan_tipe_handphone">Masukan tipe Handphone</string>
     <string name="not_null">Tidak boleh kosong</string>
+    <string-array name="all_phone_names">
+        <item>iPhone 3</item>
+        <item>iPhone 4 / 4S</item>
+        <item>iPhone 5 /5S / SE</item>
+        <item>iPhone 5c</item>
+        <item>iPhone 6 / 6S</item>
+        <item>iPhone 6 plus / 6S plus</item>
+        <item>iPhone 7 / 8</item>
+        <item>iPhone 7 plus / 8 plus</item>
+        <item>iPhone X / XS</item>
+        <item>iTouch 4</item>
+        <item>iTouch 5</item>
+        <item>iTouch 6</item>
+        <item>Samsung A3</item>
+        <item>Samsung A3 2016</item>
+        <item>Samsung A3 2017</item>
+        <item>Samsung A5</item>
+        <item>Samsung A5 2016</item>
+        <item>Samsung A5 2017</item>
+        <item>Samsung A6 2018</item>
+        <item>Samsung A6 Plus 2018</item>
+        <item>Samsung A6S</item>
+        <item>Samsung A7</item>
+        <item>Samsung A7 2016</item>
+        <item>Samsung A7 2017</item>
+        <item>Samsung A7 2018</item>
+        <item>Samsung A8</item>
+        <item>Samsung A8 Star</item>
+        <item>Samsung A8 2016</item>
+        <item>Samsung A8 2018</item>
+        <item>Samsung A8 PLUS 2018</item>
+        <item>Samsung A9</item>
+        <item>Samsung A9 Pro</item>
+        <item>Samsung A9 2018</item>
+        <item>Samsung Ace</item>
+        <item>Samsung Ace 2</item>
+        <item>Samsung Ace 3</item>
+        <item>Samsung Ace 4</item>
+        <item>Samsung Ace Duos</item>
+        <item>Samsung Ace Plus</item>
+        <item>Samsung Alpha</item>
+        <item>Samsung Ativ s</item>
+        <item>Samsung Champ</item>
+        <item>Samsung Chat</item>
+        <item>Samsung Core</item>
+        <item>Samsung Core 2</item>
+        <item>Samsung Core Max</item>
+        <item>Samsung Core Prime</item>
+        <item>Samsung C5 Pro</item>
+        <item>Samsung C7 Pro</item>
+        <item>Samsung C9 Pro</item>
+        <item>Samsung C10</item>
+        <item>Samsung E5</item>
+        <item>Samsung E7</item>
+        <item>Samsung Fame</item>
+        <item>Samsung Galaxy Mini 2</item>
+        <item>Samsung Grand 1 / Grand Neo / Neo Plus</item>
+        <item>Samsung Grand 2</item>
+        <item>Samsung Grand 3</item>
+        <item>Samsung Grand Prime</item>
+        <item>Samsung Infinite</item>
+        <item>Samsung J1</item>
+        <item>Samsung J1 2016</item>
+        <item>Samsung J1 ACE</item>
+        <item>Samsung J1 Mini</item>
+        <item>Samsung J1 Mini Prime / V2</item>
+        <item>Samsung J2</item>
+        <item>Samsung J2 2016 / J2 Pro</item>
+        <item>Samsung J2 Pro 2018 / J2 2018</item>
+        <item>Samsung J2 Prime</item>
+        <item>Samsung J2 Core</item>
+        <item>Samsung J3 / Prime / J3 2017</item>
+        <item>Samsung J4 2018</item>
+        <item>Samsung J4 PLUS</item>
+        <item>Samsung J5</item>
+        <item>Samsung J5 2016</item>
+        <item>Samsung J5 2017</item>
+        <item>Samsung J5 Pro</item>
+        <item>Samsung J5 Prime</item>
+        <item>Samsung J6 2018</item>
+        <item>Samsung J6 Plus</item>
+        <item>Samsung J7 / J7 Core</item>
+        <item>Samsung J7 2016</item>
+        <item>Samsung J7 2017</item>
+        <item>Samsung J7 Pro</item>
+        <item>Samsung J7 Plus</item>
+        <item>Samsung J7 Max</item>
+        <item>Samsung J7 Prime</item>
+        <item>Samsung J7 2017 Plus / C8</item>
+        <item>Samsung J7 Duo</item>
+        <item>Samsung J8 2018</item>
+        <item>Samsung On5 / O5</item>
+        <item>Samsung On7 / O7</item>
+        <item>Samsung K zoom</item>
+        <item>Samsung Mega 2</item>
+        <item>Samsung Mega 5,8</item>
+        <item>Samsung 6,3</item>
+        <item>Samsung Nexus</item>
+        <item>Samsung Note 1</item>
+        <item>Samsung Note 2</item>
+        <item>Samsung Note 3</item>
+        <item>Samsung Note 3 Neo</item>
+        <item>Samsung Note 4</item>
+        <item>Samsung Note 5</item>
+        <item>Samsung Note 5 Edge</item>
+        <item>Samsung Note 7 / Note FE</item>
+        <item>Samsung Note 8</item>
+        <item>Samsung Note 9</item>
+        <item>Samsung Note Edge</item>
+        <item>Samsung M20</item>
+        <item>Samsung Pocket</item>
+        <item>Samsung Pocket 2</item>
+        <item>Samsung S Advance</item>
+        <item>Samsung S2</item>
+        <item>Samsung S3 Mini</item>
+        <item>Samsung S4</item>
+        <item>Samsung S4 Mini</item>
+        <item>Samsung S4 Active</item>
+        <item>Samsung S5</item>
+        <item>Samsung S6</item>
+        <item>Samsung S6 Edge</item>
+        <item>Samsung S6 Edge Plus</item>
+        <item>Samsung S7</item>
+        <item>Samsung S7 Edge</item>
+        <item>Samsung S8</item>
+        <item>Samsung S8 Plus</item>
+        <item>Samsung S9</item>
+        <item>Samsung S9 Plus</item>
+        <item>Samsung S10</item>
+        <item>Samsung S10 Lite</item>
+        <item>Samsung S10 Plus</item>
+        <item>Samsung Star</item>
+        <item>Samsung Star S5280</item>
+        <item>Samsung Star S7262</item>
+        <item>Samsung Star 2 Plus</item>
+        <item>Samsung Star Plus</item>
+        <item>Samsung Trand</item>
+        <item>Samsung Win</item>
+        <item>Samsung Y Duos</item>
+        <item>Samsung Young S5360</item>
+        <item>Samsung Young S6310</item>
+        <item>Samsung Young 2 G130</item>
+        <item>Samsung Z1</item>
+        <item>Samsung Z2</item>
+        <item>Samsung Z3</item>
+    </string-array>
     <string-array name="custom_case">
         <item>Hardcase</item>
         <item>Softcase</item>
