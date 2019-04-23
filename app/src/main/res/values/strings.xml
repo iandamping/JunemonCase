@@ -25,14 +25,14 @@
     <string name="not_null">Tidak boleh kosong</string>
     <string-array name="all_phone_names">
         <item>iPhone 3</item>
-        <item>iPhone 4 / 4S</item>
-        <item>iPhone 5 /5S / SE</item>
+        <item>iPhone 4 atau 4S</item>
+        <item>iPhone 5  atau 5S atau SE</item>
         <item>iPhone 5c</item>
-        <item>iPhone 6 / 6S</item>
-        <item>iPhone 6 plus / 6S plus</item>
-        <item>iPhone 7 / 8</item>
-        <item>iPhone 7 plus / 8 plus</item>
-        <item>iPhone X / XS</item>
+        <item>iPhone 6 atau 6S</item>
+        <item>iPhone 6 plus atau 6S plus</item>
+        <item>iPhone 7 atau 8</item>
+        <item>iPhone 7 plus atau 8 plus</item>
+        <item>iPhone X atau XS</item>
         <item>iTouch 4</item>
         <item>iTouch 5</item>
         <item>iTouch 6</item>
@@ -79,7 +79,7 @@
         <item>Samsung E7</item>
         <item>Samsung Fame</item>
         <item>Samsung Galaxy Mini 2</item>
-        <item>Samsung Grand 1 / Grand Neo / Neo Plus</item>
+        <item>Samsung Grand 1 atau Grand Neo atau Neo Plus</item>
         <item>Samsung Grand 2</item>
         <item>Samsung Grand 3</item>
         <item>Samsung Grand Prime</item>
@@ -88,13 +88,13 @@
         <item>Samsung J1 2016</item>
         <item>Samsung J1 ACE</item>
         <item>Samsung J1 Mini</item>
-        <item>Samsung J1 Mini Prime / V2</item>
+        <item>Samsung J1 Mini Prime atau V2</item>
         <item>Samsung J2</item>
-        <item>Samsung J2 2016 / J2 Pro</item>
-        <item>Samsung J2 Pro 2018 / J2 2018</item>
+        <item>Samsung J2 2016 atau J2 Pro</item>
+        <item>Samsung J2 Pro 2018 atau J2 2018</item>
         <item>Samsung J2 Prime</item>
         <item>Samsung J2 Core</item>
-        <item>Samsung J3 / Prime / J3 2017</item>
+        <item>Samsung J3 atau Prime atau J3 2017</item>
         <item>Samsung J4 2018</item>
         <item>Samsung J4 PLUS</item>
         <item>Samsung J5</item>
@@ -104,18 +104,18 @@
         <item>Samsung J5 Prime</item>
         <item>Samsung J6 2018</item>
         <item>Samsung J6 Plus</item>
-        <item>Samsung J7 / J7 Core</item>
+        <item>Samsung J7 atau J7 Core</item>
         <item>Samsung J7 2016</item>
         <item>Samsung J7 2017</item>
         <item>Samsung J7 Pro</item>
         <item>Samsung J7 Plus</item>
         <item>Samsung J7 Max</item>
         <item>Samsung J7 Prime</item>
-        <item>Samsung J7 2017 Plus / C8</item>
+        <item>Samsung J7 2017 Plus atau C8</item>
         <item>Samsung J7 Duo</item>
         <item>Samsung J8 2018</item>
-        <item>Samsung On5 / O5</item>
-        <item>Samsung On7 / O7</item>
+        <item>Samsung On5 atau O5</item>
+        <item>Samsung On7 atau O7</item>
         <item>Samsung K zoom</item>
         <item>Samsung Mega 2</item>
         <item>Samsung Mega 5,8</item>
@@ -128,7 +128,7 @@
         <item>Samsung Note 4</item>
         <item>Samsung Note 5</item>
         <item>Samsung Note 5 Edge</item>
-        <item>Samsung Note 7 / Note FE</item>
+        <item>Samsung Note 7 atau Note FE</item>
         <item>Samsung Note 8</item>
         <item>Samsung Note 9</item>
         <item>Samsung Note Edge</item>
@@ -168,6 +168,409 @@
         <item>Samsung Z1</item>
         <item>Samsung Z2</item>
         <item>Samsung Z3</item>
+        <item>Advan S5E</item>
+        <item>Advan Q7A</item>
+        <item>Advan S3</item>
+        <item>Advan S3 Lite</item>
+        <item>Advan S3A</item>
+        <item>Advan S3C</item>
+        <item>Advan S35</item>
+        <item>Advan S35D</item>
+        <item>Advan S35E</item>
+        <item>Advan S35F</item>
+        <item>Advan S4 Plus</item>
+        <item>Advan S45A</item>
+        <item>Advan S4A</item>
+        <item>Advan S4C</item>
+        <item>Advan S4D</item>
+        <item>Advan S4E</item>
+        <item>Advan S4K</item>
+        <item>Advan S4H</item>
+        <item>Advan S4M</item>
+        <item>Advan S5F</item>
+        <item>Advan S5G</item>
+        <item>Advan S5H</item>
+        <item>Advan S5I</item>
+        <item>Advan S5J</item>
+        <item>Advan S5K</item>
+        <item>Advan I5C</item>
+        <item>Advan I5C Lite</item>
+        <item>Advan I5C Duo</item>
+        <item>Advan S5E Fullview</item>
+        <item>Advan S5E 4GS</item>
+        <item>Advan G1</item>
+        <item>Advan G1 Pro</item>
+        <item>Andromax A</item>
+        <item>Andromax C</item>
+        <item>Andromax C2</item>
+        <item>Andromax C3</item>
+        <item>Andromax EC</item>
+        <item>Andromax ES</item>
+        <item>Andromax E2</item>
+        <item>Andromax E2 Plus</item>
+        <item>Andromax G</item>
+        <item>Andromax G2</item>
+        <item>Andromax G2 Qwerty</item>
+        <item>Andromax I</item>
+        <item>Andromax I New</item>
+        <item>Andromax I2</item>
+        <item>Andromax I3</item>
+        <item>Andromax R</item>
+        <item>Andromax R2</item>
+        <item>Andromax T</item>
+        <item>Andromax U</item>
+        <item>Andromax U2</item>
+        <item>Andromax U3</item>
+        <item>Andromax Q</item>
+        <item>Andromax Qi</item>
+        <item>Andromax V</item>
+        <item>Andromax V3S</item>
+        <item>Andromax Z</item>
+        <item>Evercross S55 Power atau Elevate Y22</item>
+        <item>Evercross A12</item>
+        <item>Evercross A22</item>
+        <item>Evercross A26C</item>
+        <item>Evercross A27</item>
+        <item>Evercross A28</item>
+        <item>Evercross A5</item>
+        <item>Evercross A5K</item>
+        <item>Evercross A5S</item>
+        <item>Evercross A5V</item>
+        <item>Evercross A65A</item>
+        <item>Evercross A66A</item>
+        <item>Evercross A7B</item>
+        <item>Evercross A7K</item>
+        <item>Evercross A7S</item>
+        <item>Evercross A7S Plus</item>
+        <item>Evercross A7T</item>
+        <item>Evercross A7V</item>
+        <item>Evercross A65 Android One</item>
+        <item>Lenovo A269</item>
+        <item>Lenovo A1000</item>
+        <item>Lenovo A2010</item>
+        <item>Lenovo A2016 atau A1010 atau Vibe B</item>
+        <item>Lenovo A2020 atau Vibe C</item>
+        <item>Lenovo A316</item>
+        <item>Lenovo A319</item>
+        <item>Lenovo A328</item>
+        <item>Lenovo A3300</item>
+        <item>Lenovo A3900</item>
+        <item>Lenovo A369</item>
+        <item>Lenovo A390</item>
+        <item>Lenovo A5000</item>
+        <item>Lenovo A516</item>
+        <item>Lenovo A526</item>
+        <item>Lenovo A536</item>
+        <item>Lenovo A6000 atau A6010</item>
+        <item>Lenovo A7020</item>
+        <item>Lenovo A7700</item>
+        <item>Lenovo A706</item>
+        <item>Lenovo A766</item>
+        <item>Lenovo A800</item>
+        <item>Lenovo A820</item>
+        <item>Lenovo A830</item>
+        <item>Lenovo A850</item>
+        <item>Lenovo A850 Plus</item>
+        <item>Lenovo A859</item>
+        <item>Lenovo A916</item>
+        <item>Lenovo K900</item>
+        <item>Lenovo K910</item>
+        <item>Lenovo K920</item>
+        <item>Lenovo P1 atau P1 Turbo</item>
+        <item>Lenovo P1m</item>
+        <item>Lenovo P2</item>
+        <item>Lenovo P70</item>
+        <item>Lenovo P90</item>
+        <item>Lenovo P700</item>
+        <item>Lenovo P770</item>
+        <item>Lenovo P780</item>
+        <item>Lenovo S560</item>
+        <item>Lenovo S580</item>
+        <item>Lenovo S60</item>
+        <item>Lenovo S650</item>
+        <item>Lenovo S660</item>
+        <item>Lenovo S720</item>
+        <item>Lenovo S820</item>
+        <item>Lenovo S850</item>
+        <item>Lenovo S860</item>
+        <item>Lenovo S880</item>
+        <item>Lenovo S890</item>
+        <item>Lenovo S90</item>
+        <item>Lenovo S920</item>
+        <item>Lenovo S930</item>
+        <item>Lenovo S960</item>
+        <item>Lenovo X2</item>
+        <item>Lenovo Z</item>
+        <item>Lenovo ZUK Z1 atau Z1221</item>
+        <item>Lenovo Z2 Pro</item>
+        <item>Lenovo ZUK Z2</item>
+        <item>Lenovo Vibe Shot</item>
+        <item>Lenovo S1</item>
+        <item>Lenovo K4 Note</item>
+        <item>Lenovo K5 atau K5 Plus</item>
+        <item>Lenovo K5 Note</item>
+        <item>Lenovo K6</item>
+        <item>Lenovo K6 Note atau K6 Plus</item>
+        <item>Lenovo K6 Power</item>
+        <item>Lenovo Tab 2 A7 30</item>
+        <item>Lumia 220</item>
+        <item>Lumia 225</item>
+        <item>Lumia 430</item>
+        <item>Lumia 435</item>
+        <item>Lumia 503</item>
+        <item>Lumia 510</item>
+        <item>Lumia 520</item>
+        <item>Lumia 525</item>
+        <item>Lumia 532</item>
+        <item>Lumia 535</item>
+        <item>Lumia 530</item>
+        <item>Lumia 540</item>
+        <item>Lumia 620</item>
+        <item>Lumia 625</item>
+        <item>Lumia 630</item>
+        <item>Lumia 635</item>
+        <item>Lumia 640</item>
+        <item>Lumia 640XL</item>
+        <item>Lumia 650XL</item>
+        <item>Lumia 710</item>
+        <item>Lumia 720</item>
+        <item>Lumia 730</item>
+        <item>Lumia 925</item>
+        <item>Lumia 950</item>
+        <item>Lumia 950 XL</item>
+        <item>Nokia Asha N311</item>
+        <item>Nokia N1020 atau 909</item>
+        <item>Nokia X</item>
+        <item>Nokia X2</item>
+        <item>Nokia XL</item>
+        <item>Nokia 3</item>
+        <item>Nokia 5</item>
+        <item>Nokia 6</item>
+        <item>Nokia 6.1</item>
+        <item>Nokia 8</item>
+        <item>Xperia C</item>
+        <item>Xperia C3</item>
+        <item>Xperia C4</item>
+        <item>Xperia C5 atau C5 Ultra</item>
+        <item>Xperia E</item>
+        <item>Xperia E1</item>
+        <item>Xperia E3</item>
+        <item>Xperia E4</item>
+        <item>Xperia E5</item>
+        <item>Xperia GO</item>
+        <item>Xperia ION</item>
+        <item>Xperia J</item>
+        <item>Xperia L</item>
+        <item>Xperia L1</item>
+        <item>Xperia M</item>
+        <item>Xperia M2 atau M2 Aqua</item>
+        <item>Xperia M4 atau M4 Aqua</item>
+        <item>Xperia M5</item>
+        <item>Xperia Miro</item>
+        <item>Xperia P</item>
+        <item>Xperia S</item>
+        <item>Xperia SP</item>
+        <item>Xperia T</item>
+        <item>Xperia T2</item>
+        <item>Xperia T2 Ultra</item>
+        <item>Xperia T3</item>
+        <item>Xperia Tipo</item>
+        <item>Xperia TX</item>
+        <item>Xperia U</item>
+        <item>Xperia V</item>
+        <item>Xperia Z</item>
+        <item>Xperia Z Ultra</item>
+        <item>Xperia Z1</item>
+        <item>Xperia Z1 Mini atau Compact</item>
+        <item>Xperia Z2</item>
+        <item>Xperia Z2 Mini atau Compact</item>
+        <item>Xperia Z3</item>
+        <item>Xperia Z3 Mini atau Compact</item>
+        <item>Xperia Z3 Tablet</item>
+        <item>Xperia Z4 atau Z3 Plus</item>
+        <item>Xperia Z4 Mini atau Compact</item>
+        <item>Xperia Z5</item>
+        <item>Xperia Z5 Plus atau Z5 Premium</item>
+        <item>Xperia Z5 Mini atau Compact</item>
+        <item>Xperia ZL</item>
+        <item>Xperia ZR</item>
+        <item>Xperia X</item>
+        <item>Xperia X Performamce</item>
+        <item>Xperia XA</item>
+        <item>Xperia XA Ultra</item>
+        <item>Xperia XA Premium</item>
+        <item>Xperia XA1 Ultra</item>
+        <item>Xperia XA1</item>
+        <item>Xperia XR</item>
+        <item>Xperia XZ Premium</item>
+        <item>Xperia XZ1</item>
+        <item>Xperia XA2</item>
+        <item>Xperia XA2 Ultra</item>
+        <item>Xperia XZ2</item>
+        <item>Xperia XZ2 Compact</item>
+        <item>LG FLEX 2</item>
+        <item>LG G Pro</item>
+        <item>LG G Pro 2</item>
+        <item>LG G Pro Lite</item>
+        <item>LG G2</item>
+        <item>LG G2 Lite</item>
+        <item>LG G2 Mini</item>
+        <item>LG G3</item>
+        <item>LG G3 Beat</item>
+        <item>LG G3 Stylus</item>
+        <item>LG G4</item>
+        <item>LG G4 Beat</item>
+        <item>LG G4 Stylus</item>
+        <item>LG G5</item>
+        <item>LG G6</item>
+        <item>LG G6 Mini</item>
+        <item>LG G7</item>
+        <item>LG G7 Plus</item>
+        <item>LG Stylus 2</item>
+        <item>LG Stylus 3</item>
+        <item>LG Q6</item>
+        <item>LG Joy</item>
+        <item>LG Leon</item>
+        <item>LG L Bello</item>
+        <item>LG L Fino</item>
+        <item>LG Magna</item>
+        <item>LG L Prime</item>
+        <item>LG L3</item>
+        <item>LG L3 II</item>
+        <item>LG L4 II</item>
+        <item>LG L40</item>
+        <item>LG L5 II</item>
+        <item>LG L50</item>
+        <item>LG L70</item>
+        <item>LG L80</item>
+        <item>LG L90</item>
+        <item>LG Nexus 4</item>
+        <item>LG Nexus 5</item>
+        <item>LG Nexus 5x</item>
+        <item>LG Nexus 6</item>
+        <item>LG V10</item>
+        <item>LG V20</item>
+        <item>LG V30</item>
+        <item>LG V30 Plus</item>
+        <item>LG V40</item>
+        <item>LG X Screen</item>
+        <item>LG X Power</item>
+        <item>LG X Power 2 / K10 Power</item>
+        <item>LG X Cam</item>
+        <item>LG K3</item>
+        <item>LG K3 2017</item>
+        <item>LG K4</item>
+        <item>LG K4 2017 / LV1</item>
+        <item>LG K5</item>
+        <item>LG K8</item>
+        <item>LG K8 2017 / LV3</item>
+        <item>LG K10</item>
+        <item>LG K10 2017 / LV5</item>
+        <item>LG K10 2018</item>
+        <item>LG K10 Power / X Power 2</item>
+        <item>Vivo X Play 3S</item>
+        <item>Vivo X Play 5</item>
+        <item>Vivo X Max</item>
+        <item>Vivo X Shot</item>
+        <item>Vivo X3</item>
+        <item>Vivo X3L</item>
+        <item>Vivo X3S</item>
+        <item>Vivo X5 Max</item>
+        <item>Vivo X5 Pro</item>
+        <item>Vivo X5L</item>
+        <item>Vivo X6</item>
+        <item>Vivo X6 Max</item>
+        <item>Vivo X7</item>
+        <item>Vivo X7 Plus</item>
+        <item>Vivo X9</item>
+        <item>Vivo Y11</item>
+        <item>Vivo Y13 / Y15T / T15W / Y15 / Y613</item>
+        <item>Vivo Y17</item>
+        <item>Vivo Y18 / Y18L</item>
+        <item>Vivo Y21 / Y22</item>
+        <item>Vivo Y23</item>
+        <item>Vivo Y27</item>
+        <item>Vivo Y28</item>
+        <item>Vivo Y31</item>
+        <item>Vivo Y33</item>
+        <item>Vivo Y35 / V1</item>
+        <item>Vivo Y37</item>
+        <item>Vivo Y51</item>
+        <item>Vivo Y53</item>
+        <item>Vivo Y53 2017</item>
+        <item>Vivo Y55 / Y55S</item>
+        <item>Vivo Y65</item>
+        <item>Vivo Y67</item>
+        <item>Vivo Y69</item>
+        <item>Vivo Y71</item>
+        <item>Vivo Y81</item>
+        <item>Vivo Y83 Finger</item>
+        <item>Vivo Y91 / Y93 / Y95</item>
+        <item>Vivo V3</item>
+        <item>Vivo V3 Max</item>
+        <item>Vivo V5 / V5S</item>
+        <item>Vivo V5 Lite</item>
+        <item>Vivo V5 Plus</item>
+        <item>Vivo V7</item>
+        <item>Vivo V7 Plus</item>
+        <item>Vivo V9</item>
+        <item>Vivo V11</item>
+        <item>Vivo V11 Pro</item>
+        <item>Xiaomi Redmi 1S</item>
+        <item>Xiaomi Redmi 2S</item>
+        <item>Xiaomi Redmi 3 / 3Pro / 3S</item>
+        <item>Xiaomi Redmi 3X</item>
+        <item>Xiaomi Redmi 4 / Pro</item>
+        <item>Xiaomi Redmi 4A</item>
+        <item>Xiaomi Redmi 4S / 4 Prime</item>
+        <item>Xiaomi Redmi 4X</item>
+        <item>Xiaomi Redmi 5</item>
+        <item>Xiaomi Redmi 5A</item>
+        <item>Xiaomi Redmi 5 Plus / Redmi Note 5</item>
+        <item>Xiaomi Redmi 6</item>
+        <item>Xiaomi Redmi 6A</item>
+        <item>Xiaomi Redmi 6 Pro</item>
+        <item>Xiaomi Redmi Note</item>
+        <item>Xiaomi Redmi Note 2</item>
+        <item>Xiaomi Redmi Note 3 / Note 3 Pro</item>
+        <item>Xiaomi Redmi Note 4 / 4X</item>
+        <item>Xiaomi Redmi Note 5A Non Finger</item>
+        <item>Xiaomi Redmi Note 5A PRIME Finger</item>
+        <item>Xiaomi Redmi Note 5 Pro</item>
+        <item>Xiaomi Redmi Note 6 Pro</item>
+        <item>Xiaomi Redmi Note 7</item>
+        <item>Xiaomi Redmi Pro</item>
+        <item>Xiaomi Mi PAD</item>
+        <item>Xiaomi Mi 2</item>
+        <item>Xiaomi Mi 3</item>
+        <item>Xiaomi Mi 4</item>
+        <item>Xiaomi Mi 4S</item>
+        <item>Xiaomi Mi 4I / Mi4C</item>
+        <item>Xiaomi Mi 5</item>
+        <item>Xiaomi Mi 5C</item>
+        <item>Xiaomi Mi 5S</item>
+        <item>Xiaomi Mi 5S pLUS</item>
+        <item>Xiaomi Mi 5X / Mi A1</item>
+        <item>Xiaomi Mi 6X / Mi A2</item>
+        <item>Xiaomi Mi A2 Lite</item>
+        <item>Xiaomi Mi 6</item>
+        <item>Xiaomi Mi 6 Plus</item>
+        <item>Xiaomi Mi 8</item>
+        <item>Xiaomi Mi 8 SE</item>
+        <item>Xiaomi Mi 8 Lite</item>
+        <item>Xiaomi Mi 8 Explorer</item>
+        <item>Xiaomi Mi 8 Pro</item>
+        <item>Xiaomi Note Pro / Bamboo</item>
+        <item>Xiaomi Mi Max</item>
+        <item>Xiaomi Mi Max 2</item>
+        <item>Xiaomi Mi Max 3</item>
+        <item>Xiaomi Mix 2S</item>
+        <item>Xiaomi Mi Mix 1</item>
+        <item>Xiaomi Mi Mix 2</item>
+        <item>Xiaomi Mi Note 2</item>
+        <item>Xiaomi Mi Note 3</item>
+        <item>Xiaomi Pocophone F1</item>
+        <item>Xiaomi S2</item>
     </string-array>
     <string-array name="custom_case">
         <item>Hardcase</item>
