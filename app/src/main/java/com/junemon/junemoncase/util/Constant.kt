@@ -20,4 +20,6 @@ object Constant {
     const val seeDetailKey = "seeDetailKeys"
     const val switchBackToMain = "switch switch"
     const val saveUserData = "saveUserData"
+    const val sendDetailToOrder = "sendDetail"
+    const val sendPhoneTypetoOrder = "sendPhoneType"
 }

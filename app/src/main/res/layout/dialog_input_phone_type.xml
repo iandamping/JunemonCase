@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/lato"
+        android:text="Masukan tipe HP anda"
+        android:textColor="@color/black"
+        android:textSize="@dimen/letter_large"
+        android:textStyle="bold" />
+
+    <AutoCompleteTextView
+        android:id="@+id/etDialogOrderCasingTypeHp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_bg"
+        android:fontFamily="@font/lato"
+        android:hint="iPhone 6 plus atau 6S plus"
+        android:padding="@dimen/spacing_medium"
+        android:paddingStart="12dp"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDialogPhoneNotReady"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fontFamily="@font/lato"
+        android:gravity="center"
+        android:text="@string/maaf_tipe_hp_ini_belum_tersedia"
+        android:textColor="@android:color/holo_red_dark"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnDialogConfirm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="oke" />
+
+        <Button
+            android:id="@+id/btnDialogCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:text="batal" />
+    </LinearLayout>
+
+
+</LinearLayout>

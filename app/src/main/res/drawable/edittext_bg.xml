@@ -11,7 +11,7 @@
             <shape android:shape="rectangle">
                 <stroke android:width="2dp"
                     android:color="#ffff" />
-                <corners android:radius="22dp"/>
+                <corners android:radius="20dp"/>
                 <solid android:color="@color/textviewr_bg" />
             </shape>
         </inset>

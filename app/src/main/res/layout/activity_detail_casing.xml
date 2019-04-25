@@ -18,61 +18,124 @@
         android:layout_below="@id/DetailCasingToolbar"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/ivDetailCasing"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+                android:id="@+id/tvDetailJenisCase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/black"
+                android:textSize="@dimen/letter_large"
+                android:textStyle="bold"
+                tools:text="Nama Barang" />
+
+
+            <TextView
+                android:id="@+id/tvDetailPenjelasanCase"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:textColor="@color/black"
+                tools:text="Lorem ipsum" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="@string/cek_tipe_hp_anda_untuk_ketersediaan_case"
+                android:textColor="@color/black" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/etDetailCheckCase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@drawable/edittext_bg"
+                    android:fontFamily="@font/lato"
+                    android:hint="iPhone 6 plus atau 6S plus"
+                    android:padding="@dimen/spacing_medium"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/btnDetailCheckCase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingEnd="12dp"
+                    android:src="@drawable/ic_search_gray" />
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:id="@+id/tvDetailPhoneNotReady"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_medium"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="@string/maaf_tipe_hp_ini_belum_tersedia"
+                android:textColor="@android:color/holo_red_dark"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDetailPhoneReady"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_medium"
+                android:fontFamily="@font/lato"
+                android:gravity="center"
+                android:text="@string/casing_ready_stock"
+                android:textColor="@color/colorComment"
+                android:visibility="gone"/>
+
+            <Button
+                android:id="@+id/btnDetailOrder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/spacing_medium"
+                android:layout_marginTop="@dimen/spacing_medium"
+                android:background="@drawable/button_failed_bg_gray"
+                android:fontFamily="@font/lato"
+                android:text="@string/order_sekarang"
+                android:textColor="@color/color_white" />
 
-
-                <ImageView
-                    android:id="@+id/ivDetailCasing"
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-                    android:layout_marginTop="24dp"
-                    android:layout_marginBottom="24dp"
-                    android:fitsSystemWindows="true"
-                    android:scaleType="centerCrop" />
-
-
-                <TextView
-                    android:id="@+id/tvDetailJenisCase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:fontFamily="@font/lato"
-                    android:padding="@dimen/spacing_medium"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/letter_large"
-                    android:textStyle="bold"
-                    tools:text="Nama Barang" />
-
-
-                <TextView
-                    android:id="@+id/tvDetailPenjelasanCase"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:fontFamily="@font/lato"
-                    android:padding="@dimen/spacing_medium"
-                    android:textColor="@color/black"
-                    tools:text="Lorem ipsum" />
-
-
-
-            </LinearLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <Button
-        android:id="@+id/btnDetailOrder"
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_margin="@dimen/spacing_medium"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:background="@drawable/button_upload_bg_blue"
-        android:fontFamily="@font/lato"
-        android:text="@string/order_sekarang"
-        android:textColor="@color/color_white" />
+
 </RelativeLayout>

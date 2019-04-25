@@ -46,7 +46,7 @@ class HomeFragment : Fragment(), HomeView {
         if (actualView != null) {
             actualView?.shimmer_home?.stopShimmer()
             actualView?.shimmer_home?.gone()
-            logD(msg)
+            logE(msg)
         }
     }
 

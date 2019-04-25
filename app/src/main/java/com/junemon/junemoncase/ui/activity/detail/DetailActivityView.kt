@@ -11,4 +11,5 @@ Github = https://github.com/iandamping
 interface DetailActivityView : BaseView {
     fun onFailGetData()
     fun onSuccesGetData(data: AllCasingModel?)
+    fun onSuccessPhoneAvailable(data: Boolean?)
 }

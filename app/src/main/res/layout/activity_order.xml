@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/OrderCasingToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FFFFFF" />
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/OrderCasingToolbar"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <ImageView
+                android:id="@+id/ivOrderCasing"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:fitsSystemWindows="true"
+                android:scaleType="centerCrop" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="Nama"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOrderCasingName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/lato"
+                android:hint="Alexander"
+                android:padding="@dimen/spacing_medium"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="Alamat Lengkap"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOrderCasingAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/lato"
+                android:hint="Jln Juanda 8, GG Srikaya 9"
+                android:padding="@dimen/spacing_medium"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="Kecamatan"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerOrderCasingKecamatan"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="No HP"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etOrderCasingPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/lato"
+                android:hint="081325106552"
+                android:inputType="number"
+                android:padding="@dimen/spacing_medium"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="Tipe HP"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <AutoCompleteTextView
+                android:id="@+id/etOrderCasingTypeHp"
+                android:layout_width="match_parent"
+                android:enabled="false"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_bg"
+                android:fontFamily="@font/lato"
+                android:hint="iPhone 6"
+                android:padding="@dimen/spacing_medium"
+                android:paddingStart="12dp"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="Ready Stock Case"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerOrderCasingTypeHp"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:background="@drawable/spinner_dropdown_bg"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnOrderCasingCase"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_margin="@dimen/spacing_medium"
+                android:background="@drawable/button_upload_bg_blue"
+                android:fontFamily="@font/lato"
+                android:padding="@dimen/spacing_medium"
+                android:text="@string/order_sekarang"
+                android:textColor="@color/color_white" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+</RelativeLayout>

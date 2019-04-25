@@ -54,7 +54,7 @@ class ProfilePresenter(private val mView: ProfileView, private val userDataRefer
                     mView.onSuccessGetData(gson.fromJson(prefHelper.getStringInSharedPreference(saveUserData), UserProfile::class.java))
                 } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     if (it.currentUser != null) {
-                        userData = UserProfile(it.currentUser?.photoUrl.toString(), it.currentUser?.displayName, it.currentUser?.email, it.currentUser?.phoneNumber)
+                        userData = UserProfile(it.currentUser?.photoUrl.toString(), it.currentUser?.displayName, it.currentUser?.email, it.currentUser?.phoneNumber,null,null)
                         it.currentUser?.uid?.let { currentUserData -> userDataReference.child(currentUserData).setValue(userData) }
                         prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(userData))
                         ctx?.startActivity<MainActivity>()

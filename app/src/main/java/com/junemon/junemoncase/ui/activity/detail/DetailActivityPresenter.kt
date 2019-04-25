@@ -10,8 +10,8 @@ import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.model.PhoneTypeData
 import com.junemon.junemoncase.util.getAllDataFromFirebase
-import com.junemon.junemoncase.util.logD
 import com.junemon.junemoncase.util.withViewModel
+
 
 /**
  *
@@ -20,22 +20,31 @@ Github = https://github.com/iandamping
  */
 class DetailActivityPresenter(private val dataRef: DatabaseReference, private val mView: DetailActivityView, private val target: FragmentActivity) : BasePresenter() {
     override fun onCreate(context: Context) {
+        setBaseDialog(context)
         mView.initView()
-        target.getAllDataFromFirebase<PhoneTypeData>(dataRef)
-        onGetPhoneTypeData()
+
     }
 
     fun onGetDataPassed(data: String?) {
         mView.onSuccesGetData(gson.fromJson(data, AllCasingModel::class.java))
     }
 
-    private fun onGetPhoneTypeData() {
+
+    fun onGetPhoneTypeData(phoneName: String?) {
+        setDialogShow(false)
+        target.getAllDataFromFirebase<PhoneTypeData>(dataRef)
         target.withViewModel<GenericViewModel<PhoneTypeData>> {
             this.getGenericData().observe(target, Observer {
-                logD(it.listPhoneTypedata?.get("iPhone 3").toString() + " ini iphone 3")
-                logD(it.listPhoneTypedata.toString() + " ini listphone")
+                val message = it.listPhoneTypedata?.get(phoneName).toString()
+                if (message != "null") {
+                    setDialogShow(true)
+                    mView.onSuccessPhoneAvailable(true)
+                } else {
+                    setDialogShow(true)
+                }
             })
         }
-
     }
+
+
 }

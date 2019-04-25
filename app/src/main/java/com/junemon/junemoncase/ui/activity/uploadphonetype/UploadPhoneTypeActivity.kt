@@ -7,7 +7,6 @@ import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
-import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.util.*
 import kotlinx.android.synthetic.main.activity_upload_phonetype.*
 
@@ -34,7 +33,7 @@ class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
     }
 
     override fun onFailedUploadPhoneType() {
-        logD("Upload phone type error")
+        logE("Upload phone type error")
     }
 
     override fun initView() {

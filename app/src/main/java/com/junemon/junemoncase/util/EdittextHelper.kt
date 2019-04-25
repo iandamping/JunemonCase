@@ -1,5 +1,6 @@
 package com.junemon.junemoncase.util
 
+import android.text.Editable
 import android.widget.EditText
 /**
  *
@@ -12,4 +13,8 @@ fun EditText.requestError(message: String?) {
         this.error = message
     }
 
+}
+
+fun EditText.cleanUp(){
+    this.text = Editable.Factory.getInstance().newEditable("")
 }

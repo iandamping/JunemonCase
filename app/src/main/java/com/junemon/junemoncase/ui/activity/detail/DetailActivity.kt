@@ -5,14 +5,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.Window
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.ui.activity.ordercasing.OrderCaseActivity
+import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.seeDetailKey
-import com.junemon.junemoncase.util.fullScreenAnimation
-import com.junemon.junemoncase.util.loadUrl
-import com.junemon.junemoncase.util.loadUrlFullScreen
+import com.junemon.junemoncase.util.Constant.sendDetailToOrder
+import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
 import kotlinx.android.synthetic.main.activity_detail_casing.*
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
@@ -22,12 +25,16 @@ Created by Ian Damping on 18/04/2019.
 Github = https://github.com/iandamping
  */
 class DetailActivity : AppCompatActivity(), DetailActivityView {
+    private var isPhoneAvailable: Boolean? = null
+    private var phoneType: String? = null
+    private var autoTextAdapter: ArrayAdapter<String>? = null
+    private var dataPassing: AllCasingModel? = null
     private lateinit var presenter: DetailActivityPresenter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
         setContentView(R.layout.activity_detail_casing)
-        presenter = DetailActivityPresenter(phoneTypeDatabaseReference,this,this)
+        presenter = DetailActivityPresenter(phoneTypeDatabaseReference, this, this)
         presenter.onCreate(this)
         onNewIntent(intent)
     }
@@ -66,10 +73,27 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
         }
         tvDetailJenisCase.text = data?.casingType
         tvDetailPenjelasanCase
+        this.dataPassing = data
     }
 
     override fun initView() {
         setupToolbar()
+        autoTextAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+        etDetailCheckCase.setAdapter(autoTextAdapter)
+        etDetailCheckCase.threshold = 1
+
+        btnDetailCheckCase.setOnClickListener {
+            phoneType = etDetailCheckCase.text.toString().trim()
+            when {
+                phoneType.isNullOrBlank() -> {
+                    etDetailCheckCase.requestError(getString(R.string.not_null))
+                }
+                else -> {
+                    presenter.onGetPhoneTypeData(phoneType)
+                }
+            }
+        }
+
     }
 
 
@@ -80,4 +104,30 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
         setSupportActionBar(DetailCasingToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
+
+    override fun onSuccessPhoneAvailable(data: Boolean?) {
+        if (data != null) {
+            this.isPhoneAvailable = data
+        }
+        isPhoneAvailable?.let {
+            when {
+                it -> {
+                    tvDetailPhoneNotReady.gone()
+                    tvDetailPhoneReady.visible()
+                    btnDetailOrder.background = resources.getDrawable(R.drawable.button_upload_bg_blue)
+                    btnDetailOrder.text = resources.getString(R.string.order_sekarang)
+                    btnDetailOrder.setOnClickListener {
+                        startActivity<OrderCaseActivity> {
+                            putExtra(sendDetailToOrder, gson.toJson(dataPassing))
+                            putExtra(sendPhoneTypetoOrder, phoneType)
+                            finish()
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+
 }

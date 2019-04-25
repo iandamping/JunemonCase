@@ -6,7 +6,6 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import android.net.Uri
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.Window
@@ -134,7 +133,7 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
     }
 
     override fun onFailUploadData(msg: String?) {
-        logD(msg)
+        logE(msg)
     }
 
     override fun onSuccesUploadData() {
