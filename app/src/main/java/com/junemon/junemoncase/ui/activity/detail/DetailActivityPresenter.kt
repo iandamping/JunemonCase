@@ -10,6 +10,7 @@ import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.model.PhoneTypeData
 import com.junemon.junemoncase.util.getAllDataFromFirebase
+import com.junemon.junemoncase.util.logE
 import com.junemon.junemoncase.util.withViewModel
 
 
@@ -22,7 +23,6 @@ class DetailActivityPresenter(private val dataRef: DatabaseReference, private va
     override fun onCreate(context: Context) {
         setBaseDialog(context)
         mView.initView()
-
     }
 
     fun onGetDataPassed(data: String?) {
@@ -40,6 +40,7 @@ class DetailActivityPresenter(private val dataRef: DatabaseReference, private va
                     setDialogShow(true)
                     mView.onSuccessPhoneAvailable(true)
                 } else {
+
                     setDialogShow(true)
                 }
             })

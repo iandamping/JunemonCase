@@ -16,6 +16,9 @@ import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.seeDetailKey
 import com.junemon.junemoncase.util.Constant.sendDetailToOrder
 import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.activity_detail_casing.*
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 
@@ -30,6 +33,7 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
     private var autoTextAdapter: ArrayAdapter<String>? = null
     private var dataPassing: AllCasingModel? = null
     private lateinit var presenter: DetailActivityPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
@@ -78,7 +82,10 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
 
     override fun initView() {
         setupToolbar()
-        autoTextAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+        val listCase = resources.getStringArray(R.array.all_phone_names).toMutableList()
+
+        autoTextAdapter =
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
         etDetailCheckCase.setAdapter(autoTextAdapter)
         etDetailCheckCase.threshold = 1
 
@@ -89,7 +96,19 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
                     etDetailCheckCase.requestError(getString(R.string.not_null))
                 }
                 else -> {
-                    presenter.onGetPhoneTypeData(phoneType)
+                    Observable.fromIterable(listCase).subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe {
+                            when {
+                                it != phoneType -> {
+                                    tvDetailPhoneNotReady.visible()
+                                }
+                                it == phoneType -> {
+                                    tvDetailPhoneNotReady.gone()
+                                    presenter.onGetPhoneTypeData(phoneType)
+                                }
+                            }
+                        }
                 }
             }
         }
