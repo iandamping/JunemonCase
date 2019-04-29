@@ -68,12 +68,18 @@ class ProfilePresenter(private val mView: ProfileView, private val userDataRefer
                                 null,
                                 null,
                                 null
+
                         )
                         it.currentUser?.uid?.let { currentUserData ->
                             userDataReference.child(currentUserData).setValue(userData)
                         }
-                        prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(userData))
-                        ctx?.startActivity<MainActivity>()
+                        if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
+                            prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(userData))
+                            ctx?.startActivity<MainActivity>()
+                        } else if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
+                            ctx?.startActivity<MainActivity>()
+
+                        }
                     }
                 }
             }

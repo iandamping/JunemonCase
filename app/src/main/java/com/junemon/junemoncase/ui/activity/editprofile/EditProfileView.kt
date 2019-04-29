@@ -13,6 +13,7 @@ interface EditProfileView : BaseView {
     fun onGetUserData(data: UserProfileModel?)
     fun onGetProvinceData(data: List<GeneralProvinceModel>?)
     fun onGetCityData(data: List<GeneralProvinceModel>?)
+    fun onSuccessEditProfile()
     fun onFailGetRajaOngkirData(msg: String?)
     fun onFailEditProfile(msg: String?)
 }

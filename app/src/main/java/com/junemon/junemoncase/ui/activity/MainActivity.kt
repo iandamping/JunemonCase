@@ -9,6 +9,7 @@ import com.junemon.junemoncase.ui.activity.upload.UploadActivity
 import com.junemon.junemoncase.ui.fragment.home.HomeFragment
 import com.junemon.junemoncase.ui.fragment.profile.ProfileFragment
 import com.junemon.junemoncase.util.Constant
+import com.junemon.junemoncase.util.fullScreenAnimation
 import com.junemon.junemoncase.util.startActivity
 import com.junemon.junemoncase.util.switchFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,6 +18,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        fullScreenAnimation()
         setContentView(R.layout.activity_main)
         initBottomNav()
         moveToSpesificFragment(intent?.getStringExtra(Constant.switchBackToMain))

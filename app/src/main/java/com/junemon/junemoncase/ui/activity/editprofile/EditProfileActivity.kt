@@ -7,8 +7,8 @@ import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.GeneralProvinceModel
 import com.junemon.junemoncase.model.UserProfileModel
-import com.junemon.junemoncase.util.fullScreenAnimation
-import com.junemon.junemoncase.util.requestError
+import com.junemon.junemoncase.ui.activity.MainActivity
+import com.junemon.junemoncase.util.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import org.jetbrains.anko.selector
 
@@ -45,6 +45,11 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
             }
         }
     }
+    override fun onSuccessEditProfile() {
+        startActivity<MainActivity> {
+            putExtra(Constant.switchBackToMain, "1")
+        }
+    }
 
     override fun onGetCityData(data: List<GeneralProvinceModel>?) {
         val tmpCityData: MutableList<String> = mutableListOf()
@@ -67,12 +72,17 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         etEditName.setText(data?.nameUser)
         etEditUserPhoneNumber.setText(data?.phoneNumberUser)
         etEditUserEmail.setText(data?.emailUser)
+        etEditUserAddress.setText(data?.addressUser)
+        etEditCity.setText( data?.cityUser)
+        etEditProvince.setText(data?.provinceUser)
+
     }
 
     override fun onFailGetRajaOngkirData(msg: String?) {
     }
 
     override fun onFailEditProfile(msg: String?) {
+        logE(msg)
     }
 
     override fun initView() {

@@ -46,12 +46,51 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/tvEmailUser"
+        android:id="@+id/tvProfileAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvProfileName"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/user_address"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tvProfileProvince"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProfileAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/user_province"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tvProfileCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProfileProvince"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
+        android:fontFamily="@font/lato"
+        android:text="@string/user_city"
+        android:textColor="@color/black"
+        android:textStyle="normal" />
+
+    <TextView
+        android:id="@+id/tvEmailUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvProfileCity"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
         android:fontFamily="@font/lato"
         android:text="@string/email"
         android:textColor="@color/black"

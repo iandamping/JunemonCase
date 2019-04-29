@@ -21,7 +21,7 @@ Created by Ian Damping on 26/04/2019.
 Github = https://github.com/iandamping
  */
 class EditProfilePresenter(private val dataRef: DatabaseReference, private val mView: EditProfileView) :
-        BasePresenter() {
+    BasePresenter() {
     private var tmpMutableData: MutableMap<String, String> = mutableMapOf()
     private var currentUser: FirebaseUser? = null
     private lateinit var listener: FirebaseAuth.AuthStateListener
@@ -60,7 +60,11 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
                 if (it.isSuccessful) {
                     prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(data))
                     setDialogShow(true)
+                    mView.onSuccessEditProfile()
                 }
+            }.addOnFailureListener {
+                setDialogShow(true)
+                mView.onFailEditProfile(it.localizedMessage)
             }
         }
     }
@@ -68,19 +72,25 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
     private fun onGetUserData() {
         listener = FirebaseAuth.AuthStateListener {
             if (it != null) {
-                if (it.currentUser != null) {
-                    userData = UserProfileModel(
-                            it.currentUser?.photoUrl.toString(),
-                            it.currentUser?.displayName,
-                            it.currentUser?.email,
-                            it.currentUser?.phoneNumber,
-                            null,
-                            null,
-                            null
-                    )
+                if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     this.currentUserId = it.currentUser?.uid
-                    mView.onGetUserData(userData)
+                    mView.onGetUserData(gson.fromJson(prefHelper.getStringInSharedPreference(saveUserData), UserProfileModel::class.java))
+                }else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
+                    if (it.currentUser != null) {
+                        userData = UserProfileModel(
+                                it.currentUser?.photoUrl.toString(),
+                                it.currentUser?.displayName,
+                                it.currentUser?.email,
+                                it.currentUser?.phoneNumber,
+                                null,
+                                null,
+                                null
+                        )
+                        this.currentUserId = it.currentUser?.uid
+                        mView.onGetUserData(userData)
+                    }
                 }
+
             }
         }
     }

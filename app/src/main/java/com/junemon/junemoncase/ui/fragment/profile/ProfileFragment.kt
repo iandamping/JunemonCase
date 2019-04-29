@@ -51,7 +51,10 @@ class ProfileFragment : Fragment(), ProfileView {
         actualView?.tvProfileName?.text = data?.nameUser
         actualView?.tvEmailUser?.text = data?.emailUser
         actualView?.tvProfilePhoneNumber?.text = data?.phoneNumberUser
-        actualView?.btnLogin?.text = "Logut"
+        actualView?.btnLogin?.text = "logout"
+        data?.provinceUser?.let { actualView?.tvProfileProvince?.text = it }
+        data?.cityUser?.let { actualView?.tvProfileCity?.text = it }
+        data?.addressUser?.let { actualView?.tvProfileAddress?.text = it }
         actualView?.btnLogin?.setOnClickListener {
             presenter.setUserLogout()
         }
