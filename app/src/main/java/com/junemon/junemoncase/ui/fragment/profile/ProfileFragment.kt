@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
 import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
-import com.junemon.junemoncase.model.UserProfile
+import com.junemon.junemoncase.model.UserProfileModel
+import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
 import com.junemon.junemoncase.util.Constant.RequestSignIn
 import com.junemon.junemoncase.util.inflates
 import com.junemon.junemoncase.util.loadUrl
+import com.junemon.junemoncase.util.startActivity
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 /**
@@ -44,7 +46,7 @@ class ProfileFragment : Fragment(), ProfileView {
         return views
     }
 
-    override fun onSuccessGetData(data: UserProfile?) {
+    override fun onSuccessGetData(data: UserProfileModel?) {
         actualView?.ivPhotoProfile?.loadUrl(data?.photoUser)
         actualView?.tvProfileName?.text = data?.nameUser
         actualView?.tvEmailUser?.text = data?.emailUser
@@ -65,7 +67,8 @@ class ProfileFragment : Fragment(), ProfileView {
             createSignInIntent()
         }
         actualView?.ivSettingProfile?.setOnClickListener {
-            presenter.setUserLogout()
+            //            presenter.setUserLogout()
+            context?.startActivity<EditProfileActivity>()
         }
     }
 

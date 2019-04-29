@@ -21,12 +21,22 @@
     <string name="user_name">User Name</string>
     <string name="nomer_hp">Nomer HP</string>
     <string name="email">Email</string>
+    <string name="edit_profile_first">Lengkapi data diri dulu</string>
     <string name="masukan_tipe_handphone">Masukan tipe Handphone</string>
     <string name="not_null">Tidak boleh kosong</string>
     <string name="belum_ready">Belum Ready</string>
     <string name="maaf_tipe_hp_ini_belum_tersedia">Maaf tipe HP ini belum tersedia \nmohon masukan tipe HP sesuai dengan autotext</string>
     <string name="cek_tipe_hp_anda_untuk_ketersediaan_case">Cek dulu tipe HP anda untuk ketersediaan case</string>
     <string name="casing_ready_stock">Casing Ready Stock</string>
+    <string name="spesifikasi_hardcase">Cetakan gambar full sampai samping warna case full sesuai gambar melindungi bagian sisi samping saja</string>
+    <string name="warning_hardcase">Tidak bisa menggunakan desain transparan (Tanpa background)\nHarus ada warna background minimal putih</string>
+    <string name="spesifikasi_softcase">Cetakan gambar hanya di permukaan saja warna case Random dan tidak semua bening.\nMelindungi seluruh bagian samping maupun atas dan bawah</string>
+    <string name="warning_softcase">Bisa menggunakan design trasnparan (Tanpa background)</string>
+    <string name="spesifikasi_softcrack">Cetakan gmbar hanya di permukaan saja warna case bening\nMelindungi seluruh bagian samping maupun atas dan bawah</string>
+    <string name="warning_softcrack">Bisa menggunakan design trasnparan (Tanpa background)\nAda anti knock di setiap sudut untuk melindungi dari benturan</string>
+    <string name="spesifikasi_premium">Cetakan gambar hanya di permukaan saja, melindungi bagian samping saja, warna list case hanya terdiri dari warna hitam dan putih</string>
+    <string name="warning_premium">Tidak bisa menggunakan desain transparan (Tanpa background)\nHarus ada warna background minimal putih</string>
+    <string name="spesifikasi_premium_soft">Cetakan gambar hanya di permukaan saja warna case bisa di pilih baik hitam,putih atau trasnparan dengan permukaan yang keras dan samping yang lentur melindungi seluruh bagian samping maupun atas bawah</string>
     <string-array name="all_phone_names">
         <item>iPhone 3</item>
         <item>iPhone 4 atau 4S</item>

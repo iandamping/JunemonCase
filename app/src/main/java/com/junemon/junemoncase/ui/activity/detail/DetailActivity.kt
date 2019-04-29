@@ -76,7 +76,18 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
             }
         }
         tvDetailJenisCase.text = data?.casingType
-        tvDetailPenjelasanCase
+        when {
+            data?.casingType?.equals("Hardcase")!! -> tvDetailPenjelasanCase.text =
+                    getString(R.string.spesifikasi_hardcase)
+            data.casingType?.equals("Softcase")!! -> tvDetailPenjelasanCase.text =
+                    getString(R.string.spesifikasi_softcase)
+            data.casingType?.equals("Softcrack")!! -> tvDetailPenjelasanCase.text =
+                    getString(R.string.spesifikasi_softcrack)
+            data.casingType?.equals("Premium")!! -> tvDetailPenjelasanCase.text =
+                    getString(R.string.spesifikasi_premium)
+            data.casingType?.equals("Premium Soft")!! -> tvDetailPenjelasanCase.text =
+                    getString(R.string.spesifikasi_premium_soft)
+        }
         this.dataPassing = data
     }
 
@@ -85,7 +96,7 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
         val listCase = resources.getStringArray(R.array.all_phone_names).toMutableList()
 
         autoTextAdapter =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+                ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
         etDetailCheckCase.setAdapter(autoTextAdapter)
         etDetailCheckCase.threshold = 1
 
@@ -97,18 +108,18 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
                 }
                 else -> {
                     Observable.fromIterable(listCase).subscribeOn(Schedulers.io())
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe {
-                            when {
-                                it != phoneType -> {
-                                    tvDetailPhoneNotReady.visible()
-                                }
-                                it == phoneType -> {
-                                    tvDetailPhoneNotReady.gone()
-                                    presenter.onGetPhoneTypeData(phoneType)
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe {
+                                when {
+                                    it != phoneType -> {
+                                        tvDetailPhoneNotReady.visible()
+                                    }
+                                    it == phoneType -> {
+                                        tvDetailPhoneNotReady.gone()
+                                        presenter.onGetPhoneTypeData(phoneType)
+                                    }
                                 }
                             }
-                        }
                 }
             }
         }

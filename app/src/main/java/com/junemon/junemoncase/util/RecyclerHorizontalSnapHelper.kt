@@ -46,8 +46,10 @@ class RecyclerHorizontalSnapHelper : LinearSnapHelper() {
         return helper.getDecoratedStart(targetView) - helper.startAfterPadding
     }
 
-    private fun getStartView(layoutManager: RecyclerView.LayoutManager,
-                             helper: OrientationHelper): View? {
+    private fun getStartView(
+            layoutManager: RecyclerView.LayoutManager,
+            helper: OrientationHelper
+    ): View? {
 
         if (layoutManager is LinearLayoutManager) {
             val firstChild = layoutManager.findFirstVisibleItemPosition()
@@ -61,7 +63,10 @@ class RecyclerHorizontalSnapHelper : LinearSnapHelper() {
 
             val child = layoutManager.findViewByPosition(firstChild)
 
-            return if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 && helper.getDecoratedEnd(child) > 0) {
+            return if (helper.getDecoratedEnd(child) >= helper.getDecoratedMeasurement(child) / 2 && helper.getDecoratedEnd(
+                            child
+                    ) > 0
+            ) {
                 child
             } else {
                 if (layoutManager.findLastCompletelyVisibleItemPosition() == layoutManager.getItemCount() - 1) {

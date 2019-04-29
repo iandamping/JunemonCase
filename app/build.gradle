@@ -20,12 +20,15 @@ android {
         debug{
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847/\""
+            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847\""
+            buildConfigField "String", "BASE_RAJA_ONGKIR_URL", "\"https://api.rajaongkir.com/starter/\""
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847/\""
+            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847\""
+            buildConfigField "String", "BASE_RAJA_ONGKIR_URL", "\"https://api.rajaongkir.com/starter/\""
+
         }
     }
     androidExtensions {

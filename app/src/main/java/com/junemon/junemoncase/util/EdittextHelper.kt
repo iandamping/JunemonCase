@@ -2,6 +2,7 @@ package com.junemon.junemoncase.util
 
 import android.text.Editable
 import android.widget.EditText
+
 /**
  *
 Created by Ian Damping on 15/04/2019.
@@ -15,6 +16,6 @@ fun EditText.requestError(message: String?) {
 
 }
 
-fun EditText.cleanUp(){
+fun EditText.cleanUp() {
     this.text = Editable.Factory.getInstance().newEditable("")
 }

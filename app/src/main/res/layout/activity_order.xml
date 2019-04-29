@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
@@ -84,20 +84,43 @@
                 android:layout_marginStart="12dp"
                 android:fontFamily="@font/lato"
                 android:padding="@dimen/spacing_medium"
-                android:text="Kecamatan"
+                android:text="Kabupaten"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
 
-            <Spinner
-                android:id="@+id/spinnerOrderCasingKecamatan"
+            <EditText
+                android:id="@+id/etOrderCasingKecamatan"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
+                android:hint="Kalimantan Timur"
                 android:background="@drawable/edittext_bg"
                 android:fontFamily="@font/lato"
                 android:padding="@dimen/spacing_medium"
                 android:paddingStart="12dp"
                 android:textColor="@color/black"
                 android:textStyle="bold" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:fontFamily="@font/lato"
+                    android:padding="@dimen/spacing_medium"
+                    android:text="Kota"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+            <EditText
+                    android:id="@+id/etOrderCasingKota"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:hint="Samarinda"
+                    android:background="@drawable/edittext_bg"
+                    android:fontFamily="@font/lato"
+                    android:padding="@dimen/spacing_medium"
+                    android:paddingStart="12dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"

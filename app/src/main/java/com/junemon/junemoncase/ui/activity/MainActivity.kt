@@ -23,9 +23,16 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
     private fun moveToSpesificFragment(dataCallback: String?) {
-        if (dataCallback != null && dataCallback.contentEquals("1")) {
-            supportFragmentManager.switchFragment(null, HomeFragment())
-            bottom_navigation.selectedItemId = R.id.navigation_home
+        when {
+            dataCallback != null && dataCallback.contentEquals("1") -> {
+                supportFragmentManager.switchFragment(null, HomeFragment())
+                bottom_navigation.selectedItemId = R.id.navigation_home
+            }
+
+            dataCallback != null && dataCallback.contentEquals("4") -> {
+                supportFragmentManager.switchFragment(null, ProfileFragment())
+                bottom_navigation.selectedItemId = R.id.navigation_profile
+            }
         }
     }
 

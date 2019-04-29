@@ -11,12 +11,12 @@ import androidx.appcompat.app.AppCompatActivity
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.model.UserProfileModel
+import com.junemon.junemoncase.ui.activity.MainActivity
+import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.sendDetailToOrder
 import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
-import com.junemon.junemoncase.util.fullScreenAnimation
-import com.junemon.junemoncase.util.loadUrl
-import com.junemon.junemoncase.util.loadUrlFullScreen
-import com.junemon.junemoncase.util.myToast
+import com.junemon.junemoncase.util.Constant.switchBackToMain
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 import kotlinx.android.synthetic.main.activity_order.*
 
@@ -26,6 +26,8 @@ Created by Ian Damping on 24/04/2019.
 Github = https://github.com/iandamping
  */
 class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
+
+
     private var arraySpinnerTypeCaseAdapter: ArrayAdapter<String>? = null
     private var arraySpinnerProvinceAdapter: ArrayAdapter<String>? = null
 
@@ -79,6 +81,25 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     }
 
     override fun onFailedGetListPhoneType(msg: String?) {
-        myToast(msg)
+        logE(msg)
+    }
+
+    override fun onGetUserData(data: UserProfileModel) {
+        etOrderCasingName.setText(data.nameUser)
+        etOrderCasingAddress.setText(data.addressUser)
+        etOrderCasingKecamatan.setText(data.provinceUser)
+        etOrderCasingKota.setText(data.cityUser)
+        etOrderCasingPhoneNumber.setText(data.phoneNumberUser)
+
+    }
+
+    override fun onLoginFirst() {
+        startActivity<MainActivity> {
+            putExtra(switchBackToMain, "4")
+        }
+    }
+
+    override fun onEditUserFirst() {
+        alertHelperToEditProfile(getString(R.string.edit_profile_first))
     }
 }

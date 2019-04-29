@@ -37,7 +37,8 @@ class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
     }
 
     override fun initView() {
-        autoTextAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+        autoTextAdapter =
+                ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
         etPhoneType.setAdapter(autoTextAdapter)
         etPhoneType.threshold = 1
         btnUnggahTipeHp.setOnClickListener {

@@ -16,7 +16,8 @@ import com.junemon.junemoncase.util.withViewModel
 Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
-class HomePresenter(private val dataReference: DatabaseReference, var mView: HomeView, var target: Fragment) : BaseFragmentPresenter() {
+class HomePresenter(private val dataReference: DatabaseReference, var mView: HomeView, var target: Fragment) :
+        BaseFragmentPresenter() {
     private var ctx: Context? = null
     private var listAllData: MutableList<AllCasingModel> = mutableListOf()
     private var listHardcase: MutableList<AllCasingModel> = mutableListOf()

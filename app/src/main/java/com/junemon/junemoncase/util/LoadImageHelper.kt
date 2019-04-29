@@ -18,7 +18,10 @@ fun ImageView.loadUrlFullScreen(url: String?) {
 }
 
 fun ImageView.loadUrl(url: String?) {
-    url?.let { Glide.with(context).load(it).apply(RequestOptions().override(600, 600).placeholder(R.drawable.empty_image)).into(this) }
+    url?.let {
+        Glide.with(context).load(it).apply(RequestOptions().override(600, 600).placeholder(R.drawable.empty_image))
+                .into(this)
+    }
 }
 
 private fun ImageView.imageThumbnail(urls: String?): RequestBuilder<Drawable> {
