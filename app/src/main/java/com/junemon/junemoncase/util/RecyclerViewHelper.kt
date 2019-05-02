@@ -15,7 +15,7 @@ fun <T> RecyclerView.setUpHorizontal(
         items: List<T>,
         layoutResId: Int,
         bindHolder: View.(T) -> Unit,
-        itemClick: T.() -> Unit = {},
+        itemClick: T.() -> Unit,
         manager: RecyclerView.LayoutManager = LinearLayoutManager(
                 this.context,
                 LinearLayoutManager.HORIZONTAL,

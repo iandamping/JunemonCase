@@ -2,6 +2,8 @@ package com.junemon.junemoncase.api
 
 import com.junemon.junemoncase.model.GeneralProvinceModel
 import com.junemon.junemoncase.model.GeneralResponseModel
+import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -12,8 +14,8 @@ Github = https://github.com/iandamping
  */
 interface ApiInterface {
     @GET(NetworkConfig.GET_PROVINCE)
-    fun getAllProvinceData(): Call<GeneralResponseModel<GeneralProvinceModel>>
+    fun getAllProvinceData(): Single<GeneralResponseModel<GeneralProvinceModel>>
 
     @GET(NetworkConfig.GET_CITY)
-    fun getAllCityData(): Call<GeneralResponseModel<GeneralProvinceModel>>
+    fun getAllCityData(): Single<GeneralResponseModel<GeneralProvinceModel>>
 }

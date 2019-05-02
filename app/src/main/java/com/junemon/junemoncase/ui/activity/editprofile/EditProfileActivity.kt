@@ -118,4 +118,9 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         super.onPause()
         presenter.onPause()
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter.onDestroy()
+    }
 }

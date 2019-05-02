@@ -13,6 +13,7 @@ import com.junemon.junemoncase.base.BasePresenter
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.util.Constant.saveUserData
 import com.junemon.junemoncase.util.executes
+import com.junemon.junemoncase.util.zipWith
 
 
 /**
@@ -31,8 +32,7 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
         mView.initView()
         setBaseDialog(context)
         currentUser = mFirebaseAuth.currentUser
-        getAllCity()
-        getAllProvince()
+        getAllProvinceAndCity()
         onGetUserData()
     }
 
@@ -74,17 +74,22 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
             if (it != null) {
                 if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     this.currentUserId = it.currentUser?.uid
-                    mView.onGetUserData(gson.fromJson(prefHelper.getStringInSharedPreference(saveUserData), UserProfileModel::class.java))
-                }else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
+                    mView.onGetUserData(
+                        gson.fromJson(
+                            prefHelper.getStringInSharedPreference(saveUserData),
+                            UserProfileModel::class.java
+                        )
+                    )
+                } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     if (it.currentUser != null) {
                         userData = UserProfileModel(
-                                it.currentUser?.photoUrl.toString(),
-                                it.currentUser?.displayName,
-                                it.currentUser?.email,
-                                it.currentUser?.phoneNumber,
-                                null,
-                                null,
-                                null
+                            it.currentUser?.photoUrl.toString(),
+                            it.currentUser?.displayName,
+                            it.currentUser?.email,
+                            it.currentUser?.phoneNumber,
+                            null,
+                            null,
+                            null
                         )
                         this.currentUserId = it.currentUser?.uid
                         mView.onGetUserData(userData)
@@ -95,30 +100,22 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
         }
     }
 
-
-    private fun getAllCity() {
-        setDialogShow(false)
-        api.getAllCityData().executes({
-            setDialogShow(true)
-            mView.onFailGetRajaOngkirData(it.localizedMessage)
-        }, { response ->
-            setDialogShow(true)
-            if (response != null) {
-                mView.onGetCityData(response.allData?.results)
-            }
-        })
+    fun onDestroy() {
+        if (compose != null && compose.isDisposed) {
+            compose.dispose()
+        }
     }
 
-    private fun getAllProvince() {
+    private fun getAllProvinceAndCity() {
         setDialogShow(false)
-        api.getAllProvinceData().executes({
+        compose.executes(api.getAllCityData().zipWith(api.getAllProvinceData()),{
             setDialogShow(true)
             mView.onFailGetRajaOngkirData(it.localizedMessage)
-        }, { response ->
+        },{
             setDialogShow(true)
-            if (response != null) {
-                mView.onGetProvinceData(response.allData?.results)
-            }
+            it?.first?.let { city ->  mView.onGetCityData(city.allData?.results)}
+            it?.second?.let { province -> mView.onGetProvinceData(province.allData?.results)}
+
         })
     }
 }
