@@ -16,4 +16,6 @@ interface OrderCaseView : BaseView {
     fun onEditUserFirst()
     fun onSuccessGetListPhoneType(data: List<String>?)
     fun onFailedGetListPhoneType(msg: String?)
+    fun onSuccessOrderCase()
+    fun onFailOrderCase()
 }

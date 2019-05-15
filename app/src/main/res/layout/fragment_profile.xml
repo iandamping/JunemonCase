@@ -118,6 +118,6 @@
         android:background="@color/fui_transparent"
         android:fontFamily="@font/lato"
         android:textStyle="bold"
-        tools:text="Login" />
+        android:text="Login" />
 
 </RelativeLayout>

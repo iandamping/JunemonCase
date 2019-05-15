@@ -10,6 +10,7 @@ import com.junemon.junemoncase.R
 import com.junemon.junemoncase.base.BasePresenter
 import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
+import com.junemon.junemoncase.model.OrderCasingModel
 import com.junemon.junemoncase.model.PhoneTypeModel
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.util.Constant
@@ -70,6 +71,30 @@ class OrderCasePresenter(
             tmpUserData.cityUser != null || tmpUserData.provinceUser != null || tmpUserData.addressUser != null -> mView.onGetUserData(
                     tmpUserData
             )
+        }
+    }
+
+    fun onUploadOrderCase(dataRef: DatabaseReference,casingData:AllCasingModel?,profileData:UserProfileModel?){
+        val orderedCase = OrderCasingModel()
+        setDialogShow(false)
+        with(orderedCase){
+            nameUser = profileData?.nameUser
+            addressUser = profileData?.addressUser
+            phoneNumberUser = profileData?.phoneNumberUser
+            provinceUser = profileData?.provinceUser
+            cityUser = profileData?.cityUser
+            casingType = casingData?.casingType
+            photoUrl = casingData?.photoUrl
+            donePayment = false
+        }
+        dataRef.push().setValue(orderedCase).addOnCompleteListener {
+            if (it.isSuccessful){
+                setDialogShow(true)
+                mView.onSuccessOrderCase()
+            }
+            if (it.isCanceled){
+                mView.onFailOrderCase()
+            }
         }
     }
 }

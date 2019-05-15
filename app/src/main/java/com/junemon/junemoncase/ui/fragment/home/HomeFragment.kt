@@ -78,7 +78,7 @@ class HomeFragment : Fragment(), HomeView {
                 currentPage = 0
             }
             actualView?.vpBestSeller?.setCurrentItem(currentPage++, true)
-            mHandler!!.postDelayed(this, delayMillis)
+            mHandler?.postDelayed(this, delayMillis)
         }
     }
 

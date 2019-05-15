@@ -142,7 +142,7 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
 
     override fun onGetTypeCasing(data: List<String>?) {
         allCategory = data as MutableList<String>
-        spinnerTypeCasing!!.onItemSelectedListener = this
+        spinnerTypeCasing.onItemSelectedListener = this
         arraySpinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, allCategory)
         arraySpinnerAdapter?.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerTypeCasing.adapter = arraySpinnerAdapter

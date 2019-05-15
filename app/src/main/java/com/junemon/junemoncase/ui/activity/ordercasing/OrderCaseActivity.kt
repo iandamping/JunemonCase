@@ -8,6 +8,7 @@ import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
@@ -27,6 +28,8 @@ Github = https://github.com/iandamping
  */
 class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
 
+    private lateinit var casingData:AllCasingModel
+    private lateinit var profileData:UserProfileModel
 
     private var arraySpinnerTypeCaseAdapter: ArrayAdapter<String>? = null
     private var arraySpinnerProvinceAdapter: ArrayAdapter<String>? = null
@@ -49,9 +52,15 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
 
     override fun initView() {
         etOrderCasingTypeHp.setText(intent?.getStringExtra(sendPhoneTypetoOrder))
+        btnOrderCasingCase.setOnClickListener {
+            presenter.onUploadOrderCase(JunemonApps.mAllOrderDatabaseReference,casingData,profileData)
+        }
     }
 
     override fun onGetDetailedData(data: AllCasingModel?) {
+        data?.let { nonNullData ->
+            this.casingData = nonNullData
+        }
         ivOrderCasing.loadUrl(data?.photoUrl)
         ivOrderCasing.setOnClickListener {
             val alert = Dialog(this, R.style.AppTheme)
@@ -85,6 +94,7 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     }
 
     override fun onGetUserData(data: UserProfileModel) {
+        this.profileData = data
         etOrderCasingName.setText(data.nameUser)
         etOrderCasingAddress.setText(data.addressUser)
         etOrderCasingKecamatan.setText(data.provinceUser)
@@ -102,4 +112,12 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     override fun onEditUserFirst() {
         alertHelperToEditProfile(getString(R.string.edit_profile_first))
     }
+    override fun onSuccessOrderCase() {
+        startActivity<MainActivity>()
+    }
+
+    override fun onFailOrderCase() {
+        alertHelper(resources.getString(R.string.error_happen))
+    }
+
 }
