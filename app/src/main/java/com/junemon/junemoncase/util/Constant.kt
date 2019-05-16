@@ -22,4 +22,6 @@ object Constant {
     const val saveUserData = "saveUserData"
     const val sendDetailToOrder = "sendDetail"
     const val sendPhoneTypetoOrder = "sendPhoneType"
+    const val succesWork = "success work in background"
+    const val failedWork = "failed work in background"
 }

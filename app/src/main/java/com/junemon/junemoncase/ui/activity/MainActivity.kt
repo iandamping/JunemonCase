@@ -7,6 +7,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.ui.activity.upload.UploadActivity
 import com.junemon.junemoncase.ui.fragment.home.HomeFragment
+import com.junemon.junemoncase.ui.fragment.orderbucketlist.BucketListFragment
 import com.junemon.junemoncase.ui.fragment.profile.ProfileFragment
 import com.junemon.junemoncase.util.Constant
 import com.junemon.junemoncase.util.fullScreenAnimation
@@ -47,9 +48,10 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
             }
 
             R.id.navigation_order -> {
-                startActivity<UploadActivity>().also {
-                    finish()
-                }
+                supportFragmentManager.switchFragment(null,BucketListFragment())
+//                startActivity<UploadActivity>().also {
+//                    finish()
+//                }
                 true
             }
 

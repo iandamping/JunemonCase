@@ -22,6 +22,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
     private lateinit var presenter: EditProfilePresenter
     private var autoTextProvinceAdapter: ArrayAdapter<String>? = null
     private var autoTextCityAdapter: ArrayAdapter<String>? = null
+    private var currentUserId: String? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
@@ -69,6 +70,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
     }
 
     override fun onGetUserData(data: UserProfileModel?) {
+        this.currentUserId = data?.userID
         etEditName.setText(data?.nameUser)
         etEditUserPhoneNumber.setText(data?.phoneNumberUser)
         etEditUserEmail.setText(data?.emailUser)
@@ -102,7 +104,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
                 tmpEmail.isNullOrBlank() -> etEditUserEmail.requestError(getString(R.string.not_null))
                 else -> {
                     userData =
-                            UserProfileModel(null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
+                            UserProfileModel(currentUserId,null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
                     presenter.updateUserData(userData)
                 }
             }

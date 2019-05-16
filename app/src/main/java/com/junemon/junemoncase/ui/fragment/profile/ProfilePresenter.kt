@@ -61,6 +61,7 @@ class ProfilePresenter(private val mView: ProfileView, private val userDataRefer
                 } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     if (it.currentUser != null) {
                         userData = UserProfileModel(
+                                it.currentUser?.uid,
                                 it.currentUser?.photoUrl.toString(),
                                 it.currentUser?.displayName,
                                 it.currentUser?.email,

@@ -74,10 +74,10 @@ class OrderCasePresenter(
         }
     }
 
-    fun onUploadOrderCase(dataRef: DatabaseReference,casingData:AllCasingModel?,profileData:UserProfileModel?){
+    fun onUploadOrderCase(dataRef: DatabaseReference, casingData: AllCasingModel?, profileData: UserProfileModel?) {
         val orderedCase = OrderCasingModel()
         setDialogShow(false)
-        with(orderedCase){
+        with(orderedCase) {
             nameUser = profileData?.nameUser
             addressUser = profileData?.addressUser
             phoneNumberUser = profileData?.phoneNumberUser
@@ -85,14 +85,14 @@ class OrderCasePresenter(
             cityUser = profileData?.cityUser
             casingType = casingData?.casingType
             photoUrl = casingData?.photoUrl
-            donePayment = false
+            userID = profileData?.userID
         }
         dataRef.push().setValue(orderedCase).addOnCompleteListener {
-            if (it.isSuccessful){
+            if (it.isSuccessful) {
                 setDialogShow(true)
                 mView.onSuccessOrderCase()
             }
-            if (it.isCanceled){
+            if (it.isCanceled) {
                 mView.onFailOrderCase()
             }
         }

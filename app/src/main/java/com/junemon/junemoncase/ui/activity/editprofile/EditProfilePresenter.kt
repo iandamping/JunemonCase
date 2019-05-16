@@ -22,7 +22,7 @@ Created by Ian Damping on 26/04/2019.
 Github = https://github.com/iandamping
  */
 class EditProfilePresenter(private val dataRef: DatabaseReference, private val mView: EditProfileView) :
-    BasePresenter() {
+        BasePresenter() {
     private var tmpMutableData: MutableMap<String, String> = mutableMapOf()
     private var currentUser: FirebaseUser? = null
     private lateinit var listener: FirebaseAuth.AuthStateListener
@@ -51,6 +51,7 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
     fun updateUserData(data: UserProfileModel) {
         setDialogShow(false)
         if (currentUserId != null) {
+            currentUserId?.let { nonNullUserID -> tmpMutableData.put("userID",nonNullUserID) }
             data.nameUser?.let { name -> tmpMutableData.put("nameUser", name) }
             data.emailUser?.let { email -> tmpMutableData.put("emailUser", email) }
             data.addressUser?.let { address -> tmpMutableData.put("addressUser", address) }
@@ -75,21 +76,22 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
                 if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     this.currentUserId = it.currentUser?.uid
                     mView.onGetUserData(
-                        gson.fromJson(
-                            prefHelper.getStringInSharedPreference(saveUserData),
-                            UserProfileModel::class.java
-                        )
+                            gson.fromJson(
+                                    prefHelper.getStringInSharedPreference(saveUserData),
+                                    UserProfileModel::class.java
+                            )
                     )
                 } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
                     if (it.currentUser != null) {
                         userData = UserProfileModel(
-                            it.currentUser?.photoUrl.toString(),
-                            it.currentUser?.displayName,
-                            it.currentUser?.email,
-                            it.currentUser?.phoneNumber,
-                            null,
-                            null,
-                            null
+                                it.currentUser?.uid,
+                                it.currentUser?.photoUrl.toString(),
+                                it.currentUser?.displayName,
+                                it.currentUser?.email,
+                                it.currentUser?.phoneNumber,
+                                null,
+                                null,
+                                null
                         )
                         this.currentUserId = it.currentUser?.uid
                         mView.onGetUserData(userData)
@@ -108,13 +110,13 @@ class EditProfilePresenter(private val dataRef: DatabaseReference, private val m
 
     private fun getAllProvinceAndCity() {
         setDialogShow(false)
-        compose.executes(api.getAllCityData().zipWith(api.getAllProvinceData()),{
+        compose.executes(api.getAllCityData().zipWith(api.getAllProvinceData()), {
             setDialogShow(true)
             mView.onFailGetRajaOngkirData(it.localizedMessage)
-        },{
+        }, {
             setDialogShow(true)
-            it?.first?.let { city ->  mView.onGetCityData(city.allData?.results)}
-            it?.second?.let { province -> mView.onGetProvinceData(province.allData?.results)}
+            it?.first?.let { city -> mView.onGetCityData(city.allData?.results) }
+            it?.second?.let { province -> mView.onGetProvinceData(province.allData?.results) }
 
         })
     }
