@@ -8,13 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
+import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
+import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
+import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.util.Constant
+import com.junemon.junemoncase.util.startActivity
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.layoutInflater
 
@@ -58,6 +62,16 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                                 null,
                                 null
                         )
+                        it.currentUser?.uid?.let { currentUserData ->
+                            userDatabaseReference.child(currentUserData).setValue(userData)
+                        }
+                        if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+                            prefHelper.saveStringInSharedPreference(Constant.saveUserData, gson.toJson(userData))
+                            lifecycleOwner.context?.startActivity<MainActivity>()
+                        } else if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+                            lifecycleOwner.context?.startActivity<MainActivity>()
+
+                        }
                         loggedIn(userData)
                     }
                 }
@@ -80,6 +94,11 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
 
     }
 
+    protected fun setUserLogout() {
+        lifecycleOwner.context?.let { AuthUI.getInstance().signOut(it) }
+        prefHelper.deleteSharedPreference()
+        lifecycleOwner.context?.startActivity<MainActivity>()
+    }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onViewDestroyed() {

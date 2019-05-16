@@ -35,11 +35,11 @@ class HomeFragment : Fragment(), HomeView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = HomePresenter(mAllImageDatabaseReference, this, this)
-        presenter.onAttach(context)
+        presenter = HomePresenter(mAllImageDatabaseReference).apply {
+            attachView(this@HomeFragment,this@HomeFragment)
+            onAttach()
+        }
         mHandler = Handler()
-
-
     }
 
     override fun onFailGetData(msg: String?) {

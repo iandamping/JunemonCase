@@ -31,13 +31,10 @@ class ProfileFragment : Fragment(), ProfileView {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        presenter = ProfilePresenter(this, userDatabaseReference)
-        presenter.onAttach(context)
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        presenter.onGetUserData()
+        presenter = ProfilePresenter().apply {
+            attachView(this@ProfileFragment,this@ProfileFragment)
+            onAttach()
+        }
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -56,7 +53,7 @@ class ProfileFragment : Fragment(), ProfileView {
         data?.cityUser?.let { actualView?.tvProfileCity?.text = it }
         data?.addressUser?.let { actualView?.tvProfileAddress?.text = it }
         actualView?.btnLogin?.setOnClickListener {
-            presenter.setUserLogout()
+            presenter.logOut()
         }
     }
 
@@ -70,7 +67,6 @@ class ProfileFragment : Fragment(), ProfileView {
             createSignInIntent()
         }
         actualView?.ivSettingProfile?.setOnClickListener {
-            //            presenter.setUserLogout()
             context?.startActivity<EditProfileActivity>()
         }
     }
@@ -87,13 +83,4 @@ class ProfileFragment : Fragment(), ProfileView {
         )
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        presenter.onPause()
-    }
 }

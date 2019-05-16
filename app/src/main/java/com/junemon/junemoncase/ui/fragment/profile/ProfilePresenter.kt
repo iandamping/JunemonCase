@@ -10,9 +10,12 @@ import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
 import com.junemon.junemoncase.base.BaseFragmentPresenter
+import com.junemon.junemoncase.base.MyCustomBaseFragmentPresenter
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
+import com.junemon.junemoncase.util.Constant
 import com.junemon.junemoncase.util.Constant.saveUserData
+import com.junemon.junemoncase.util.logE
 import com.junemon.junemoncase.util.startActivity
 
 /**
@@ -20,76 +23,25 @@ import com.junemon.junemoncase.util.startActivity
 Created by Ian Damping on 18/04/2019.
 Github = https://github.com/iandamping
  */
-class ProfilePresenter(private val mView: ProfileView, private val userDataReference: DatabaseReference) :
-        BaseFragmentPresenter() {
+class ProfilePresenter : MyCustomBaseFragmentPresenter<ProfileView>() {
     private var ctx: Context? = null
     private var currentUser: FirebaseUser? = null
-    private lateinit var listener: FirebaseAuth.AuthStateListener
-    private lateinit var userData: UserProfileModel
 
-    override fun onAttach(context: Context?) {
-        this.ctx = context
+    override fun onAttach() {
+        this.ctx = getLifeCycleOwner().context
         currentUser = mFirebaseAuth.currentUser
+        onGetUserData({
+            view()?.onSuccessGetData(it)
+        }) {
+            logE("null")
+        }
     }
 
     override fun onCreateView(view: View) {
-        mView.initView(view)
+        view()?.initView(view)
     }
 
-    fun onResume() {
-        if (listener != null) {
-            mFirebaseAuth.addAuthStateListener(listener)
-        }
-    }
-
-    fun onPause() {
-        if (listener != null) {
-            mFirebaseAuth.removeAuthStateListener(listener)
-        }
-    }
-
-    fun onGetUserData() {
-        listener = FirebaseAuth.AuthStateListener {
-            if (it != null) {
-                if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
-                    mView.onSuccessGetData(
-                            gson.fromJson(
-                                    prefHelper.getStringInSharedPreference(saveUserData),
-                                    UserProfileModel::class.java
-                            )
-                    )
-                } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
-                    if (it.currentUser != null) {
-                        userData = UserProfileModel(
-                                it.currentUser?.uid,
-                                it.currentUser?.photoUrl.toString(),
-                                it.currentUser?.displayName,
-                                it.currentUser?.email,
-                                it.currentUser?.phoneNumber,
-                                null,
-                                null,
-                                null
-
-                        )
-                        it.currentUser?.uid?.let { currentUserData ->
-                            userDataReference.child(currentUserData).setValue(userData)
-                        }
-                        if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
-                            prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(userData))
-                            ctx?.startActivity<MainActivity>()
-                        } else if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()){
-                            ctx?.startActivity<MainActivity>()
-
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    fun setUserLogout() {
-        ctx?.let { AuthUI.getInstance().signOut(it) }
-        prefHelper.deleteSharedPreference()
-        ctx?.startActivity<MainActivity>()
+    fun logOut() {
+        setUserLogout()
     }
 }
