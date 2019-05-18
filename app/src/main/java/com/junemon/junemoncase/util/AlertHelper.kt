@@ -3,6 +3,7 @@ package com.junemon.junemoncase.util
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import com.junemon.junemoncase.R
+import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
 import kotlinx.android.synthetic.main.custom_failed_dialog.view.*
 import org.jetbrains.anko.alert
@@ -31,8 +32,25 @@ fun FragmentActivity.alertHelperToEditProfile(tittle: String?) {
     dialogView.tvAlertMessage.text = tittle
     dialogBuilder.setPositiveButton("Oke") { dialog, _ ->
         dialog.dismiss()
-        this@alertHelperToEditProfile.startActivity<EditProfileActivity>()
-        finish()
+        startActivity<EditProfileActivity>()
+    }
+
+    dialogBuilder.setView(dialogView)
+    val alert = dialogBuilder.create()
+    alert.setCancelable(false)
+    alert.show()
+}
+
+fun FragmentActivity.alertHelperToLoginActivity(tittle: String?) {
+    val dialogBuilder = AlertDialog.Builder(this)
+    val inflater = this.layoutInflater
+    val dialogView = inflater.inflate(R.layout.custom_failed_dialog, null)
+    dialogView.tvAlertMessage.text = tittle
+    dialogBuilder.setPositiveButton("Oke") { dialog, _ ->
+        dialog.dismiss()
+        startActivity<MainActivity> {
+            putExtra(Constant.switchBackToMain, "4")
+        }
     }
 
     dialogBuilder.setView(dialogView)

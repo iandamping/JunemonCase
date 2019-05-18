@@ -1,10 +1,9 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -64,6 +63,10 @@ dependencies {
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
     implementation 'com.facebook.android:facebook-login:4.39.0'
+    //room
+    implementation 'androidx.room:room-runtime:2.1.0-beta01'
+    implementation 'androidx.room:room-rxjava2:2.1.0-beta01'
+    kapt 'androidx.room:room-compiler:2.1.0-beta01'
     //circleprofile
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     //shimmer

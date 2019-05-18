@@ -22,6 +22,7 @@
     <string name="nomer_hp">Nomer HP</string>
     <string name="email">Email</string>
     <string name="edit_profile_first">Lengkapi data diri dulu</string>
+    <string name="login_first">Login dulu</string>
     <string name="masukan_tipe_handphone">Masukan tipe Handphone</string>
     <string name="not_null">Tidak boleh kosong</string>
     <string name="belum_ready">Belum Ready</string>

@@ -7,9 +7,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
@@ -17,8 +19,7 @@ import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.Constant
-import com.junemon.junemoncase.util.startActivity
+import com.junemon.junemoncase.util.*
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.layoutInflater
 
@@ -46,35 +47,71 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
     fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
-                if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-                    this.userData = gson.fromJson(prefHelper.getStringInSharedPreference(Constant.saveUserData), UserProfileModel::class.java)
-                    loggedIn(userData)
-
-                } else if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-                    if (it.currentUser != null) {
-                        this.userData = UserProfileModel(
-                                it.currentUser?.uid,
-                                it.currentUser?.photoUrl.toString(),
-                                it.currentUser?.displayName,
-                                it.currentUser?.email,
-                                it.currentUser?.phoneNumber,
-                                null,
-                                null,
-                                null
-                        )
-                        it.currentUser?.uid?.let { currentUserData ->
-                            userDatabaseReference.child(currentUserData).setValue(userData)
-                        }
-                        if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-                            prefHelper.saveStringInSharedPreference(Constant.saveUserData, gson.toJson(userData))
-                            lifecycleOwner.context?.startActivity<MainActivity>()
-                        } else if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-                            lifecycleOwner.context?.startActivity<MainActivity>()
-
-                        }
-                        loggedIn(userData)
+                getLifeCycleOwner().customViewModelFactoriesHelper({GenericViewModelWithLiveData(DatabasesAccess?.userDao()?.loadAllLocalUserData())}){
+                    with(this){
+                        getGenericViewModelData()?.observe(lifecycleOwner.viewLifecycleOwner, Observer { localData ->
+                            if (localData!=null){
+                                if (localData.userID == it.currentUser!!.uid){
+                                    loggedIn(localData)
+                                }
+                            } else {
+                                    this@MyCustomBaseFragmentPresenter.userData = UserProfileModel(
+                                        null,
+                                        it.currentUser?.uid,
+                                        it.currentUser?.photoUrl.toString(),
+                                        it.currentUser?.displayName,
+                                        it.currentUser?.email,
+                                        it.currentUser?.phoneNumber,
+                                        null,
+                                        null,
+                                        null
+                                    )
+                                    it.currentUser?.uid?.let { currentUserData ->
+                                        userDatabaseReference.child(currentUserData).setValue(userData)
+                                    }
+                                    compose.asyncRxExecutor{
+                                        DatabasesAccess?.userDao()?.insertLocalUserData(userData)
+                                    }
+                                    lifecycleOwner.context?.startActivity<MainActivity>()
+                                    loggedIn(userData)
+                            }
+                        })
                     }
                 }
+//                if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+//                    this.userData = gson.fromJson(prefHelper.getStringInSharedPreference(Constant.saveUserData), UserProfileModel::class.java)
+//                    loggedIn(userData)
+//
+//                } else if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+//                    if (it.currentUser != null) {
+//                        this.userData = UserProfileModel(
+//                            null,
+//                                it.currentUser?.uid,
+//                                it.currentUser?.photoUrl.toString(),
+//                                it.currentUser?.displayName,
+//                                it.currentUser?.email,
+//                                it.currentUser?.phoneNumber,
+//                                null,
+//                                null,
+//                                null
+//                        )
+//                        it.currentUser?.uid?.let { currentUserData ->
+//                            userDatabaseReference.child(currentUserData).setValue(userData)
+//                        }
+//                        compose.asyncRxExecutor{
+//                            DatabasesAccess?.userDao()?.insertLocalUserData(userData)
+//                        }
+//                        lifecycleOwner.context?.startActivity<MainActivity>()
+////                        if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+////                            prefHelper.saveStringInSharedPreference(Constant.saveUserData, gson.toJson(userData))
+////                            lifecycleOwner.context?.startActivity<MainActivity>()
+////                        } else if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
+////                            lifecycleOwner.context?.startActivity<MainActivity>()
+////
+////                        }
+//                        loggedIn(userData)
+//                    }
+//                }
 
             } else notLoggedIn()
         }
@@ -96,7 +133,6 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
 
     protected fun setUserLogout() {
         lifecycleOwner.context?.let { AuthUI.getInstance().signOut(it) }
-        prefHelper.deleteSharedPreference()
         lifecycleOwner.context?.startActivity<MainActivity>()
     }
 

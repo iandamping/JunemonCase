@@ -1,17 +1,15 @@
 package com.junemon.junemoncase.ui.fragment.orderbucketlist.donepaymentlist
 
-import android.content.Context
 import android.view.View
-import com.junemon.junemoncase.base.BaseFragmentPresenter
+import com.junemon.junemoncase.base.MyCustomBaseFragmentPresenter
 
 /**
  *
 Created by Ian Damping on 16/05/2019.
 Github = https://github.com/iandamping
  */
-class DonePaymentPresenter : BaseFragmentPresenter() {
-
-    override fun onAttach(context: Context?) {
+class DonePaymentPresenter : MyCustomBaseFragmentPresenter<DonePaymentView>() {
+    override fun onAttach() {
     }
 
     override fun onCreateView(view: View) {

@@ -16,4 +16,5 @@ interface EditProfileView : BaseView {
     fun onSuccessEditProfile()
     fun onFailGetRajaOngkirData(msg: String?)
     fun onFailEditProfile(msg: String?)
+    fun onNotLoginYet()
 }

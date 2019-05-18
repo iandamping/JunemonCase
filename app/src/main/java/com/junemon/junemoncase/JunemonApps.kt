@@ -9,6 +9,7 @@ import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
 import com.junemon.junemoncase.api.ApiInterface
 import com.junemon.junemoncase.api.NetworkConfig
+import com.junemon.junemoncase.data.localdata.JunemonDatabase
 import com.junemon.junemoncase.util.Constant.nodeOrders
 import com.junemon.junemoncase.util.Constant.nodePhoneType
 import com.junemon.junemoncase.util.Constant.nodePhotos
@@ -33,6 +34,7 @@ class JunemonApps : Application() {
         lateinit var mFirebaseDatabase: FirebaseDatabase
         lateinit var mFirebaseStorage: FirebaseStorage
         lateinit var api: ApiInterface
+        var DatabasesAccess: JunemonDatabase? = null
     }
 
     override fun onCreate() {
@@ -48,5 +50,6 @@ class JunemonApps : Application() {
         phoneTypeDatabaseReference = mFirebaseDatabase.reference.child(nodePhoneType)
         storageDatabaseReference = mFirebaseStorage.getReferenceFromUrl("gs://junemon-case.appspot.com/")
         api = NetworkConfig.getRetrofit().create(ApiInterface::class.java)
+        DatabasesAccess = JunemonDatabase.getInstance(applicationContext)
     }
 }

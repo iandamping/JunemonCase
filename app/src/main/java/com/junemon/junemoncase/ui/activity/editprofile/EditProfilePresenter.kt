@@ -1,18 +1,16 @@
 package com.junemon.junemoncase.ui.activity.editprofile
 
-import android.content.Context
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
-import com.junemon.junemoncase.JunemonApps
+import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
 import com.junemon.junemoncase.JunemonApps.Companion.api
 import com.junemon.junemoncase.JunemonApps.Companion.gson
-import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
-import com.junemon.junemoncase.base.BasePresenter
+import com.junemon.junemoncase.base.MyCustomBasePresenter
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.util.Constant.saveUserData
+import com.junemon.junemoncase.util.asyncRxExecutor
 import com.junemon.junemoncase.util.executes
+import com.junemon.junemoncase.util.logE
 import com.junemon.junemoncase.util.zipWith
 
 
@@ -21,102 +19,62 @@ import com.junemon.junemoncase.util.zipWith
 Created by Ian Damping on 26/04/2019.
 Github = https://github.com/iandamping
  */
-class EditProfilePresenter(private val dataRef: DatabaseReference, private val mView: EditProfileView) :
-        BasePresenter() {
+class EditProfilePresenter(private val dataRef: DatabaseReference) : MyCustomBasePresenter<EditProfileView>() {
     private var tmpMutableData: MutableMap<String, String> = mutableMapOf()
-    private var currentUser: FirebaseUser? = null
-    private lateinit var listener: FirebaseAuth.AuthStateListener
-    private var userData: UserProfileModel? = null
     private var currentUserId: String? = null
-    override fun onCreate(context: Context) {
-        mView.initView()
-        setBaseDialog(context)
-        currentUser = mFirebaseAuth.currentUser
+    private var localCurrentUserID:Int? = null
+    private var localCurrentPhotoUser:String? = null
+    override fun onCreate() {
+        view()?.initView()
         getAllProvinceAndCity()
-        onGetUserData()
-    }
-
-    fun onResume() {
-        if (listener != null) {
-            JunemonApps.mFirebaseAuth.addAuthStateListener(listener)
-        }
-    }
-
-    fun onPause() {
-        if (listener != null) {
-            JunemonApps.mFirebaseAuth.removeAuthStateListener(listener)
+        onGetUserData({
+            this.currentUserId = it.userID
+            this.localCurrentUserID = it.local_user_id
+            this.localCurrentPhotoUser = it.photoUser
+            view()?.onGetUserData(it)
+        }) {
+           view()?.onNotLoginYet()
         }
     }
 
     fun updateUserData(data: UserProfileModel) {
         setDialogShow(false)
         if (currentUserId != null) {
-            currentUserId?.let { nonNullUserID -> tmpMutableData.put("userID",nonNullUserID) }
+            data.local_user_id = localCurrentUserID
+            data.photoUser = localCurrentPhotoUser
+            currentUserId?.let { nonNullUserID -> tmpMutableData.put("userID", nonNullUserID) }
             data.nameUser?.let { name -> tmpMutableData.put("nameUser", name) }
             data.emailUser?.let { email -> tmpMutableData.put("emailUser", email) }
             data.addressUser?.let { address -> tmpMutableData.put("addressUser", address) }
             data.cityUser?.let { city -> tmpMutableData.put("cityUser", city) }
+            data.phoneNumberUser?.let { number ->tmpMutableData.put("phoneNumberUser", number) }
             data.provinceUser?.let { province -> tmpMutableData.put("provinceUser", province) }
             dataRef.child(currentUserId!!).updateChildren(tmpMutableData as Map<String, String>).addOnCompleteListener {
                 if (it.isSuccessful) {
-                    prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(data))
+                    compose.asyncRxExecutor {
+                        DatabasesAccess?.userDao()?.updateLocalUserData(data)
+                    }
+//                    prefHelper.saveStringInSharedPreference(saveUserData, gson.toJson(data))
                     setDialogShow(true)
-                    mView.onSuccessEditProfile()
+                    view()?.onSuccessEditProfile()
                 }
             }.addOnFailureListener {
                 setDialogShow(true)
-                mView.onFailEditProfile(it.localizedMessage)
+                view()?.onFailEditProfile(it.localizedMessage)
             }
         }
     }
 
-    private fun onGetUserData() {
-        listener = FirebaseAuth.AuthStateListener {
-            if (it != null) {
-                if (!prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
-                    this.currentUserId = it.currentUser?.uid
-                    mView.onGetUserData(
-                            gson.fromJson(
-                                    prefHelper.getStringInSharedPreference(saveUserData),
-                                    UserProfileModel::class.java
-                            )
-                    )
-                } else if (prefHelper.getStringInSharedPreference(saveUserData).isNullOrBlank()) {
-                    if (it.currentUser != null) {
-                        userData = UserProfileModel(
-                                it.currentUser?.uid,
-                                it.currentUser?.photoUrl.toString(),
-                                it.currentUser?.displayName,
-                                it.currentUser?.email,
-                                it.currentUser?.phoneNumber,
-                                null,
-                                null,
-                                null
-                        )
-                        this.currentUserId = it.currentUser?.uid
-                        mView.onGetUserData(userData)
-                    }
-                }
-
-            }
-        }
-    }
-
-    fun onDestroy() {
-        if (compose != null && compose.isDisposed) {
-            compose.dispose()
-        }
-    }
 
     private fun getAllProvinceAndCity() {
         setDialogShow(false)
         compose.executes(api.getAllCityData().zipWith(api.getAllProvinceData()), {
             setDialogShow(true)
-            mView.onFailGetRajaOngkirData(it.localizedMessage)
+            view()?.onFailGetRajaOngkirData(it.localizedMessage)
         }, {
             setDialogShow(true)
-            it?.first?.let { city -> mView.onGetCityData(city.allData?.results) }
-            it?.second?.let { province -> mView.onGetProvinceData(province.allData?.results) }
+            it?.first?.let { city -> view()?.onGetCityData(city.allData?.results) }
+            it?.second?.let { province -> view()?.onGetProvinceData(province.allData?.results) }
 
         })
     }

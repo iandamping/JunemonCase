@@ -27,8 +27,10 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
         setContentView(R.layout.activity_edit_profile)
-        presenter = EditProfilePresenter(userDatabaseReference, this)
-        presenter.onCreate(this)
+        presenter = EditProfilePresenter(userDatabaseReference).apply {
+            attachView(this@EditProfileActivity,this@EditProfileActivity)
+            onCreate()
+        }
     }
 
     override fun onGetProvinceData(data: List<GeneralProvinceModel>?) {
@@ -87,6 +89,11 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         logE(msg)
     }
 
+    override fun onNotLoginYet() {
+        alertHelperToLoginActivity(resources.getString(R.string.login_first))
+    }
+
+
     override fun initView() {
         btnSaveEditUser.setOnClickListener {
             val tmpName = etEditName.text.toString().trim()
@@ -104,25 +111,11 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
                 tmpEmail.isNullOrBlank() -> etEditUserEmail.requestError(getString(R.string.not_null))
                 else -> {
                     userData =
-                            UserProfileModel(currentUserId,null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
+                            UserProfileModel(null,currentUserId,null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
                     presenter.updateUserData(userData)
                 }
             }
         }
     }
 
-    override fun onResume() {
-        super.onResume()
-        presenter.onResume()
-    }
-
-    override fun onPause() {
-        super.onPause()
-        presenter.onPause()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter.onDestroy()
-    }
 }
