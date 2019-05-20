@@ -10,10 +10,8 @@ import com.firebase.ui.auth.AuthUI
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
+import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.RequestSignIn
-import com.junemon.junemoncase.util.inflates
-import com.junemon.junemoncase.util.loadUrl
-import com.junemon.junemoncase.util.startActivity
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
 /**
@@ -43,21 +41,61 @@ class ProfileFragment : Fragment(), ProfileView {
     }
 
     override fun onSuccessGetData(data: UserProfileModel?) {
-        actualView?.ivPhotoProfile?.loadUrl(data?.photoUser)
-        actualView?.tvProfileName?.text = data?.nameUser
-        actualView?.tvEmailUser?.text = data?.emailUser
-        actualView?.tvProfilePhoneNumber?.text = data?.phoneNumberUser
-        actualView?.btnLogin?.text = "logout"
-        data?.provinceUser?.let { actualView?.tvProfileProvince?.text = it }
-        data?.cityUser?.let { actualView?.tvProfileCity?.text = it }
-        data?.addressUser?.let { actualView?.tvProfileAddress?.text = it }
+        data?.let {
+            actualView?.ivPhotoProfile?.loadUrl(it.photoUser)
+            actualView?.tvProfileName?.text = it.nameUser
+            actualView?.tvEmailUser?.text = it.emailUser
+            actualView?.lnProfileAddress?.visible()
+            actualView?.tvProfileAddress?.text = it.addressUser
+            actualView?.lnProfileProvince?.visible()
+            actualView?.tvProfileProvince?.text = it.provinceUser
+            actualView?.lnProfileCity?.visible()
+            actualView?.tvProfileCity?.text = it.cityUser
+            actualView?.lnProfileEmail?.visible()
+            actualView?.tvEmailUser?.text = it.emailUser
+            actualView?.lnProfilePhoneNumber?.visible()
+            actualView?.tvProfilePhoneNumber?.text = it.phoneNumberUser
+            actualView?.btnProfileEditUser?.setOnClickListener {
+                context?.startActivity<EditProfileActivity>()
+            }
+//            when {
+//                it.photoUser != null ->
+//                it.nameUser != null ->
+//                it.emailUser != null ->
+//                it.addressUser != null -> {
+//
+//                }
+//                it.provinceUser != null -> {
+//
+//                }
+//                it.cityUser != null -> {
+//
+//                }
+//                it.emailUser != null -> {
+//
+//                }
+//                it.phoneNumberUser != null -> {
+//
+//                }
+//                else -> logE("dunno")
+//            }
+        }
+
+
+        actualView?.btnLogin?.text = context?.getString(R.string.logout)
         actualView?.btnLogin?.setOnClickListener {
             presenter.logOut()
         }
     }
 
     override fun onFailedGetData() {
-
+        actualView?.tvProfileName?.gone()
+        actualView?.btnProfileEditUser?.gone()
+        actualView?.lnProfileAddress?.gone()
+        actualView?.lnProfileProvince?.gone()
+        actualView?.lnProfileCity?.gone()
+        actualView?.lnProfileEmail?.gone()
+        actualView?.lnProfilePhoneNumber?.gone()
     }
 
     override fun initView(view: View) {
@@ -66,7 +104,7 @@ class ProfileFragment : Fragment(), ProfileView {
             createSignInIntent()
         }
         actualView?.ivSettingProfile?.setOnClickListener {
-            context?.startActivity<EditProfileActivity>()
+
         }
     }
 

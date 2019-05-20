@@ -43,81 +43,167 @@
         android:textStyle="bold"
         tools:text="@string/user_name" />
 
-    <TextView
-        android:id="@+id/tvProfileAddress"
+    <Button
+        android:id="@+id/btnProfileEditUser"
+        android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvProfileName"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="18dp"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:text="@string/user_address" />
+        android:background="@drawable/button_edit_profile"
+        android:padding="@dimen/spacing_medium"
+        android:text="Ubah Profil" />
 
-    <TextView
-        android:id="@+id/tvProfileProvince"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/lnProfileAddress"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvProfileAddress"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@id/btnProfileEditUser"
         android:layout_marginTop="18dp"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:text="@string/user_province" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvProfileCity"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_location_on_black" />
+
+        <TextView
+            android:id="@+id/tvProfileAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            tools:text="@string/user_address" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnProfileProvince"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvProfileProvince"
-        android:layout_centerHorizontal="true"
-        android:layout_gravity="center_horizontal"
+        android:layout_below="@+id/lnProfileAddress"
         android:layout_marginTop="18dp"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:text="@string/user_city" />
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/tvEmailUser"
-        android:layout_width="wrap_content"
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_home_black" />
+
+        <TextView
+            android:id="@+id/tvProfileProvince"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            tools:text="@string/user_province" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnProfileCity"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvProfileCity"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lnProfileProvince"
         android:layout_marginTop="18dp"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:text="@string/email" />
+        android:orientation="horizontal">
 
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_location_city_black" />
 
-    <TextView
-        android:id="@+id/tvProfilePhoneNumber"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tvProfileCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            tools:text="@string/user_city" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnProfileEmail"
+        android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvEmailUser"
-        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lnProfileCity"
         android:layout_marginTop="18dp"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/black"
-        android:textStyle="normal"
-        tools:text="@string/nomer_hp" />
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_email_black" />
+
+
+        <TextView
+            android:id="@+id/tvEmailUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            tools:text="@string/email" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/lnProfilePhoneNumber"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnProfileEmail"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="12dp"
+            android:src="@drawable/ic_contact_phone_black" />
+
+        <TextView
+            android:id="@+id/tvProfilePhoneNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/black"
+            android:textStyle="normal"
+            tools:text="@string/nomer_hp" />
+
+    </LinearLayout>
 
 
     <Button
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tvProfilePhoneNumber"
+        android:layout_below="@+id/lnProfilePhoneNumber"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:background="@color/fui_transparent"
         android:fontFamily="@font/lato"
-        android:textStyle="bold"
-        android:text="Login" />
+        android:text="Login"
+        android:textStyle="bold" />
 
 </RelativeLayout>

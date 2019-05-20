@@ -18,7 +18,7 @@ class ProfilePresenter : MyCustomBaseFragmentPresenter<ProfileView>() {
         onGetUserData({
             view()?.onSuccessGetData(it)
         }) {
-            logE("null")
+            view()?.onFailedGetData()
         }
     }
 

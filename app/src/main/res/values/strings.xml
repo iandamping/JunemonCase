@@ -26,6 +26,8 @@
     <string name="user_name">User Name</string>
     <string name="nomer_hp">Nomer HP</string>
     <string name="email">Email</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
     <string name="edit_profile_first">Lengkapi data diri dulu</string>
     <string name="login_first">Login dulu</string>
     <string name="masukan_tipe_handphone">Masukan tipe Handphone</string>
