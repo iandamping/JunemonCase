@@ -77,15 +77,15 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
         }
         tvDetailJenisCase.text = data?.casingType
         when {
-            data?.casingType?.equals("Hardcase")!! -> tvDetailPenjelasanCase.text =
+            data?.casingType?.equals(getString(R.string.hardcase))!! -> tvDetailPenjelasanCase.text =
                     getString(R.string.spesifikasi_hardcase)
-            data.casingType?.equals("Softcase")!! -> tvDetailPenjelasanCase.text =
+            data.casingType?.equals(getString(R.string.softcase))!! -> tvDetailPenjelasanCase.text =
                     getString(R.string.spesifikasi_softcase)
-            data.casingType?.equals("Softcrack")!! -> tvDetailPenjelasanCase.text =
+            data.casingType?.equals(getString(R.string.softcrack))!! -> tvDetailPenjelasanCase.text =
                     getString(R.string.spesifikasi_softcrack)
-            data.casingType?.equals("Premium")!! -> tvDetailPenjelasanCase.text =
+            data.casingType?.equals(getString(R.string.premium))!! -> tvDetailPenjelasanCase.text =
                     getString(R.string.spesifikasi_premium)
-            data.casingType?.equals("Premium Soft")!! -> tvDetailPenjelasanCase.text =
+            data.casingType?.equals(getString(R.string.premium_soft))!! -> tvDetailPenjelasanCase.text =
                     getString(R.string.spesifikasi_premium_soft)
         }
         this.dataPassing = data
@@ -130,7 +130,7 @@ class DetailActivity : AppCompatActivity(), DetailActivityView {
     private fun setupToolbar() {
         DetailCasingToolbar.setTitleTextColor(resources.getColor(R.color.black))
         DetailCasingToolbar.setSubtitleTextColor(resources.getColor(R.color.black))
-        DetailCasingToolbar.title = "Junemon Case"
+        DetailCasingToolbar.title = getString(R.string.app_name)
         setSupportActionBar(DetailCasingToolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }

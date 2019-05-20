@@ -43,7 +43,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         etEditProvince.setAdapter(autoTextProvinceAdapter)
         etEditProvince.threshold = 1
         selectorEditProvince.setOnClickListener {
-            selector("Pilih Kabupaten", tmpProvinceData) { _, i ->
+            selector(getString(R.string.pilih_kabupaten), tmpProvinceData) { _, i ->
                 etEditProvince.setText(tmpProvinceData[i])
             }
         }
@@ -65,7 +65,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         etEditCity.setAdapter(autoTextCityAdapter)
         etEditCity.threshold = 1
         selectorEditCity.setOnClickListener {
-            selector("Pilih Kota", tmpCityData) { _, i ->
+            selector(getString(R.string.pilih_kota), tmpCityData) { _, i ->
                 etEditCity.setText(tmpCityData[i])
             }
         }

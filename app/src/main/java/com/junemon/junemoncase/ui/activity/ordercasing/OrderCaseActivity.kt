@@ -109,9 +109,7 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     }
 
     override fun onLoginFirst() {
-        startActivity<MainActivity> {
-            putExtra(switchBackToMain, "4")
-        }
+        alertHelperToLoginActivity(resources.getString(R.string.login_first))
     }
 
     override fun onEditUserFirst() {

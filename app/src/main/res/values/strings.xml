@@ -9,9 +9,14 @@
     <string name="best_seller">Best Seller</string>
     <string name="hardcase">Hardcase</string>
     <string name="softcase">Softcase</string>
+    <string name="softcrack">Softcrack</string>
+    <string name="premium">Premium</string>
+    <string name="premium_soft">Premium Soft</string>
     <string name="airbag">Airbag</string>
     <string name="regular">Regular</string>
     <string name="lihat_semua">Lihat Semua</string>
+    <string name="pilih_kabupaten">Pilih Kabupaten</string>
+    <string name="pilih_kota">Pilih Kota</string>
     <string name="pilih_tipe_case">Pilih tipe case dulu</string>
     <string name="pilih_tipe_bes_seller">Pilih tipe best seller dulu</string>
     <string name="pilih_gambar_dulu">PILIH GAMBAR DULU</string>
