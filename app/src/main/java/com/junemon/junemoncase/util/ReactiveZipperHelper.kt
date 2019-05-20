@@ -19,36 +19,36 @@ Github = https://github.com/iandamping
 
 /*Cannot accept and return null values, so make sure all source data give values !*/
 inline fun <reified T1, reified T2, reified T3> obsWithTripleZip(
-    source1: ObservableSource<T1>?,
-    source2: ObservableSource<T2>?,
-    source3: ObservableSource<T3>?
+        source1: ObservableSource<T1>?,
+        source2: ObservableSource<T2>?,
+        source3: ObservableSource<T3>?
 ): Observable<Triple<T1?, T2?, T3?>>? =
-    Observable.zip(source1, source2, source3, Function3<T1, T2, T3, Triple<T1, T2, T3>> { t1, t2, t3 ->
-        Triple(t1, t2, t3)
-    })
+        Observable.zip(source1, source2, source3, Function3<T1, T2, T3, Triple<T1, T2, T3>> { t1, t2, t3 ->
+            Triple(t1, t2, t3)
+        })
 
 /*Cannot accept and return null values, so make sure all source data give values !*/
 inline fun <reified T1, reified T2, reified T3> singleWithTripleZip(
-    source1: SingleSource<T1>?,
-    source2: SingleSource<T2>?,
-    source3: SingleSource<T3>?
+        source1: SingleSource<T1>?,
+        source2: SingleSource<T2>?,
+        source3: SingleSource<T3>?
 ): Single<Triple<T1?, T2?, T3?>> =
-    Single.zip(source1, source2, source3, Function3<T1, T2, T3, Triple<T1, T2, T3>> { t1, t2, t3 ->
-        Triple(t1, t2, t3)
-    })
+        Single.zip(source1, source2, source3, Function3<T1, T2, T3, Triple<T1, T2, T3>> { t1, t2, t3 ->
+            Triple(t1, t2, t3)
+        })
 
 /*Cannot accept and return null values, so make sure both source give values !*/
 inline fun <reified T, reified U> obsWithSecondZip(
-    sources1: ObservableSource<T>?,
-    sources2: ObservableSource<U>?
+        sources1: ObservableSource<T>?,
+        sources2: ObservableSource<U>?
 ): Observable<Pair<T?, U?>> =
-    Observable.zip(sources1, sources2, BiFunction { t1, t2 -> Pair(t1, t2) })
+        Observable.zip(sources1, sources2, BiFunction { t1, t2 -> Pair(t1, t2) })
 
 /*Observerable executes helper*/
 inline fun <reified T> CompositeDisposable.executes(
-    obs: Observable<T>,
-    crossinline onFailed: (Throwable) -> Unit,
-    crossinline onSuccess: (T?) -> Unit
+        obs: Observable<T>,
+        crossinline onFailed: (Throwable) -> Unit,
+        crossinline onSuccess: (T?) -> Unit
 ) {
     this.add(obs.observeOn(AndroidSchedulers.mainThread()).subscribe({
         onSuccess(it)

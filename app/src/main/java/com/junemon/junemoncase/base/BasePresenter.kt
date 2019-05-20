@@ -14,7 +14,7 @@ Github = https://github.com/iandamping
  */
 abstract class BasePresenter : BasePresenterHelper {
     private lateinit var alert: AlertDialog
-    protected val compose:CompositeDisposable = CompositeDisposable()
+    protected val compose: CompositeDisposable = CompositeDisposable()
     protected fun setBaseDialog(ctx: Context) {
         val dialogBuilder = AlertDialog.Builder(ctx)
         val inflater = ctx.layoutInflater

@@ -71,55 +71,70 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
-                    android:id="@+id/etDetailCheckCase"
+                <LinearLayout
+                    android:id="@+id/lnDetailCaseStat"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:background="@drawable/edittext_bg"
-                    android:fontFamily="@font/lato"
-                    android:hint="iPhone 6 plus atau 6S plus"
-                    android:padding="@dimen/spacing_medium"
-                    android:paddingStart="12dp"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-                <ImageView
-                    android:id="@+id/btnDetailCheckCase"
-                    android:layout_width="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDetailPhoneNotReady"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        android:text="@string/maaf_tipe_hp_ini_belum_tersedia"
+                        android:textColor="@android:color/holo_red_dark"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvDetailPhoneReady"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="@dimen/spacing_medium"
+                        android:fontFamily="@font/lato"
+                        android:gravity="center"
+                        android:text="@string/casing_ready_stock"
+                        android:textColor="@color/colorComment"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/lnDetailCaseStat"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:paddingEnd="12dp"
-                    android:src="@drawable/ic_search_gray" />
+                    android:orientation="horizontal">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etDetailCheckCase"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:background="@drawable/edittext_bg"
+                        android:fontFamily="@font/lato"
+                        android:hint="iPhone 6 plus atau 6S plus"
+                        android:padding="@dimen/spacing_medium"
+                        android:paddingStart="12dp"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/btnDetailCheckCase"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="24dp"
+                        android:paddingEnd="12dp"
+                        android:src="@drawable/ic_search_gray" />
+                </RelativeLayout>
+
             </RelativeLayout>
 
-
-
-            <TextView
-                android:id="@+id/tvDetailPhoneNotReady"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_medium"
-                android:fontFamily="@font/lato"
-                android:gravity="center"
-                android:text="@string/maaf_tipe_hp_ini_belum_tersedia"
-                android:textColor="@android:color/holo_red_dark"
-                android:visibility="gone" />
-
-            <TextView
-                android:id="@+id/tvDetailPhoneReady"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/spacing_medium"
-                android:fontFamily="@font/lato"
-                android:gravity="center"
-                android:text="@string/casing_ready_stock"
-                android:textColor="@color/colorComment"
-                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/btnDetailOrder"

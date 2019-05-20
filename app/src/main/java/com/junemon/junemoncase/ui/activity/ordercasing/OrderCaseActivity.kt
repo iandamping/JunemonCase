@@ -27,9 +27,10 @@ Created by Ian Damping on 24/04/2019.
 Github = https://github.com/iandamping
  */
 class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
-
-    private lateinit var casingData:AllCasingModel
-    private lateinit var profileData:UserProfileModel
+    private var phoneType: String? = null
+    private var casingType: String? = null
+    private lateinit var casingData: AllCasingModel
+    private lateinit var profileData: UserProfileModel
 
     private var arraySpinnerTypeCaseAdapter: ArrayAdapter<String>? = null
     private var arraySpinnerProvinceAdapter: ArrayAdapter<String>? = null
@@ -39,8 +40,10 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
         super.onCreate(savedInstanceState)
         fullScreenAnimation()
         setContentView(R.layout.activity_order)
-        presenter = OrderCasePresenter(phoneTypeDatabaseReference, this, this)
-        presenter.onCreate(this)
+        presenter = OrderCasePresenter(phoneTypeDatabaseReference).apply {
+            attachView(this@OrderCaseActivity, this@OrderCaseActivity)
+            onCreate()
+        }
         onNewIntent(intent)
     }
 
@@ -53,7 +56,8 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     override fun initView() {
         etOrderCasingTypeHp.setText(intent?.getStringExtra(sendPhoneTypetoOrder))
         btnOrderCasingCase.setOnClickListener {
-            presenter.onUploadOrderCase(JunemonApps.mAllOrderDatabaseReference,casingData,profileData)
+            phoneType = etOrderCasingTypeHp.text.toString().trim()
+            presenter.onUploadOrderCase(JunemonApps.mAllOrderDatabaseReference, casingData, profileData, phoneType)
         }
     }
 
@@ -84,6 +88,7 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                casingData.casingType = data?.get(position)
             }
 
         }
@@ -112,6 +117,7 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     override fun onEditUserFirst() {
         alertHelperToEditProfile(getString(R.string.edit_profile_first))
     }
+
     override fun onSuccessOrderCase() {
         startActivity<MainActivity>()
     }

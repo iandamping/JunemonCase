@@ -11,7 +11,7 @@ import com.junemon.junemoncase.model.UserProfileModel
 Created by Ian Damping on 17/05/2019.
 Github = https://github.com/iandamping
  */
-@Database(entities = [UserProfileModel::class], version = 1,exportSchema = false)
+@Database(entities = [UserProfileModel::class], version = 1, exportSchema = false)
 abstract class JunemonDatabase : RoomDatabase() {
     companion object {
         @Volatile
@@ -21,13 +21,14 @@ abstract class JunemonDatabase : RoomDatabase() {
             if (Instace == null) {
                 synchronized(JunemonDatabase::class) {
                     Instace = Room.databaseBuilder(
-                        context.applicationContext,
-                        JunemonDatabase::class.java, "JunemonCaseLocalData"
+                            context.applicationContext,
+                            JunemonDatabase::class.java, "JunemonCaseLocalData"
                     ).build()
                 }
             }
             return Instace
         }
     }
+
     abstract fun userDao(): JunemonDao
 }

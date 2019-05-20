@@ -2,9 +2,7 @@ package com.junemon.junemoncase.api
 
 import com.junemon.junemoncase.model.GeneralProvinceModel
 import com.junemon.junemoncase.model.GeneralResponseModel
-import io.reactivex.Observable
 import io.reactivex.Single
-import retrofit2.Call
 import retrofit2.http.GET
 
 /**

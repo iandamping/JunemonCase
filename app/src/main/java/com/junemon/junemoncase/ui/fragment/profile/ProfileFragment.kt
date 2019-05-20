@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
-import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
@@ -32,7 +31,7 @@ class ProfileFragment : Fragment(), ProfileView {
     override fun onAttach(context: Context) {
         super.onAttach(context)
         presenter = ProfilePresenter().apply {
-            attachView(this@ProfileFragment,this@ProfileFragment)
+            attachView(this@ProfileFragment, this@ProfileFragment)
             onAttach()
         }
     }

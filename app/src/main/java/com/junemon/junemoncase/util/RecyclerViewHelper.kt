@@ -34,6 +34,25 @@ fun <T> RecyclerView.setUpHorizontal(
     }
 }
 
+fun <T> RecyclerView.setUpVertical(
+        items: List<T>,
+        layoutResId: Int,
+        bindHolder: View.(T) -> Unit,
+        itemClick: T.() -> Unit = {},
+        manager: RecyclerView.LayoutManager = LinearLayoutManager(this.context)
+): KotlinAdapter<T> {
+    val snapHelper = RecyclerHorizontalSnapHelper()
+    if (this.onFlingListener == null) {
+        snapHelper.attachToRecyclerView(this)
+    }
+    return KotlinAdapter(items, layoutResId, { bindHolder(it) }, {
+        itemClick()
+    }).apply {
+        layoutManager = manager
+        adapter = this
+    }
+}
+
 fun <T> RecyclerView.setUpWithGrid(
         items: List<T>, layoutResId: Int, gridSize: Int, bindHolder: View.(T) -> Unit, itemClick: T.() -> Unit = {},
         manager: RecyclerView.LayoutManager = GridLayoutManager(this.context, gridSize)

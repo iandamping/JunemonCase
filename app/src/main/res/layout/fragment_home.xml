@@ -99,11 +99,11 @@
                             android:layout_gravity="center"
                             android:orientation="vertical">
 
-                            <include layout="@layout/recycler_shimmer_bg" />
+                            <include layout="@layout/shimmer_recycler_bg" />
 
-                            <include layout="@layout/recycler_shimmer_bg" />
+                            <include layout="@layout/shimmer_recycler_bg" />
 
-                            <include layout="@layout/recycler_shimmer_bg" />
+                            <include layout="@layout/shimmer_recycler_bg" />
 
                         </LinearLayout>
 

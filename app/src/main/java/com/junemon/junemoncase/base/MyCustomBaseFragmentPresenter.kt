@@ -12,14 +12,15 @@ import androidx.lifecycle.OnLifecycleEvent
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
-import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
-import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
 import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.GenericViewModelWithLiveData
+import com.junemon.junemoncase.util.asyncRxExecutor
+import com.junemon.junemoncase.util.customViewModelFactoriesHelper
+import com.junemon.junemoncase.util.startActivity
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.layoutInflater
 
@@ -47,37 +48,67 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
     fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
-                getLifeCycleOwner().customViewModelFactoriesHelper({GenericViewModelWithLiveData(DatabasesAccess?.userDao()?.loadAllLocalUserData())}){
-                    with(this){
-                        getGenericViewModelData()?.observe(lifecycleOwner.viewLifecycleOwner, Observer { localData ->
-                            if (localData!=null){
-                                if (localData.userID == it.currentUser!!.uid){
-                                    loggedIn(localData)
-                                }
-                            } else {
-                                    this@MyCustomBaseFragmentPresenter.userData = UserProfileModel(
-                                        null,
-                                        it.currentUser?.uid,
-                                        it.currentUser?.photoUrl.toString(),
-                                        it.currentUser?.displayName,
-                                        it.currentUser?.email,
-                                        it.currentUser?.phoneNumber,
-                                        null,
-                                        null,
-                                        null
-                                    )
-                                    it.currentUser?.uid?.let { currentUserData ->
-                                        userDatabaseReference.child(currentUserData).setValue(userData)
-                                    }
-                                    compose.asyncRxExecutor{
-                                        DatabasesAccess?.userDao()?.insertLocalUserData(userData)
-                                    }
-                                    lifecycleOwner.context?.startActivity<MainActivity>()
-                                    loggedIn(userData)
+                //Room way
+                getLifeCycleOwner().customViewModelFactoriesHelper({ GenericViewModelWithLiveData(DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
+                    getGenericViewModelData()?.observe(lifecycleOwner.viewLifecycleOwner, Observer { localData ->
+                        if (localData != null) {
+                            if (localData.userID == it.currentUser!!.uid) {
+                                loggedIn(localData)
                             }
-                        })
-                    }
+                        } else {
+                            this@MyCustomBaseFragmentPresenter.userData = UserProfileModel(
+                                    null,
+                                    it.currentUser?.uid,
+                                    it.currentUser?.photoUrl.toString(),
+                                    it.currentUser?.displayName,
+                                    it.currentUser?.email,
+                                    it.currentUser?.phoneNumber,
+                                    null,
+                                    null,
+                                    null
+                            )
+                            it.currentUser?.uid?.let { currentUserData ->
+                                userDatabaseReference.child(currentUserData).setValue(userData)
+                            }
+                            compose.asyncRxExecutor {
+                                DatabasesAccess?.userDao()?.insertLocalUserData(userData)
+                            }
+                            loggedIn(userData)
+                            lifecycleOwner.context?.startActivity<MainActivity>()
+                        }
+                    })
                 }
+
+                //Firebase Way
+//                getLifeCycleOwner().getAllDataFromFirebase<UserProfileModel>(userDatabaseReference)
+//                getLifeCycleOwner().withViewModel<GenericViewModel<UserProfileModel>> {
+//                    getGenericData().observe(getLifeCycleOwner().viewLifecycleOwner, Observer { firebaseData ->
+//                        if (firebaseData!=null){
+//                            if (firebaseData.userID == it.currentUser!!.uid) {
+//                                loggedIn(firebaseData)
+//                            }
+//                            else {
+//                                this@MyCustomBaseFragmentPresenter.userData = UserProfileModel(
+//                                        null,
+//                                        it.currentUser?.uid,
+//                                        it.currentUser?.photoUrl.toString(),
+//                                        it.currentUser?.displayName,
+//                                        it.currentUser?.email,
+//                                        it.currentUser?.phoneNumber,
+//                                        null,
+//                                        null,
+//                                        null
+//                                )
+//                                userDatabaseReference.push().setValue(userData)
+//                                lifecycleOwner.context?.startActivity<MainActivity>()
+//                                loggedIn(userData)
+//                            }
+//                        }
+//                    })
+//                }
+
+
+                //Shared Pref way
 //                if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
 //                    this.userData = gson.fromJson(prefHelper.getStringInSharedPreference(Constant.saveUserData), UserProfileModel::class.java)
 //                    loggedIn(userData)
@@ -145,16 +176,12 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private fun onResume() {
-        if (listener != null) {
-            mFirebaseAuth.addAuthStateListener(listener!!)
-        }
+        listener?.let { mFirebaseAuth.addAuthStateListener(it) }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     private fun onPause() {
-        if (listener != null) {
-            mFirebaseAuth.removeAuthStateListener(listener!!)
-        }
+        listener?.let { mFirebaseAuth.removeAuthStateListener(it) }
     }
 
     protected fun getLifeCycleOwner(): Fragment {

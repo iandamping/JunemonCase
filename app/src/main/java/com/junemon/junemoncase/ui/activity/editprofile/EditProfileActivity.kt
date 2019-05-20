@@ -28,7 +28,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         fullScreenAnimation()
         setContentView(R.layout.activity_edit_profile)
         presenter = EditProfilePresenter(userDatabaseReference).apply {
-            attachView(this@EditProfileActivity,this@EditProfileActivity)
+            attachView(this@EditProfileActivity, this@EditProfileActivity)
             onCreate()
         }
     }
@@ -48,6 +48,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
             }
         }
     }
+
     override fun onSuccessEditProfile() {
         startActivity<MainActivity> {
             putExtra(Constant.switchBackToMain, "1")
@@ -77,7 +78,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
         etEditUserPhoneNumber.setText(data?.phoneNumberUser)
         etEditUserEmail.setText(data?.emailUser)
         etEditUserAddress.setText(data?.addressUser)
-        etEditCity.setText( data?.cityUser)
+        etEditCity.setText(data?.cityUser)
         etEditProvince.setText(data?.provinceUser)
 
     }
@@ -111,7 +112,7 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
                 tmpEmail.isNullOrBlank() -> etEditUserEmail.requestError(getString(R.string.not_null))
                 else -> {
                     userData =
-                            UserProfileModel(null,currentUserId,null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
+                            UserProfileModel(null, currentUserId, null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
                     presenter.updateUserData(userData)
                 }
             }

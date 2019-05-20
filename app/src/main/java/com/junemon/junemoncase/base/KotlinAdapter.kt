@@ -7,7 +7,7 @@ import android.view.View
 Created by Ian Damping on 15/04/2019.
 Github = https://github.com/iandamping
  */
-class KotlinAdapter<T>(data: List<T>, layout: Int, private val bindHolder: View.(T) -> Unit, private val itemClicks:T.() -> Unit) :
+class KotlinAdapter<T>(data: List<T>, layout: Int, private val bindHolder: View.(T) -> Unit, private val itemClicks: T.() -> Unit) :
         AbstractAdapter<T>(data, layout) {
 //    private var itemClick: T.() -> Unit = {}
 
@@ -18,7 +18,6 @@ class KotlinAdapter<T>(data: List<T>, layout: Int, private val bindHolder: View.
 //    ) {
 //        this.itemClick = itemClick
 //    }
-
 
 
     override fun onBindViewHolder(holder: AbstractHolder, position: Int) {

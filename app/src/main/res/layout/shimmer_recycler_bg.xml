@@ -31,13 +31,13 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <include layout="@layout/item_shimmer_bg" />
+            <include layout="@layout/shimmer_item_bg" />
 
-            <include layout="@layout/item_shimmer_bg" />
+            <include layout="@layout/shimmer_item_bg" />
 
-            <include layout="@layout/item_shimmer_bg" />
+            <include layout="@layout/shimmer_item_bg" />
 
-            <include layout="@layout/item_shimmer_bg" />
+            <include layout="@layout/shimmer_item_bg" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -3,14 +3,10 @@ package com.junemon.junemoncase.ui.activity.editprofile
 import com.google.firebase.database.DatabaseReference
 import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
 import com.junemon.junemoncase.JunemonApps.Companion.api
-import com.junemon.junemoncase.JunemonApps.Companion.gson
-import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
 import com.junemon.junemoncase.base.MyCustomBasePresenter
 import com.junemon.junemoncase.model.UserProfileModel
-import com.junemon.junemoncase.util.Constant.saveUserData
 import com.junemon.junemoncase.util.asyncRxExecutor
 import com.junemon.junemoncase.util.executes
-import com.junemon.junemoncase.util.logE
 import com.junemon.junemoncase.util.zipWith
 
 
@@ -22,8 +18,8 @@ Github = https://github.com/iandamping
 class EditProfilePresenter(private val dataRef: DatabaseReference) : MyCustomBasePresenter<EditProfileView>() {
     private var tmpMutableData: MutableMap<String, String> = mutableMapOf()
     private var currentUserId: String? = null
-    private var localCurrentUserID:Int? = null
-    private var localCurrentPhotoUser:String? = null
+    private var localCurrentUserID: Int? = null
+    private var localCurrentPhotoUser: String? = null
     override fun onCreate() {
         view()?.initView()
         getAllProvinceAndCity()
@@ -33,7 +29,7 @@ class EditProfilePresenter(private val dataRef: DatabaseReference) : MyCustomBas
             this.localCurrentPhotoUser = it.photoUser
             view()?.onGetUserData(it)
         }) {
-           view()?.onNotLoginYet()
+            view()?.onNotLoginYet()
         }
     }
 
@@ -47,7 +43,7 @@ class EditProfilePresenter(private val dataRef: DatabaseReference) : MyCustomBas
             data.emailUser?.let { email -> tmpMutableData.put("emailUser", email) }
             data.addressUser?.let { address -> tmpMutableData.put("addressUser", address) }
             data.cityUser?.let { city -> tmpMutableData.put("cityUser", city) }
-            data.phoneNumberUser?.let { number ->tmpMutableData.put("phoneNumberUser", number) }
+            data.phoneNumberUser?.let { number -> tmpMutableData.put("phoneNumberUser", number) }
             data.provinceUser?.let { province -> tmpMutableData.put("provinceUser", province) }
             dataRef.child(currentUserId!!).updateChildren(tmpMutableData as Map<String, String>).addOnCompleteListener {
                 if (it.isSuccessful) {

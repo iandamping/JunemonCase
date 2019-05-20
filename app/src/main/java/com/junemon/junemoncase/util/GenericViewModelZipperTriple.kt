@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 Created by Ian Damping on 13/05/2019.
 Github = https://github.com/iandamping
  */
-class GenericViewModelZipperTriple<A,B,C>(a: LiveData<A>?, b: LiveData<B>?, c: LiveData<C>?) : ViewModel() {
-    private var customData: MediatorLiveData<Triple<A?, B?,C?>> = MediatorLiveData()
+class GenericViewModelZipperTriple<A, B, C>(a: LiveData<A>?, b: LiveData<B>?, c: LiveData<C>?) : ViewModel() {
+    private var customData: MediatorLiveData<Triple<A?, B?, C?>> = MediatorLiveData()
     private var lastA: A? = null
     private var lastB: B? = null
     private var lastC: C? = null
@@ -20,7 +20,7 @@ class GenericViewModelZipperTriple<A,B,C>(a: LiveData<A>?, b: LiveData<B>?, c: L
         val localLastA = lastA
         val localLastB = lastB
         val localLastC = lastC
-        customData.value = Triple(localLastA, localLastB,localLastC)
+        customData.value = Triple(localLastA, localLastB, localLastC)
     }
 
     init {
@@ -53,5 +53,5 @@ class GenericViewModelZipperTriple<A,B,C>(a: LiveData<A>?, b: LiveData<B>?, c: L
         }
     }
 
-    fun getGenericData(): MediatorLiveData<Triple<A?, B?,C?>> = customData
+    fun getGenericData(): MediatorLiveData<Triple<A?, B?, C?>> = customData
 }

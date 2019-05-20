@@ -1,5 +1,6 @@
 package com.junemon.junemoncase.util
 
+import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
 import com.junemon.junemoncase.R
@@ -7,6 +8,7 @@ import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
 import kotlinx.android.synthetic.main.custom_failed_dialog.view.*
 import org.jetbrains.anko.alert
+import org.jetbrains.anko.layoutInflater
 import org.jetbrains.anko.yesButton
 
 /**
@@ -25,7 +27,7 @@ fun FragmentActivity.alertHelper(tittle: String?) {
     }
 }
 
-fun FragmentActivity.alertHelperToEditProfile(tittle: String?) {
+fun Context.alertHelperToEditProfile(tittle: String?) {
     val dialogBuilder = AlertDialog.Builder(this)
     val inflater = this.layoutInflater
     val dialogView = inflater.inflate(R.layout.custom_failed_dialog, null)
@@ -41,7 +43,7 @@ fun FragmentActivity.alertHelperToEditProfile(tittle: String?) {
     alert.show()
 }
 
-fun FragmentActivity.alertHelperToLoginActivity(tittle: String?) {
+fun Context.alertHelperToLoginActivity(tittle: String?) {
     val dialogBuilder = AlertDialog.Builder(this)
     val inflater = this.layoutInflater
     val dialogView = inflater.inflate(R.layout.custom_failed_dialog, null)

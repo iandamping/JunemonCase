@@ -6,8 +6,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.junemon.junemoncase.util.inflates
 import kotlinx.android.extensions.LayoutContainer
 
-abstract class MyAbstractAdapter<T>(protected var data:List<T>, private val layout:Int, private val clickListener:(T) ->Unit):
-    RecyclerView.Adapter<MyAbstractAdapter.MyAbstractViewHolder>() {
+abstract class MyAbstractAdapter<T>(protected var data: List<T>, private val layout: Int, private val clickListener: (T) -> Unit) :
+        RecyclerView.Adapter<MyAbstractAdapter.MyAbstractViewHolder>() {
 
     override fun getItemCount(): Int = data.size
 
@@ -25,5 +25,5 @@ abstract class MyAbstractAdapter<T>(protected var data:List<T>, private val layo
     }
 
     class MyAbstractViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView),
-        LayoutContainer
+            LayoutContainer
 }

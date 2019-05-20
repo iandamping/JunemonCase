@@ -11,13 +11,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.firebase.auth.FirebaseAuth
 import com.junemon.junemoncase.JunemonApps
-import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
-import com.junemon.junemoncase.JunemonApps.Companion.prefHelper
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
-import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.GenericViewModelWithLiveData
+import com.junemon.junemoncase.util.customViewModelFactoriesHelper
 import io.reactivex.disposables.CompositeDisposable
 import org.jetbrains.anko.layoutInflater
 
@@ -73,28 +71,29 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
     fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
-                getLifeCycleOwner().customViewModelFactoriesHelper({ GenericViewModelWithLiveData(JunemonApps.DatabasesAccess?.userDao()?.loadAllLocalUserData()) }){
-                    with(this){
+                getLifeCycleOwner().customViewModelFactoriesHelper({ GenericViewModelWithLiveData(JunemonApps.DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
+                    with(this) {
                         getGenericViewModelData()?.observe(lifecycleOwner, Observer { localData ->
-                            if (localData!=null){
-                                if (localData.userID == it.currentUser!!.uid){
+                            if (localData != null) {
+                                if (localData.userID == it.currentUser!!.uid) {
                                     loggedIn(localData)
                                 }
                             } else {
-                                if (it.currentUser != null) {
-                                    this@MyCustomBasePresenter.userData = UserProfileModel(
-                                        null,
-                                        it.currentUser?.uid,
-                                        it.currentUser?.photoUrl.toString(),
-                                        it.currentUser?.displayName,
-                                        it.currentUser?.email,
-                                        it.currentUser?.phoneNumber,
-                                        null,
-                                        null,
-                                        null
-                                    )
-                                    loggedIn(userData)
-                                }
+                                notLoggedIn()
+//                                if (it.currentUser != null) {
+//                                    this@MyCustomBasePresenter.userData = UserProfileModel(
+//                                            null,
+//                                            it.currentUser?.uid,
+//                                            it.currentUser?.photoUrl.toString(),
+//                                            it.currentUser?.displayName,
+//                                            it.currentUser?.email,
+//                                            it.currentUser?.phoneNumber,
+//                                            null,
+//                                            null,
+//                                            null
+//                                    )
+//                                    loggedIn(userData)
+//                                }
                             }
                         })
                     }
@@ -133,13 +132,13 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     private fun onResume() {
-        listener?.let { nonNullListener -> mFirebaseAuth.addAuthStateListener(nonNullListener)}
+        listener?.let { nonNullListener -> mFirebaseAuth.addAuthStateListener(nonNullListener) }
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
     private fun onPause() {
-        listener?.let { nonNullListener -> mFirebaseAuth.removeAuthStateListener(nonNullListener)}
-     }
+        listener?.let { nonNullListener -> mFirebaseAuth.removeAuthStateListener(nonNullListener) }
+    }
 
     protected fun getLifeCycleOwner(): FragmentActivity {
         return lifecycleOwner

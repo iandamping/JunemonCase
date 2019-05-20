@@ -36,9 +36,9 @@
                     android:layout_gravity="center"
                     android:orientation="vertical">
 
-                    <include layout="@layout/item_list_grid_shimmer" />
+                    <include layout="@layout/shimmer_item_list_grid" />
 
-                    <include layout="@layout/item_list_grid_shimmer" />
+                    <include layout="@layout/shimmer_item_list_grid" />
 
                 </LinearLayout>
 
