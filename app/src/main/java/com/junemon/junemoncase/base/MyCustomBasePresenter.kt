@@ -39,7 +39,7 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
         setBaseDialog(lifecycleOwner)
         lifeCycleOwner.lifecycle.addObserver(this)
     }
-    
+
     fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
