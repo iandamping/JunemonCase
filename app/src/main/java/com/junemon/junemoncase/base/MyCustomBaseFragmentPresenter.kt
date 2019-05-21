@@ -33,17 +33,16 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
     private var listener: FirebaseAuth.AuthStateListener? = null
     private var userData: UserProfileModel = UserProfileModel()
     private var view: View? = null
-    private var viewLifecycle: Lifecycle? = null
     protected var compose: CompositeDisposable = CompositeDisposable()
 
-    fun attachView(view: View, lifeCycleOwner: Fragment) {
+   fun attachView(view: View, lifeCycleOwner: Fragment) {
         this.view = view
         this.lifecycleOwner = lifeCycleOwner
         setBaseDialog(lifecycleOwner.context)
         lifeCycleOwner.lifecycle.addObserver(this)
     }
 
-    fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
+    protected fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener { auth ->
             if (auth.currentUser != null) {
                 with(this@MyCustomBaseFragmentPresenter.userData) {
@@ -54,8 +53,8 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                     phoneNumberUser = auth.currentUser?.phoneNumber
                 }
                 //Room  && Firebase way
-                getLifeCycleOwner().customViewModelFactoriesHelper({ GenericViewModelWithLiveData(DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
-                    getGenericViewModelData()?.observe(getLifeCycleOwner().viewLifecycleOwner, Observer { localData ->
+                lifecycleOwner.customViewModelFactoriesHelper({ GenericViewModelWithLiveData(DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
+                    getGenericViewModelData()?.observe(lifecycleOwner.viewLifecycleOwner, Observer { localData ->
                         if (localData.isNotEmpty()) {
                             localData.forEach { singleData ->
                                 if (singleData.userID == userData.userID) {
@@ -78,11 +77,8 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                                                             cityUser = firebaseData.cityUser
                                                         }
                                                     }
-
-                                                    compose.asyncRxExecutor {
-                                                        DatabasesAccess?.userDao()?.updateLocalUserData(userData)
-                                                    }
-                                                    getLifeCycleOwner().context?.startActivity<MainActivity>()
+                                                    compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
+                                                    lifecycleOwner.context?.startActivity<MainActivity>()
                                                 }
 
                                             })
@@ -93,7 +89,7 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                         if (localData.isEmpty()) {
                             compose.asyncRxExecutor { DatabasesAccess?.userDao()?.insertLocalUserData(userData) }
                             userData.userID?.let { it1 -> userDatabaseReference.child(it1).setValue(userData) }
-                            getLifeCycleOwner().context?.startActivity<MainActivity>()
+                            lifecycleOwner.context?.startActivity<MainActivity>()
 
                         }
                     })
@@ -124,7 +120,6 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onViewDestroyed() {
         view = null
-        viewLifecycle = null
         if (!compose.isDisposed) compose.dispose()
     }
 

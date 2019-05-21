@@ -26,12 +26,10 @@ Github = https://github.com/iandamping
  */
 abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePresenterHelper {
     private var listener: FirebaseAuth.AuthStateListener? = null
-    private lateinit var userData: UserProfileModel
     private lateinit var alert: AlertDialog
     protected val compose: CompositeDisposable = CompositeDisposable()
     private lateinit var lifecycleOwner: FragmentActivity
     private var view: View? = null
-    private var viewLifecycle: Lifecycle? = null
 
     fun attachView(view: View, lifeCycleOwner: FragmentActivity) {
         this.view = view
@@ -40,10 +38,10 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
         lifeCycleOwner.lifecycle.addObserver(this)
     }
 
-    fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
+    protected fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
-                getLifeCycleOwner().customViewModelFactoriesHelper({ GenericViewModelWithLiveData(JunemonApps.DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
+                lifecycleOwner.customViewModelFactoriesHelper({ GenericViewModelWithLiveData(JunemonApps.DatabasesAccess?.userDao()?.loadAllLocalUserData()) }) {
                     with(this) {
                         getGenericViewModelData()?.observe(lifecycleOwner, Observer { localData ->
                             if (localData != null) {
@@ -87,7 +85,6 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     private fun onViewDestroyed() {
         view = null
-        viewLifecycle = null
         if (!compose.isDisposed) compose.dispose()
     }
 
