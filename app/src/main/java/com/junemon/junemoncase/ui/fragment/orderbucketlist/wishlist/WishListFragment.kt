@@ -18,6 +18,8 @@ Created by Ian Damping on 15/05/2019.
 Github = https://github.com/iandamping
  */
 class WishListFragment : Fragment(), WishListView {
+
+
     private lateinit var presenter: WishListPresenter
     private var actualView: View? = null
 
@@ -38,6 +40,7 @@ class WishListFragment : Fragment(), WishListView {
     override fun onSuccessGetListCaseData(data: List<OrderCasingModel>?) {
         actualView?.shimmer_wishlist?.stopShimmer()
         actualView?.shimmer_wishlist?.gone()
+        actualView?.tvWishlistEmpty?.gone()
         data?.let { nonNullData ->
             actualView?.rvWishList?.setUpVertical(nonNullData, R.layout.item_wishlist, {
                 ivWishList.loadUrl(it.photoUrl)
@@ -45,6 +48,13 @@ class WishListFragment : Fragment(), WishListView {
                 tvWishListCaseType.text = it.casingType
             })
         }
+
+    }
+
+    override fun onNoWishlistCase() {
+        actualView?.shimmer_wishlist?.gone()
+        actualView?.tvWishlistEmpty?.gone()
+        actualView?.tvWishlistEmpty?.visible()
 
     }
 

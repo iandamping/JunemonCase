@@ -48,6 +48,7 @@
     <string name="user_address">User Address</string>
     <string name="user_province">User Province</string>
     <string name="user_city">User City</string>
+    <string name="no_order_case">Anda belum memesan case</string>
     <string-array name="all_phone_names">
         <item>iPhone 3</item>
         <item>iPhone 4 atau 4S</item>

@@ -14,13 +14,9 @@ fun CompositeDisposable.asyncRxExecutor(heavyFunction: () -> Unit?) {
     this.add(Observable.fromCallable(Runnable {
         heavyFunction()
     }::run).subscribeOn(Schedulers.io()).subscribe({
-        if (BuildConfig.DEBUG) {
             logD(Constant.succesWork)
-        }
     }, {
-        if (BuildConfig.DEBUG) {
             logE(Constant.failedWork)
-        }
     }))
 
 }

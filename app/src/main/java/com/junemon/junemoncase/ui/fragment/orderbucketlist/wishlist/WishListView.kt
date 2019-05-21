@@ -12,4 +12,5 @@ interface WishListView : BaseFragmentView {
     fun onSuccessGetListCaseData(data: List<OrderCasingModel>?)
     fun onFailedGetListCaseData(msg: String)
     fun onNotLoginYet()
+    fun onNoWishlistCase()
 }

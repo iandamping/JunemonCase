@@ -12,7 +12,7 @@ Github = https://github.com/iandamping
 @Dao
 interface JunemonDao {
     @Query("SELECT * FROM user_data ")
-    fun loadAllLocalUserData(): LiveData<UserProfileModel>
+    fun loadAllLocalUserData(): LiveData<List<UserProfileModel>>
 
     @Query("SELECT * FROM user_data WHERE local_user_id = :id")
     fun loadAllLocalUserDataById(id: Int?): LiveData<UserProfileModel>

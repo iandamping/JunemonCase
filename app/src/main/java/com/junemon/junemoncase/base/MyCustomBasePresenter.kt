@@ -39,35 +39,7 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
         setBaseDialog(lifecycleOwner)
         lifeCycleOwner.lifecycle.addObserver(this)
     }
-
-//    fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
-//        listener = FirebaseAuth.AuthStateListener {
-//            if (it.currentUser != null) {
-//                if (!prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-//                    this.userData = gson.fromJson(prefHelper.getStringInSharedPreference(Constant.saveUserData), UserProfileModel::class.java)
-//                    loggedIn(userData)
-//
-//                } else if (prefHelper.getStringInSharedPreference(Constant.saveUserData).isNullOrBlank()) {
-//                    if (it.currentUser != null) {
-//                        this.userData = UserProfileModel(
-//                            null,
-//                                it.currentUser?.uid,
-//                                it.currentUser?.photoUrl.toString(),
-//                                it.currentUser?.displayName,
-//                                it.currentUser?.email,
-//                                it.currentUser?.phoneNumber,
-//                                null,
-//                                null,
-//                                null
-//                        )
-//                        loggedIn(userData)
-//                    }
-//                }
-//
-//            } else notLoggedIn()
-//        }
-//    }
-
+    
     fun onGetUserData(loggedIn: (UserProfileModel) -> Unit, notLoggedIn: () -> Unit) {
         listener = FirebaseAuth.AuthStateListener {
             if (it.currentUser != null) {
@@ -75,25 +47,14 @@ abstract class MyCustomBasePresenter<View> : LifecycleObserver, MyCustomBasePres
                     with(this) {
                         getGenericViewModelData()?.observe(lifecycleOwner, Observer { localData ->
                             if (localData != null) {
-                                if (localData.userID == it.currentUser!!.uid) {
-                                    loggedIn(localData)
+                                localData.forEach { singleData ->
+                                    if (singleData.userID == it.currentUser!!.uid) {
+                                        loggedIn(singleData)
+                                    }
                                 }
+
                             } else {
                                 notLoggedIn()
-//                                if (it.currentUser != null) {
-//                                    this@MyCustomBasePresenter.userData = UserProfileModel(
-//                                            null,
-//                                            it.currentUser?.uid,
-//                                            it.currentUser?.photoUrl.toString(),
-//                                            it.currentUser?.displayName,
-//                                            it.currentUser?.email,
-//                                            it.currentUser?.phoneNumber,
-//                                            null,
-//                                            null,
-//                                            null
-//                                    )
-//                                    loggedIn(userData)
-//                                }
                             }
                         })
                     }
