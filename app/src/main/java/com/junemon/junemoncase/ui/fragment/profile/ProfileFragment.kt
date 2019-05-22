@@ -53,22 +53,32 @@ class ProfileFragment : Fragment(), ProfileView {
         if (data?.addressUser != null) {
             actualView?.lnProfileAddress?.visible()
             actualView?.tvProfileAddress?.text = data.addressUser
+        } else{
+            actualView?.lnProfileAddress?.gone()
         }
         if (data?.provinceUser != null) {
             actualView?.lnProfileProvince?.visible()
             actualView?.tvProfileProvince?.text = data.provinceUser
+        }else{
+            actualView?.lnProfileProvince?.gone()
         }
         if (data?.cityUser != null) {
             actualView?.lnProfileCity?.visible()
             actualView?.tvProfileCity?.text = data.cityUser
+        }else{
+            actualView?.lnProfileCity?.gone()
         }
         if (data?.emailUser != null) {
             actualView?.lnProfileEmail?.visible()
             actualView?.tvEmailUser?.text = data.emailUser
+        }else{
+            actualView?.lnProfileEmail?.gone()
         }
         if (data?.phoneNumberUser != null) {
             actualView?.lnProfilePhoneNumber?.visible()
             actualView?.tvProfilePhoneNumber?.text = data.phoneNumberUser
+        } else{
+            actualView?.lnProfilePhoneNumber?.gone()
         }
         actualView?.btnProfileEditUser?.setOnClickListener {
             context?.startActivity<EditProfileActivity>()
