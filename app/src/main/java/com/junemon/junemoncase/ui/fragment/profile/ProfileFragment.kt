@@ -23,7 +23,7 @@ class ProfileFragment : Fragment(), ProfileView {
     private lateinit var presenter: ProfilePresenter
     private var actualView: View? = null
     private val loginProvider = arrayListOf(
-        AuthUI.IdpConfig.GoogleBuilder().build()
+            AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
     override fun onAttach(context: Context) {
@@ -53,31 +53,31 @@ class ProfileFragment : Fragment(), ProfileView {
         if (data?.addressUser != null) {
             actualView?.lnProfileAddress?.visible()
             actualView?.tvProfileAddress?.text = data.addressUser
-        } else{
+        } else {
             actualView?.lnProfileAddress?.gone()
         }
         if (data?.provinceUser != null) {
             actualView?.lnProfileProvince?.visible()
             actualView?.tvProfileProvince?.text = data.provinceUser
-        }else{
+        } else {
             actualView?.lnProfileProvince?.gone()
         }
         if (data?.cityUser != null) {
             actualView?.lnProfileCity?.visible()
             actualView?.tvProfileCity?.text = data.cityUser
-        }else{
+        } else {
             actualView?.lnProfileCity?.gone()
         }
         if (data?.emailUser != null) {
             actualView?.lnProfileEmail?.visible()
             actualView?.tvEmailUser?.text = data.emailUser
-        }else{
+        } else {
             actualView?.lnProfileEmail?.gone()
         }
         if (data?.phoneNumberUser != null) {
             actualView?.lnProfilePhoneNumber?.visible()
             actualView?.tvProfilePhoneNumber?.text = data.phoneNumberUser
-        } else{
+        } else {
             actualView?.lnProfilePhoneNumber?.gone()
         }
         actualView?.btnProfileEditUser?.setOnClickListener {
@@ -115,12 +115,12 @@ class ProfileFragment : Fragment(), ProfileView {
 
     private fun createSignInIntent() {
         startActivityForResult(
-            AuthUI.getInstance()
-                .createSignInIntentBuilder()
-                .setIsSmartLockEnabled(false)
-                .setAvailableProviders(loginProvider)
-                .build(),
-            RequestSignIn
+                AuthUI.getInstance()
+                        .createSignInIntentBuilder()
+                        .setIsSmartLockEnabled(false)
+                        .setAvailableProviders(loginProvider)
+                        .build(),
+                RequestSignIn
         )
     }
 
