@@ -18,6 +18,7 @@ import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.sendDetailToOrder
 import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
 import com.junemon.junemoncase.util.Constant.switchBackToMain
+import kotlinx.android.synthetic.main.activity_detail_casing.*
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 import kotlinx.android.synthetic.main.activity_order.*
 
@@ -28,12 +29,10 @@ Github = https://github.com/iandamping
  */
 class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     private var phoneType: String? = null
-    private var casingType: String? = null
     private lateinit var casingData: AllCasingModel
     private lateinit var profileData: UserProfileModel
 
     private var arraySpinnerTypeCaseAdapter: ArrayAdapter<String>? = null
-    private var arraySpinnerProvinceAdapter: ArrayAdapter<String>? = null
 
     private lateinit var presenter: OrderCasePresenter
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,6 +53,7 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
     }
 
     override fun initView() {
+        setupToolbar()
         etOrderCasingTypeHp.setText(intent?.getStringExtra(sendPhoneTypetoOrder))
         btnOrderCasingCase.setOnClickListener {
             phoneType = etOrderCasingTypeHp.text.toString().trim()
@@ -92,6 +92,14 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
             }
 
         }
+    }
+
+    private fun setupToolbar() {
+        OrderCasingToolbar.setTitleTextColor(resources.getColor(R.color.black))
+        OrderCasingToolbar.setSubtitleTextColor(resources.getColor(R.color.black))
+        OrderCasingToolbar.title = getString(R.string.app_name)
+        setSupportActionBar(OrderCasingToolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onFailedGetListPhoneType(msg: String?) {

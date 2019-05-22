@@ -23,7 +23,7 @@ class ProfileFragment : Fragment(), ProfileView {
     private lateinit var presenter: ProfilePresenter
     private var actualView: View? = null
     private val loginProvider = arrayListOf(
-            AuthUI.IdpConfig.GoogleBuilder().build()
+        AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
     override fun onAttach(context: Context) {
@@ -41,45 +41,39 @@ class ProfileFragment : Fragment(), ProfileView {
     }
 
     override fun onSuccessGetData(data: UserProfileModel?) {
-        data?.let {
-            actualView?.ivPhotoProfile?.loadUrl(it.photoUser)
-            actualView?.tvProfileName?.text = it.nameUser
-            actualView?.tvEmailUser?.text = it.emailUser
-            actualView?.lnProfileAddress?.visible()
-            actualView?.tvProfileAddress?.text = it.addressUser
-            actualView?.lnProfileProvince?.visible()
-            actualView?.tvProfileProvince?.text = it.provinceUser
-            actualView?.lnProfileCity?.visible()
-            actualView?.tvProfileCity?.text = it.cityUser
-            actualView?.lnProfileEmail?.visible()
-            actualView?.tvEmailUser?.text = it.emailUser
-            actualView?.lnProfilePhoneNumber?.visible()
-            actualView?.tvProfilePhoneNumber?.text = it.phoneNumberUser
-            actualView?.btnProfileEditUser?.setOnClickListener {
-                context?.startActivity<EditProfileActivity>()
-            }
-//            when {
-//                it.photoUser != null ->
-//                it.nameUser != null ->
-//                it.emailUser != null ->
-//                it.addressUser != null -> {
-//
-//                }
-//                it.provinceUser != null -> {
-//
-//                }
-//                it.cityUser != null -> {
-//
-//                }
-//                it.emailUser != null -> {
-//
-//                }
-//                it.phoneNumberUser != null -> {
-//
-//                }
-//                else -> logE("dunno")
-//            }
+        if (data?.photoUser != null) {
+            actualView?.ivPhotoProfile?.loadUrl(data.photoUser)
         }
+        if (data?.nameUser != null) {
+            actualView?.tvProfileName?.text = data.nameUser
+        }
+        if (data?.emailUser != null) {
+            actualView?.tvEmailUser?.text = data.emailUser
+        }
+        if (data?.addressUser != null) {
+            actualView?.lnProfileAddress?.visible()
+            actualView?.tvProfileAddress?.text = data.addressUser
+        }
+        if (data?.provinceUser != null) {
+            actualView?.lnProfileProvince?.visible()
+            actualView?.tvProfileProvince?.text = data.provinceUser
+        }
+        if (data?.cityUser != null) {
+            actualView?.lnProfileCity?.visible()
+            actualView?.tvProfileCity?.text = data.cityUser
+        }
+        if (data?.emailUser != null) {
+            actualView?.lnProfileEmail?.visible()
+            actualView?.tvEmailUser?.text = data.emailUser
+        }
+        if (data?.phoneNumberUser != null) {
+            actualView?.lnProfilePhoneNumber?.visible()
+            actualView?.tvProfilePhoneNumber?.text = data.phoneNumberUser
+        }
+        actualView?.btnProfileEditUser?.setOnClickListener {
+            context?.startActivity<EditProfileActivity>()
+        }
+
 
 
         actualView?.btnLogin?.text = context?.getString(R.string.logout)
@@ -111,12 +105,12 @@ class ProfileFragment : Fragment(), ProfileView {
 
     private fun createSignInIntent() {
         startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        .setAvailableProviders(loginProvider)
-                        .build(),
-                RequestSignIn
+            AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setIsSmartLockEnabled(false)
+                .setAvailableProviders(loginProvider)
+                .build(),
+            RequestSignIn
         )
     }
 

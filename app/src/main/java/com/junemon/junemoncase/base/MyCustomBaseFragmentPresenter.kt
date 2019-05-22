@@ -79,6 +79,11 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                                                     }
                                                     compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
                                                     lifecycleOwner.context?.startActivity<MainActivity>()
+                                                } else {
+                                                    userData.local_user_id = 1
+                                                    compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
+                                                    userData.userID?.let { it1 -> userDatabaseReference.child(it1).setValue(userData) }
+                                                    lifecycleOwner.context?.startActivity<MainActivity>()
                                                 }
 
                                             })
