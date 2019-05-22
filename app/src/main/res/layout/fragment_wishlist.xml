@@ -22,18 +22,26 @@
 
             <include layout="@layout/shimmer_wishlist" />
 
+            <include layout="@layout/shimmer_wishlist" />
+
+            <include layout="@layout/shimmer_wishlist" />
+
+            <include layout="@layout/shimmer_wishlist" />
+
+            <include layout="@layout/shimmer_wishlist" />
+
         </LinearLayout>
 
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <TextView
         android:id="@+id/tvWishlistEmpty"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/no_order_case"
         android:fontFamily="@font/lato"
-        android:gravity="center_vertical|center_horizontal"/>
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/no_order_case"
+        android:visibility="gone" />
 
 
     <androidx.recyclerview.widget.RecyclerView
