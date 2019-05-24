@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ian.recyclerviewhelper.helper.setUpVertical
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.OrderCasingModel
 import com.junemon.junemoncase.util.*

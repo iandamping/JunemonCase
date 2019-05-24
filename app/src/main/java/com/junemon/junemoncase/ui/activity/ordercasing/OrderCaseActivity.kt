@@ -17,8 +17,6 @@ import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.sendDetailToOrder
 import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
-import com.junemon.junemoncase.util.Constant.switchBackToMain
-import kotlinx.android.synthetic.main.activity_detail_casing.*
 import kotlinx.android.synthetic.main.activity_fullscreen.*
 import kotlinx.android.synthetic.main.activity_order.*
 

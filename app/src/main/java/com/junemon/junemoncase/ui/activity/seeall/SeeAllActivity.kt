@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.ian.recyclerviewhelper.helper.setUpWithGrid
 import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
@@ -11,6 +12,7 @@ import com.junemon.junemoncase.ui.activity.detail.DetailActivity
 import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.seeAllKey
 import kotlinx.android.synthetic.main.activity_see_all.*
+import kotlinx.android.synthetic.main.item_see_all.*
 import kotlinx.android.synthetic.main.item_see_all.view.*
 
 /**

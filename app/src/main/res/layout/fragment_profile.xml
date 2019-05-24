@@ -26,7 +26,7 @@
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="12dp"
-        android:src="@drawable/empty_image" />
+        android:src="@drawable/ic_splash" />
 
 
     <TextView
@@ -45,12 +45,12 @@
 
     <Button
         android:id="@+id/btnProfileEditUser"
-        android:layout_marginTop="18dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/tvProfileName"
         android:layout_centerHorizontal="true"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="18dp"
         android:background="@drawable/button_edit_profile"
         android:padding="@dimen/spacing_medium"
         android:text="Ubah Profil" />
@@ -58,10 +58,10 @@
     <LinearLayout
         android:id="@+id/lnProfileAddress"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnProfileEditUser"
         android:layout_marginTop="18dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
@@ -85,10 +85,10 @@
     <LinearLayout
         android:id="@+id/lnProfileProvince"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lnProfileAddress"
         android:layout_marginTop="18dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
@@ -113,10 +113,10 @@
     <LinearLayout
         android:id="@+id/lnProfileCity"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lnProfileProvince"
         android:layout_marginTop="18dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
@@ -140,10 +140,10 @@
     <LinearLayout
         android:id="@+id/lnProfileEmail"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lnProfileCity"
         android:layout_marginTop="18dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
@@ -169,10 +169,10 @@
     <LinearLayout
         android:id="@+id/lnProfilePhoneNumber"
         android:layout_width="match_parent"
-        android:gravity="center"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lnProfileEmail"
         android:layout_marginTop="18dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ImageView
@@ -193,6 +193,67 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/lnGoogleLogin"
+        android:visibility="gone"
+        android:layout_below="@+id/lnProfilePhoneNumber"
+        android:layout_margin="@dimen/spacing_medium"
+        android:layout_marginTop="12dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@drawable/gray_stroke_bg"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:padding="10dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_google_logo" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lato"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Google" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_medium"
+            android:background="@drawable/gray_stroke_bg"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_medium">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_facebook" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/lato"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="Facebook" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:gravity="center"
+            android:text="Silahkan masuk dulu untuk menggunakan Junemoncase"/>
+    </LinearLayout>
 
     <Button
         android:id="@+id/btnLogin"
@@ -203,7 +264,7 @@
         android:layout_marginTop="12dp"
         android:background="@color/fui_transparent"
         android:fontFamily="@font/lato"
-        android:text="Login"
+        tools:text="Login"
         android:textStyle="bold" />
 
 </RelativeLayout>

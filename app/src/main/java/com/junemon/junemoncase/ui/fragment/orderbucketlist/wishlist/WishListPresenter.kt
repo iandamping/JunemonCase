@@ -38,7 +38,7 @@ class WishListPresenter : MyCustomBaseFragmentPresenter<WishListView>() {
                                 view()?.onSuccessGetListCaseData(listSpesificUser)
                             }
                         }
-                        if (listSpesificUser.isEmpty()){
+                        if (listSpesificUser.isEmpty()) {
                             view()?.onNoWishlistCase()
                         }
                     })

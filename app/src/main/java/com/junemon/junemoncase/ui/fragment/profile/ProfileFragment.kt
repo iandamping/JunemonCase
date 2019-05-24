@@ -84,8 +84,9 @@ class ProfileFragment : Fragment(), ProfileView {
             context?.startActivity<EditProfileActivity>()
         }
 
-
-
+        actualView?.btnLogin?.visible()
+        actualView?.ivSettingProfile?.visible()
+        actualView?.lnGoogleLogin?.gone()
         actualView?.btnLogin?.text = context?.getString(R.string.logout)
         actualView?.btnLogin?.setOnClickListener {
             presenter.logOut()
@@ -100,11 +101,14 @@ class ProfileFragment : Fragment(), ProfileView {
         actualView?.lnProfileCity?.gone()
         actualView?.lnProfileEmail?.gone()
         actualView?.lnProfilePhoneNumber?.gone()
+        actualView?.btnLogin?.gone()
+        actualView?.ivSettingProfile?.gone()
+        actualView?.lnGoogleLogin?.visible()
     }
 
     override fun initView(view: View) {
         this.actualView = view
-        actualView?.btnLogin?.setOnClickListener {
+        actualView?.lnGoogleLogin?.setOnClickListener {
             createSignInIntent()
         }
         actualView?.ivSettingProfile?.setOnClickListener {

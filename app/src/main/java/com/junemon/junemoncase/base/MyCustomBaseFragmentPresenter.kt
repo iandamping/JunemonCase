@@ -35,7 +35,7 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
     private var view: View? = null
     protected var compose: CompositeDisposable = CompositeDisposable()
 
-   fun attachView(view: View, lifeCycleOwner: Fragment) {
+    fun attachView(view: View, lifeCycleOwner: Fragment) {
         this.view = view
         this.lifecycleOwner = lifeCycleOwner
         setBaseDialog(lifecycleOwner.context)
@@ -63,30 +63,30 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                                     lifecycleOwner.getAllDataFromFirebase<UserProfileModel>(userDatabaseReference)
                                     lifecycleOwner.withViewModel<GenericViewModel<UserProfileModel>> {
                                         getGenericData().observe(lifecycleOwner.viewLifecycleOwner, Observer { firebaseData ->
-                                                if (firebaseData.userID == userData.userID) {
-                                                    if (firebaseData !=null){
-                                                        with(this@MyCustomBaseFragmentPresenter.userData) {
-                                                            local_user_id = 1
-                                                            userID = firebaseData.userID
-                                                            photoUser = firebaseData.photoUser
-                                                            nameUser = firebaseData.nameUser
-                                                            emailUser = firebaseData.emailUser
-                                                            phoneNumberUser = firebaseData.phoneNumberUser
-                                                            addressUser = firebaseData.addressUser
-                                                            provinceUser = firebaseData.provinceUser
-                                                            cityUser = firebaseData.cityUser
-                                                        }
+                                            if (firebaseData.userID == userData.userID) {
+                                                if (firebaseData != null) {
+                                                    with(this@MyCustomBaseFragmentPresenter.userData) {
+                                                        local_user_id = 1
+                                                        userID = firebaseData.userID
+                                                        photoUser = firebaseData.photoUser
+                                                        nameUser = firebaseData.nameUser
+                                                        emailUser = firebaseData.emailUser
+                                                        phoneNumberUser = firebaseData.phoneNumberUser
+                                                        addressUser = firebaseData.addressUser
+                                                        provinceUser = firebaseData.provinceUser
+                                                        cityUser = firebaseData.cityUser
                                                     }
-                                                    compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
-                                                    lifecycleOwner.context?.startActivity<MainActivity>()
-                                                } else {
-                                                    userData.local_user_id = 1
-                                                    compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
-                                                    userData.userID?.let { it1 -> userDatabaseReference.child(it1).setValue(userData) }
-                                                    lifecycleOwner.context?.startActivity<MainActivity>()
                                                 }
+                                                compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
+                                                lifecycleOwner.context?.startActivity<MainActivity>()
+                                            } else {
+                                                userData.local_user_id = 1
+                                                compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
+                                                userData.userID?.let { it1 -> userDatabaseReference.child(it1).setValue(userData) }
+                                                lifecycleOwner.context?.startActivity<MainActivity>()
+                                            }
 
-                                            })
+                                        })
                                     }
                                 }
                             }
