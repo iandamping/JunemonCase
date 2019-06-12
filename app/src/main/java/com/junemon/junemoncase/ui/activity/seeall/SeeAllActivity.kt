@@ -4,15 +4,18 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import com.ian.app.helper.util.fullScreenAnimation
+import com.ian.app.helper.util.gone
+import com.ian.app.helper.util.loadWithGlide
+import com.ian.app.helper.util.startActivity
 import com.ian.recyclerviewhelper.helper.setUpWithGrid
 import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.ui.activity.detail.DetailActivity
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.Constant
 import com.junemon.junemoncase.util.Constant.seeAllKey
 import kotlinx.android.synthetic.main.activity_see_all.*
-import kotlinx.android.synthetic.main.item_see_all.*
 import kotlinx.android.synthetic.main.item_see_all.view.*
 
 /**
@@ -55,7 +58,7 @@ class SeeAllActivity : AppCompatActivity(), SeeAllView {
         shimmerSeeAll?.gone()
         data?.let { caseData ->
             rvSeeAll.setUpWithGrid(caseData, R.layout.item_see_all, 2, {
-                ivCasingSeeAll.loadUrl(it.photoUrl)
+                ivCasingSeeAll.loadWithGlide(it.photoUrl)
                 tvCasingSeeAllType.text = it.casingType
             }, {
                 startActivity<DetailActivity> {

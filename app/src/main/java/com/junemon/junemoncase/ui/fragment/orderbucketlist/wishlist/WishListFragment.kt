@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ian.app.helper.util.*
 import com.ian.recyclerviewhelper.helper.setUpVertical
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.OrderCasingModel
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.alertHelperToLoginActivity
 import kotlinx.android.synthetic.main.fragment_wishlist.view.*
 import kotlinx.android.synthetic.main.item_wishlist.view.*
 
@@ -44,7 +45,7 @@ class WishListFragment : Fragment(), WishListView {
         actualView?.tvWishlistEmpty?.gone()
         data?.let { nonNullData ->
             actualView?.rvWishList?.setUpVertical(nonNullData, R.layout.item_wishlist, {
-                ivWishList.loadUrl(it.photoUrl)
+                ivWishList.loadWithGlide(it.photoUrl)
                 tvWishListPhoneType.text = it.phoneType
                 tvWishListCaseType.text = it.casingType
             })

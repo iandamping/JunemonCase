@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.ian.app.helper.util.*
 import com.ian.recyclerviewhelper.helper.setUpHorizontal
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
@@ -15,7 +16,6 @@ import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.ui.activity.detail.DetailActivity
 import com.junemon.junemoncase.ui.activity.seeall.SeeAllActivity
 import com.junemon.junemoncase.ui.fragment.home.slideradapter.SliderItemAdapter
-import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.delayMillis
 import com.junemon.junemoncase.util.Constant.seeAllKey
 import com.junemon.junemoncase.util.Constant.seeDetailKey
@@ -89,7 +89,7 @@ class HomeFragment : Fragment(), HomeView {
             actualView?.shimmer_home?.gone()
             data?.let { caseData ->
                 actualView?.rvHardcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
-                    ivHomeCasing.loadUrl(it.photoUrl)
+                    ivHomeCasing.loadWithGlide(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 }, {
                     context?.startActivity<DetailActivity> {
@@ -109,7 +109,7 @@ class HomeFragment : Fragment(), HomeView {
         if (actualView != null) {
             data?.let { caseData ->
                 actualView?.rvSoftcase?.setUpHorizontal(caseData, R.layout.item_homefragment, {
-                    ivHomeCasing.loadUrl(it.photoUrl)
+                    ivHomeCasing.loadWithGlide(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 }, {
                     context?.startActivity<DetailActivity> {
@@ -135,7 +135,7 @@ class HomeFragment : Fragment(), HomeView {
         if (actualView != null) {
             data?.let { caseData ->
                 actualView?.rvAirbag?.setUpHorizontal(caseData, R.layout.item_homefragment, {
-                    ivHomeCasing.loadUrl(it.photoUrl)
+                    ivHomeCasing.loadWithGlide(it.photoUrl)
                     tvHomeTypeCasing.text = it.casingType
                 }, {
                     context?.startActivity<DetailActivity> {

@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import com.google.firebase.database.DatabaseReference
+import com.ian.app.helper.model.GenericViewModel
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.base.BasePresenter
-import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.model.PhoneTypeModel
 import com.junemon.junemoncase.util.getAllDataFromFirebase
@@ -19,9 +19,9 @@ Created by Ian Damping on 18/04/2019.
 Github = https://github.com/iandamping
  */
 class DetailActivityPresenter(
-        private val dataRef: DatabaseReference,
-        private val mView: DetailActivityView,
-        private val target: FragmentActivity
+    private val dataRef: DatabaseReference,
+    private val mView: DetailActivityView,
+    private val target: FragmentActivity
 ) : BasePresenter() {
     override fun onCreate(context: Context) {
         setBaseDialog(context)

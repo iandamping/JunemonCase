@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 28
@@ -16,30 +17,16 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        debug{
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847\""
-            buildConfigField "String", "BASE_RAJA_ONGKIR_URL", "\"https://api.rajaongkir.com/starter/\""
-        }
         release {
-            minifyEnabled false
+            minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField "String", "API_KEY", "\"4590d8d407d79a2a789088ee8bf53847\""
-            buildConfigField "String", "BASE_RAJA_ONGKIR_URL", "\"https://api.rajaongkir.com/starter/\""
-
         }
     }
     androidExtensions {
         experimental = true
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    dataBinding {
-        enabled = true
-    }
+
 }
 
 dependencies {
@@ -56,12 +43,15 @@ dependencies {
     androidTestImplementation 'androidx.test:runner:1.1.0-alpha4'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-alpha4'
     //recyclerview helper
-    implementation 'com.github.iandamping:RecyclerViewHelper:0.0.1'
+    implementation 'com.github.iandamping:RecyclerViewHelper:0.0.4'
+    //common helper
+    implementation 'com.github.iandamping:CommonHelper:0.0.10b'
     //firebase
-    implementation 'com.google.firebase:firebase-core:16.0.6'
+    implementation 'com.google.firebase:firebase-core:16.0.9'
     implementation "com.google.firebase:firebase-auth:16.1.0"
     implementation "com.google.firebase:firebase-database:16.0.6"
     implementation "com.google.firebase:firebase-storage:16.0.5"
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
     implementation 'com.firebaseui:firebase-ui-auth:4.1.0'
     implementation 'com.facebook.android:facebook-android-sdk:4.39.0'
     implementation 'com.facebook.android:facebook-login:4.39.0'
@@ -80,8 +70,6 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime:$livedata_version"
     implementation "androidx.lifecycle:lifecycle-extensions:$livedata_version"
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:$livedata_version"
-//    //koin
-//    implementation 'org.koin:koin-android-viewmodel:1.0.2'
     //slider indicator
     implementation 'me.relex:circleindicator:1.2.2@aar'
     //image downloader

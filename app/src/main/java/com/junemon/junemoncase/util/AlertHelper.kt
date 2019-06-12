@@ -3,6 +3,7 @@ package com.junemon.junemoncase.util
 import android.content.Context
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.FragmentActivity
+import com.ian.app.helper.util.startActivity
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity

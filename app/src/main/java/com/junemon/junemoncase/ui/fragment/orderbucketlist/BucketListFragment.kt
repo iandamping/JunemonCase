@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.PagerAdapter
+import com.ian.app.helper.util.inflates
 import com.junemon.junemoncase.R
-import com.junemon.junemoncase.util.inflates
 import kotlinx.android.synthetic.main.fragment_bucketlist.view.*
 
 /**

@@ -1,23 +1,23 @@
 package com.junemon.junemoncase.ui.activity.ordercasing
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.view.Window
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.ian.app.helper.util.*
 import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.sendDetailToOrder
 import com.junemon.junemoncase.util.Constant.sendPhoneTypetoOrder
-import kotlinx.android.synthetic.main.activity_fullscreen.*
+import com.junemon.junemoncase.util.alertHelper
+import com.junemon.junemoncase.util.alertHelperToEditProfile
+import com.junemon.junemoncase.util.alertHelperToLoginActivity
 import kotlinx.android.synthetic.main.activity_order.*
 
 /**
@@ -63,17 +63,9 @@ class OrderCaseActivity : AppCompatActivity(), OrderCaseView {
         data?.let { nonNullData ->
             this.casingData = nonNullData
         }
-        ivOrderCasing.loadUrl(data?.photoUrl)
+        ivOrderCasing.loadWithGlide(data?.photoUrl)
         ivOrderCasing.setOnClickListener {
-            val alert = Dialog(this, R.style.AppTheme)
-            alert.requestWindowFeature(Window.FEATURE_NO_TITLE)
-            alert.setContentView(R.layout.activity_fullscreen)
-            alert.setCanceledOnTouchOutside(true)
-            alert.fullScreenImageView.loadUrlFullScreen(data?.photoUrl)
-            alert.show()
-            alert.ivClose.setOnClickListener {
-                alert.dismiss()
-            }
+            fullScreen(data?.photoUrl)
         }
     }
 

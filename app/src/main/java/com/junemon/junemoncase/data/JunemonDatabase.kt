@@ -1,4 +1,4 @@
-package com.junemon.junemoncase.data.localdata
+package com.junemon.junemoncase.data
 
 import android.content.Context
 import androidx.room.Database
@@ -21,8 +21,8 @@ abstract class JunemonDatabase : RoomDatabase() {
             if (Instace == null) {
                 synchronized(JunemonDatabase::class) {
                     Instace = Room.databaseBuilder(
-                            context.applicationContext,
-                            JunemonDatabase::class.java, "JunemonCaseLocalData"
+                        context.applicationContext,
+                        JunemonDatabase::class.java, "JunemonCaseLocalData"
                     ).build()
                 }
             }

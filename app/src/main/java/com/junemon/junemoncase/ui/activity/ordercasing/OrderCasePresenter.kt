@@ -2,10 +2,10 @@ package com.junemon.junemoncase.ui.activity.ordercasing
 
 import androidx.lifecycle.Observer
 import com.google.firebase.database.DatabaseReference
+import com.ian.app.helper.model.GenericViewModel
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.base.MyCustomBasePresenter
-import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.model.OrderCasingModel
 import com.junemon.junemoncase.model.PhoneTypeModel
@@ -28,7 +28,9 @@ class OrderCasePresenter(private val dataRef: DatabaseReference) : MyCustomBaseP
         onGetUserData({
             when {
                 it.cityUser.isNullOrBlank() || it.provinceUser.isNullOrBlank() || it.addressUser.isNullOrBlank() -> view()?.onEditUserFirst()
-                !it.cityUser.isNullOrBlank() || !it.provinceUser.isNullOrBlank() || !it.addressUser.isNullOrBlank() -> view()?.onGetUserData(it)
+                !it.cityUser.isNullOrBlank() || !it.provinceUser.isNullOrBlank() || !it.addressUser.isNullOrBlank() -> view()?.onGetUserData(
+                    it
+                )
             }
         }, {
             view()?.onLoginFirst()
@@ -62,7 +64,12 @@ class OrderCasePresenter(private val dataRef: DatabaseReference) : MyCustomBaseP
         }
     }
 
-    fun onUploadOrderCase(dataRef: DatabaseReference, casingData: AllCasingModel?, profileData: UserProfileModel?, phonePassedType: String?) {
+    fun onUploadOrderCase(
+        dataRef: DatabaseReference,
+        casingData: AllCasingModel?,
+        profileData: UserProfileModel?,
+        phonePassedType: String?
+    ) {
         val orderedCase = OrderCasingModel()
         setDialogShow(false)
         with(orderedCase) {

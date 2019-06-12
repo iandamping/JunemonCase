@@ -11,16 +11,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
+import com.ian.app.helper.model.GenericViewModel
+import com.ian.app.helper.model.GenericViewModelWithLiveData
+import com.ian.app.helper.util.asyncRxExecutor
+import com.ian.app.helper.util.layoutInflater
+import com.ian.app.helper.util.startActivity
 import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
-import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.customViewModelFactoriesHelper
+import com.junemon.junemoncase.util.getAllDataFromFirebase
+import com.junemon.junemoncase.util.withViewModel
 import io.reactivex.disposables.CompositeDisposable
-import org.jetbrains.anko.layoutInflater
 
 /**
  *
@@ -62,31 +67,39 @@ abstract class MyCustomBaseFragmentPresenter<View> : LifecycleObserver, MyCustom
                                 } else if (singleData.userID != userData.userID) {
                                     lifecycleOwner.getAllDataFromFirebase<UserProfileModel>(userDatabaseReference)
                                     lifecycleOwner.withViewModel<GenericViewModel<UserProfileModel>> {
-                                        getGenericData().observe(lifecycleOwner.viewLifecycleOwner, Observer { firebaseData ->
-                                            if (firebaseData.userID == userData.userID) {
-                                                if (firebaseData != null) {
-                                                    with(this@MyCustomBaseFragmentPresenter.userData) {
-                                                        local_user_id = 1
-                                                        userID = firebaseData.userID
-                                                        photoUser = firebaseData.photoUser
-                                                        nameUser = firebaseData.nameUser
-                                                        emailUser = firebaseData.emailUser
-                                                        phoneNumberUser = firebaseData.phoneNumberUser
-                                                        addressUser = firebaseData.addressUser
-                                                        provinceUser = firebaseData.provinceUser
-                                                        cityUser = firebaseData.cityUser
+                                        getGenericData().observe(
+                                            lifecycleOwner.viewLifecycleOwner,
+                                            Observer { firebaseData ->
+                                                if (firebaseData.userID == userData.userID) {
+                                                    if (firebaseData != null) {
+                                                        with(this@MyCustomBaseFragmentPresenter.userData) {
+                                                            local_user_id = 1
+                                                            userID = firebaseData.userID
+                                                            photoUser = firebaseData.photoUser
+                                                            nameUser = firebaseData.nameUser
+                                                            emailUser = firebaseData.emailUser
+                                                            phoneNumberUser = firebaseData.phoneNumberUser
+                                                            addressUser = firebaseData.addressUser
+                                                            provinceUser = firebaseData.provinceUser
+                                                            cityUser = firebaseData.cityUser
+                                                        }
                                                     }
+                                                    compose.asyncRxExecutor {
+                                                        DatabasesAccess?.userDao()?.updateLocalUserData(userData)
+                                                    }
+                                                    lifecycleOwner.context?.startActivity<MainActivity>()
+                                                } else {
+                                                    userData.local_user_id = 1
+                                                    compose.asyncRxExecutor {
+                                                        DatabasesAccess?.userDao()?.updateLocalUserData(userData)
+                                                    }
+                                                    userData.userID?.let { it1 ->
+                                                        userDatabaseReference.child(it1).setValue(userData)
+                                                    }
+                                                    lifecycleOwner.context?.startActivity<MainActivity>()
                                                 }
-                                                compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
-                                                lifecycleOwner.context?.startActivity<MainActivity>()
-                                            } else {
-                                                userData.local_user_id = 1
-                                                compose.asyncRxExecutor { DatabasesAccess?.userDao()?.updateLocalUserData(userData) }
-                                                userData.userID?.let { it1 -> userDatabaseReference.child(it1).setValue(userData) }
-                                                lifecycleOwner.context?.startActivity<MainActivity>()
-                                            }
 
-                                        })
+                                            })
                                     }
                                 }
                             }

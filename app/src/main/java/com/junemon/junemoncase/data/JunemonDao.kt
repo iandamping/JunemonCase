@@ -1,4 +1,4 @@
-package com.junemon.junemoncase.data.localdata
+package com.junemon.junemoncase.data
 
 import androidx.lifecycle.LiveData
 import androidx.room.*

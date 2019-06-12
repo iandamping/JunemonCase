@@ -6,7 +6,7 @@ import com.google.firebase.database.ChildEventListener
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.junemon.junemoncase.data.GenericViewModel
+import com.ian.app.helper.model.GenericViewModel
 
 /**
  *
@@ -27,7 +27,9 @@ inline fun <reified T> Fragment.getAllDataFromFirebase(data: DatabaseReference) 
         }
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            vm.setGenericData(p0.getValue(T::class.java)!!)
+            if (p0.getValue(T::class.java) != null) {
+                vm.setGenericData(p0.getValue(T::class.java)!!)
+            }
         }
 
         override fun onChildRemoved(p0: DataSnapshot) {
@@ -49,7 +51,9 @@ inline fun <reified T> FragmentActivity.getAllDataFromFirebase(data: DatabaseRef
         }
 
         override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-            vm.setGenericData(p0.getValue(T::class.java)!!)
+            if (p0.getValue(T::class.java) != null) {
+                vm.setGenericData(p0.getValue(T::class.java)!!)
+            }
         }
 
         override fun onChildRemoved(p0: DataSnapshot) {

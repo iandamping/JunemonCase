@@ -10,14 +10,14 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.Observer
 import androidx.lifecycle.OnLifecycleEvent
 import com.google.firebase.auth.FirebaseAuth
+import com.ian.app.helper.model.GenericViewModelWithLiveData
+import com.ian.app.helper.util.layoutInflater
 import com.junemon.junemoncase.JunemonApps
 import com.junemon.junemoncase.JunemonApps.Companion.mFirebaseAuth
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
-import com.junemon.junemoncase.util.GenericViewModelWithLiveData
 import com.junemon.junemoncase.util.customViewModelFactoriesHelper
 import io.reactivex.disposables.CompositeDisposable
-import org.jetbrains.anko.layoutInflater
 
 /**
  *

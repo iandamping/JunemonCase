@@ -14,15 +14,17 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
+import com.ian.app.helper.util.*
 import com.junemon.junemoncase.JunemonApps.Companion.mAllImageDatabaseReference
 import com.junemon.junemoncase.JunemonApps.Companion.storageDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.ui.activity.MainActivity
 import com.junemon.junemoncase.ui.activity.uploadphonetype.UploadPhoneTypeActivity
-import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.RequestSelectGalleryImage
 import com.junemon.junemoncase.util.Constant.switchBackToMain
+import com.junemon.junemoncase.util.ImageHelper
+import com.junemon.junemoncase.util.alertHelper
 import com.karumi.dexter.Dexter
 import com.karumi.dexter.MultiplePermissionsReport
 import com.karumi.dexter.PermissionToken
@@ -56,7 +58,7 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
 
     override fun onBackPressed() {
         super.onBackPressed()
-        startActivity<MainActivity>() {
+        startActivity<MainActivity> {
             putExtra(switchBackToMain, "1")
         }
     }
@@ -112,9 +114,9 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
 
     private fun getAllPermisions() {
         Dexter.withActivity(this).withPermissions(
-                android.Manifest.permission.READ_EXTERNAL_STORAGE,
-                android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                android.Manifest.permission.CAMERA
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.CAMERA
         ).withListener(object : MultiplePermissionsListener {
             override fun onPermissionsChecked(report: MultiplePermissionsReport?) {
                 if (report?.areAllPermissionsGranted()!!) {
@@ -124,8 +126,8 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
             }
 
             override fun onPermissionRationaleShouldBeShown(
-                    permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
-                    token: PermissionToken?
+                permissions: MutableList<com.karumi.dexter.listener.PermissionRequest>?,
+                token: PermissionToken?
             ) {
             }
 
@@ -174,10 +176,10 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
                     initRadioButton()
                     data = AllCasingModel(tmpTypeCase, tmpIsBestSeller, null, selectedUriForFirebase?.lastPathSegment)
                     presenter.uploadToFirebase(
-                            storageDatabaseReference,
-                            mAllImageDatabaseReference,
-                            selectedUriForFirebase,
-                            data
+                        storageDatabaseReference,
+                        mAllImageDatabaseReference,
+                        selectedUriForFirebase,
+                        data
                     )
                 }
             }
@@ -197,10 +199,10 @@ class UploadActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener, 
 
     private fun openImageDialogFromSnackbar(views: View) {
         val snackbar = Snackbar
-                .make(views, getString(R.string.pilih_gambar_dulu), Snackbar.LENGTH_LONG)
-                .setAction(getString(R.string.snackbar_buka)) {
-                    openImageFromGallery(isPermissionGranted)
-                }
+            .make(views, getString(R.string.pilih_gambar_dulu), Snackbar.LENGTH_LONG)
+            .setAction(getString(R.string.snackbar_buka)) {
+                openImageFromGallery(isPermissionGranted)
+            }
         snackbar.show()
     }
 

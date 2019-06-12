@@ -1,13 +1,13 @@
 package com.junemon.junemoncase.ui.activity.editprofile
 
 import com.google.firebase.database.DatabaseReference
+import com.ian.app.helper.util.asyncRxExecutor
+import com.ian.app.helper.util.singleExecutes
+import com.ian.app.helper.util.singleZipWith
 import com.junemon.junemoncase.JunemonApps.Companion.DatabasesAccess
 import com.junemon.junemoncase.JunemonApps.Companion.api
 import com.junemon.junemoncase.base.MyCustomBasePresenter
 import com.junemon.junemoncase.model.UserProfileModel
-import com.junemon.junemoncase.util.asyncRxExecutor
-import com.junemon.junemoncase.util.executes
-import com.junemon.junemoncase.util.zipWith
 
 
 /**
@@ -64,9 +64,9 @@ class EditProfilePresenter(private val dataRef: DatabaseReference) : MyCustomBas
 
     private fun getAllProvinceAndCity() {
         setDialogShow(false)
-        compose.executes(api.getAllCityData().zipWith(api.getAllProvinceData()), {
+        compose.singleExecutes(api.getAllCityData().singleZipWith(api.getAllProvinceData()), {
             setDialogShow(true)
-            view()?.onFailGetRajaOngkirData(it.localizedMessage)
+            view()?.onFailGetRajaOngkirData(it?.localizedMessage)
         }, {
             setDialogShow(true)
             it?.first?.let { city -> view()?.onGetCityData(city.allData?.results) }

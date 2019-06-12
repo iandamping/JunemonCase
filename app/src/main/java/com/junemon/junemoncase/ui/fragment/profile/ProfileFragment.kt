@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.firebase.ui.auth.AuthUI
+import com.ian.app.helper.util.*
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.editprofile.EditProfileActivity
-import com.junemon.junemoncase.util.*
 import com.junemon.junemoncase.util.Constant.RequestSignIn
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 
@@ -23,7 +23,7 @@ class ProfileFragment : Fragment(), ProfileView {
     private lateinit var presenter: ProfilePresenter
     private var actualView: View? = null
     private val loginProvider = arrayListOf(
-            AuthUI.IdpConfig.GoogleBuilder().build()
+        AuthUI.IdpConfig.GoogleBuilder().build()
     )
 
     override fun onAttach(context: Context) {
@@ -42,7 +42,7 @@ class ProfileFragment : Fragment(), ProfileView {
 
     override fun onSuccessGetData(data: UserProfileModel?) {
         if (data?.photoUser != null) {
-            actualView?.ivPhotoProfile?.loadUrl(data.photoUser)
+            actualView?.ivPhotoProfile?.loadWithGlide(data.photoUser)
         }
         if (data?.nameUser != null) {
             actualView?.tvProfileName?.text = data.nameUser
@@ -119,12 +119,12 @@ class ProfileFragment : Fragment(), ProfileView {
 
     private fun createSignInIntent() {
         startActivityForResult(
-                AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setIsSmartLockEnabled(false)
-                        .setAvailableProviders(loginProvider)
-                        .build(),
-                RequestSignIn
+            AuthUI.getInstance()
+                .createSignInIntentBuilder()
+                .setIsSmartLockEnabled(false)
+                .setAvailableProviders(loginProvider)
+                .build(),
+            RequestSignIn
         )
     }
 

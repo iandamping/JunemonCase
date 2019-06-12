@@ -3,9 +3,9 @@ package com.junemon.junemoncase.base
 import android.content.Context
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AlertDialog
+import com.ian.app.helper.util.layoutInflater
 import com.junemon.junemoncase.R
 import io.reactivex.disposables.CompositeDisposable
-import org.jetbrains.anko.layoutInflater
 
 /**
  *

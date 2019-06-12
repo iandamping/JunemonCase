@@ -5,9 +5,9 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import com.ian.app.helper.util.*
 import com.junemon.junemoncase.JunemonApps.Companion.phoneTypeDatabaseReference
 import com.junemon.junemoncase.R
-import com.junemon.junemoncase.util.*
 import kotlinx.android.synthetic.main.activity_upload_phonetype.*
 
 /**
@@ -38,7 +38,7 @@ class UploadPhoneTypeActivity : AppCompatActivity(), UploadPhoneTypeView {
 
     override fun initView() {
         autoTextAdapter =
-                ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
+            ArrayAdapter(this, android.R.layout.simple_list_item_1, resources.getStringArray(R.array.all_phone_names))
         etPhoneType.setAdapter(autoTextAdapter)
         etPhoneType.threshold = 1
         btnUnggahTipeHp.setOnClickListener {

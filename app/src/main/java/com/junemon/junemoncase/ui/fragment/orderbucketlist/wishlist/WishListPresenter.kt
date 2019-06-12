@@ -3,9 +3,9 @@ package com.junemon.junemoncase.ui.fragment.orderbucketlist.wishlist
 import android.content.Context
 import android.view.View
 import androidx.lifecycle.Observer
+import com.ian.app.helper.model.GenericViewModel
 import com.junemon.junemoncase.JunemonApps.Companion.mAllOrderDatabaseReference
 import com.junemon.junemoncase.base.MyCustomBaseFragmentPresenter
-import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.OrderCasingModel
 import com.junemon.junemoncase.util.getAllDataFromFirebase
 import com.junemon.junemoncase.util.withViewModel

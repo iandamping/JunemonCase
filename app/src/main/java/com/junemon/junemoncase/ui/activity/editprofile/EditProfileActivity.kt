@@ -3,12 +3,17 @@ package com.junemon.junemoncase.ui.activity.editprofile
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
+import com.ian.app.helper.util.fullScreenAnimation
+import com.ian.app.helper.util.logE
+import com.ian.app.helper.util.requestError
+import com.ian.app.helper.util.startActivity
 import com.junemon.junemoncase.JunemonApps.Companion.userDatabaseReference
 import com.junemon.junemoncase.R
 import com.junemon.junemoncase.model.GeneralProvinceModel
 import com.junemon.junemoncase.model.UserProfileModel
 import com.junemon.junemoncase.ui.activity.MainActivity
-import com.junemon.junemoncase.util.*
+import com.junemon.junemoncase.util.Constant
+import com.junemon.junemoncase.util.alertHelperToLoginActivity
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import org.jetbrains.anko.selector
 
@@ -104,15 +109,25 @@ class EditProfileActivity : AppCompatActivity(), EditProfileView {
             val tmpPhoneNumber = etEditUserPhoneNumber.text.toString().trim()
             val tmpEmail = etEditUserEmail.text.toString().trim()
             when {
-                tmpName.isNullOrBlank() -> etEditName.requestError(getString(R.string.not_null))
-                tmpAddress.isNullOrBlank() -> etEditUserAddress.requestError(getString(R.string.not_null))
-                tmpProvince.isNullOrBlank() -> etEditProvince.requestError(getString(R.string.not_null))
-                tmpCity.isNullOrBlank() -> etEditCity.requestError(getString(R.string.not_null))
-                tmpPhoneNumber.isNullOrBlank() -> etEditUserPhoneNumber.requestError(getString(R.string.not_null))
-                tmpEmail.isNullOrBlank() -> etEditUserEmail.requestError(getString(R.string.not_null))
+                tmpName.isBlank() -> etEditName.requestError(getString(R.string.not_null))
+                tmpAddress.isBlank() -> etEditUserAddress.requestError(getString(R.string.not_null))
+                tmpProvince.isBlank() -> etEditProvince.requestError(getString(R.string.not_null))
+                tmpCity.isBlank() -> etEditCity.requestError(getString(R.string.not_null))
+                tmpPhoneNumber.isBlank() -> etEditUserPhoneNumber.requestError(getString(R.string.not_null))
+                tmpEmail.isBlank() -> etEditUserEmail.requestError(getString(R.string.not_null))
                 else -> {
                     userData =
-                            UserProfileModel(null, currentUserId, null, tmpName, tmpEmail, tmpPhoneNumber, tmpAddress, tmpProvince, tmpCity)
+                        UserProfileModel(
+                            null,
+                            currentUserId,
+                            null,
+                            tmpName,
+                            tmpEmail,
+                            tmpPhoneNumber,
+                            tmpAddress,
+                            tmpProvince,
+                            tmpCity
+                        )
                     presenter.updateUserData(userData)
                 }
             }

@@ -1,10 +1,10 @@
 package com.junemon.junemoncase.ui.activity.seeall
 
 import android.content.Context
+import com.ian.app.helper.util.fromJsonHelper
 import com.junemon.junemoncase.JunemonApps.Companion.gson
 import com.junemon.junemoncase.base.BasePresenter
 import com.junemon.junemoncase.model.AllCasingModel
-import com.junemon.junemoncase.util.fromJsonHelper
 
 /**
  *

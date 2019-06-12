@@ -32,10 +32,10 @@ class UploadPresenter(private val mView: UploadView) : BasePresenter() {
     }
 
     fun uploadToFirebase(
-            storageRef: StorageReference,
-            dataRef: DatabaseReference,
-            selectedImage: Uri?,
-            data: AllCasingModel?
+        storageRef: StorageReference,
+        dataRef: DatabaseReference,
+        selectedImage: Uri?,
+        data: AllCasingModel?
     ) {
         setDialogShow(false)
         val reference = selectedImage?.lastPathSegment?.let { storageRef.child(it) }

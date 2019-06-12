@@ -63,7 +63,9 @@
         <activity android:name=".ui.activity.editprofile.EditProfileActivity"
                   android:theme="@style/NoActionBar"
                   android:screenOrientation="portrait"/>
-
+        <meta-data
+                android:name="firebase_crashlytics_collection_enabled"
+                android:value="false" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

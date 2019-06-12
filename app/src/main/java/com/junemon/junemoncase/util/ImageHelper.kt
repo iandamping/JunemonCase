@@ -71,7 +71,7 @@ class ImageHelper {
                 matrix.postRotate(270F)
             }
             scaledBitmap =
-                    Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.width, scaledBitmap.height, matrix, true)
+                Bitmap.createBitmap(scaledBitmap, 0, 0, scaledBitmap.width, scaledBitmap.height, matrix, true)
             return scaledBitmap
         }
 

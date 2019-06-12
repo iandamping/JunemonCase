@@ -4,8 +4,8 @@ import android.content.Context
 import android.view.View
 import androidx.lifecycle.Observer
 import com.google.firebase.database.DatabaseReference
+import com.ian.app.helper.model.GenericViewModel
 import com.junemon.junemoncase.base.MyCustomBaseFragmentPresenter
-import com.junemon.junemoncase.data.GenericViewModel
 import com.junemon.junemoncase.model.AllCasingModel
 import com.junemon.junemoncase.util.getAllDataFromFirebase
 import com.junemon.junemoncase.util.withViewModel
@@ -41,32 +41,35 @@ class HomePresenter(private val dataReference: DatabaseReference) : MyCustomBase
                 listAllData.clear()
                 listAllData.add(it)
                 listAllData.forEach { customData ->
-                    when {
-                        customData.casingType.equals("Hardcase") && !customData.isTopSeller!! -> {
-                            listHardcase.add(customData)
-                            view()?.onSuccesGetHardcaseData(listHardcase)
-                        }
-                        customData.casingType.equals("Softcase") && !customData.isTopSeller!! -> {
-                            listSoftcase.add(customData)
-                            view()?.onSuccesGetSoftcaseData(listSoftcase)
-                        }
-                        customData.casingType.equals("Premium") && !customData.isTopSeller!! -> {
-                            listPremium.add(customData)
-                            view()?.onSuccesGetPremiumData(listPremium)
-                        }
-                        customData.casingType.equals("Premium Soft") && !customData.isTopSeller!! -> {
-                            listPremiumSoft.add(customData)
-                            view()?.onSuccesGetPremiumSoftData(listPremiumSoft)
-                        }
-                        customData.casingType.equals("Air Bag") && !customData.isTopSeller!! -> {
-                            listAirBag.add(customData)
-                            view()?.onSuccesGetAirBagData(listAirBag)
-                        }
-                        customData.isTopSeller!! -> {
-                            listBestSeller.add(customData)
-                            view()?.onSuccesGetBestSellerData(listBestSeller)
+                    if (customData.isTopSeller != null) {
+                        when {
+                            customData.casingType.equals("Hardcase") && !customData.isTopSeller!! -> {
+                                listHardcase.add(customData)
+                                view()?.onSuccesGetHardcaseData(listHardcase)
+                            }
+                            customData.casingType.equals("Softcase") && !customData.isTopSeller!! -> {
+                                listSoftcase.add(customData)
+                                view()?.onSuccesGetSoftcaseData(listSoftcase)
+                            }
+                            customData.casingType.equals("Premium") && !customData.isTopSeller!! -> {
+                                listPremium.add(customData)
+                                view()?.onSuccesGetPremiumData(listPremium)
+                            }
+                            customData.casingType.equals("Premium Soft") && !customData.isTopSeller!! -> {
+                                listPremiumSoft.add(customData)
+                                view()?.onSuccesGetPremiumSoftData(listPremiumSoft)
+                            }
+                            customData.casingType.equals("Air Bag") && !customData.isTopSeller!! -> {
+                                listAirBag.add(customData)
+                                view()?.onSuccesGetAirBagData(listAirBag)
+                            }
+                            customData.isTopSeller!! -> {
+                                listBestSeller.add(customData)
+                                view()?.onSuccesGetBestSellerData(listBestSeller)
+                            }
                         }
                     }
+
                 }
             })
         }

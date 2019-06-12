@@ -1,6 +1,7 @@
 package com.junemon.junemoncase
 
 import android.app.Application
+import com.crashlytics.android.Crashlytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -9,12 +10,13 @@ import com.google.firebase.storage.StorageReference
 import com.google.gson.Gson
 import com.junemon.junemoncase.api.ApiInterface
 import com.junemon.junemoncase.api.NetworkConfig
-import com.junemon.junemoncase.data.localdata.JunemonDatabase
+import com.junemon.junemoncase.data.JunemonDatabase
 import com.junemon.junemoncase.util.Constant.nodeOrders
 import com.junemon.junemoncase.util.Constant.nodePhoneType
 import com.junemon.junemoncase.util.Constant.nodePhotos
 import com.junemon.junemoncase.util.Constant.nodeUsers
 import com.junemon.junemoncase.util.PreferenceHelper
+import io.fabric.sdk.android.Fabric
 
 /**
  *
@@ -39,6 +41,7 @@ class JunemonApps : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        Fabric.with(this, Crashlytics())
         prefHelper = PreferenceHelper(this)
         gson = Gson()
         mFirebaseDatabase = FirebaseDatabase.getInstance()
